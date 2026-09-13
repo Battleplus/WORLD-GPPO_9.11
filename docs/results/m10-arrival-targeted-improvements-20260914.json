@@ -1,0 +1,23 @@
+{
+  "source_head": "391ec5e7d004d050ad3311dcc714011f2addb740",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "run_id": "m10-targeted-improvements-full-20260914-v2",
+  "training_performed": false,
+  "world_model_evaluation_repeated": false,
+  "original_reused": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-local-runs\\m10-system-closure-paired-20260914-v1\\system-closure.json",
+    "sha256": "8a251c2a70992e4d26ddea1a57d76bab1175cc8d078e9f02effe7427d1f93b75"
+  },
+  "parameters": {"retry_interval_seconds": 1.0, "max_retries": 2, "retention_seconds": 3.0, "same_tapes": true, "count_per_condition": 16},
+  "results": {
+    "original": {"ideal": {"on_time_physical": 96, "on_time_host_confirmation": 95}, "composite": {"on_time_physical": 48, "on_time_host_confirmation": 9}},
+    "notification": {"ideal": {"on_time_physical": 96, "on_time_host_confirmation": 95}, "composite": {"on_time_physical": 46, "on_time_host_confirmation": 21, "physical_rescued": 0, "physical_losses": 2, "host_rescued": 15, "host_losses": 3, "completion_notice_transmissions": 92, "completion_notice_retries_sent": 28, "completion_notice_dropped": 41, "completion_notice_received": 29, "completion_ack_received": 30, "completion_ack_dropped": 3, "communication_proxy_bytes_total": 6354451}},
+    "scheduling": {"ideal": {"on_time_physical": 96, "on_time_host_confirmation": 96}, "composite": {"on_time_physical": 32, "on_time_host_confirmation": 6, "physical_rescued": 9, "physical_losses": 25, "host_rescued": 1, "host_losses": 4, "communication_proxy_bytes_total": 6450549}},
+    "combined": {"ideal": {"on_time_physical": 96, "on_time_host_confirmation": 96}, "composite": {"on_time_physical": 31, "on_time_host_confirmation": 14, "physical_rescued": 9, "physical_losses": 26, "host_rescued": 10, "host_losses": 5, "completion_notice_transmissions": 55, "completion_notice_retries_sent": 19, "completion_notice_dropped": 18, "completion_notice_received": 23, "completion_ack_received": 23, "completion_ack_dropped": 2, "communication_proxy_bytes_total": 6491853}}
+  },
+  "old_log_limitation": "26 physical-arrival rows have null completion_message_id, while old dropped telemetry records lack message_kind; generated-vs-dropped cannot be split exactly and remains unresolved.",
+  "scheduling_evidence": {"no_selection_tasks": 20, "non_null_first_legal_candidate": 20, "selected_other_task_at_first_legal": 19, "noop_at_first_legal": 1, "accepted_other_task_at_first_legal": 14},
+  "safety": {"observed_violations_all_variants": 0, "unauthorized_or_fenced_accept": 0},
+  "adoption": {"notification_default": false, "scheduling_default": false, "combined_default": false},
+  "weak_communication_availability": "not_established"
+}

@@ -55,6 +55,10 @@ class M10Config:
     task_completion_mode: str = "continuous_service_until_deadline"
     deadline_basis: str = "physical_service"
     arrival_radius: float = 0.0
+    completion_notice_mode: str = "single_shot"
+    completion_notice_retry_interval: float = 1.0
+    completion_notice_max_retries: int = 0
+    completion_notice_retention: float = 3.0
 
     def __post_init__(self) -> None:
         if self.uav_count <= 0 or self.task_capacity <= 0 or self.region_count <= 0 or self.target_count <= 0 or self.event_capacity <= 0:
@@ -73,6 +77,16 @@ class M10Config:
             raise ValueError("Unsupported deadline basis")
         if not math.isfinite(self.arrival_radius) or self.arrival_radius < 0:
             raise ValueError("arrival_radius must be finite and nonnegative")
+        if self.completion_notice_mode not in ("single_shot", "bounded_retry"):
+            raise ValueError("Unsupported completion notice mode")
+        if not math.isfinite(self.completion_notice_retry_interval) or self.completion_notice_retry_interval <= 0:
+            raise ValueError("completion notice retry interval must be finite and positive")
+        if type(self.completion_notice_max_retries) is not int or self.completion_notice_max_retries < 0:
+            raise ValueError("completion notice max retries must be a nonnegative integer")
+        if not math.isfinite(self.completion_notice_retention) or self.completion_notice_retention <= 0:
+            raise ValueError("completion notice retention must be finite and positive")
+        if self.completion_notice_mode == "bounded_retry" and self.completion_notice_max_retries < 1:
+            raise ValueError("bounded retry mode requires at least one retry")
 
     @property
     def action_count(self) -> int:
@@ -296,6 +310,7 @@ class M10Environment:
         # (semantic kind, telemetry, delivery ordinal).  A duplicated packet
         # keeps the same message_id but has a distinct delivery ordinal.
         self._pending_messages: list[tuple[str, Telemetry, int]] = []
+        self._pending_completion_messages: list[tuple[Telemetry, int]] = []
         # (delivery time, renewal id, command id, delivery ordinal, send time). Renewal
         # delivery is ordered by its scheduled transport time, not by the
         # order in which requests were created.
@@ -318,6 +333,7 @@ class M10Environment:
         self._active_actions: dict[str, int] = {}
         self._completion_records: dict[str, dict[str, Any]] = {}
         self._completion_notice_ids: set[str] = set()
+        self._completion_notice_state: dict[str, dict[str, Any]] = {}
         self._emitted_arrival_events: set[tuple[str, float]] = set()
         self._deliver_observations()
         self._flush_messages()
@@ -405,6 +421,9 @@ class M10Environment:
             self._emitted_arrival_events.add(key)
             task_id = str(event["task"])
             task = self.clock.tasks[task_id]
+            if self.config.completion_notice_mode == "bounded_retry":
+                self._create_bounded_completion_notice(task_id, event, task)
+                continue
             record = {
                 "task_id": task_id,
                 "uav_id": str(event["resource"]),
@@ -422,6 +441,144 @@ class M10Environment:
             record["completion_message_send_time"] = float(event["time"])
             if identity is not None:
                 self._completion_notice_ids.add(identity)
+
+    def _execution_identity_for_arrival(self, task_id: str, resource: str) -> dict[str, Any] | None:
+        """Return the ACK-known execution identity without requiring an active lease."""
+        for command in self._active_commands.values():
+            if command.task_id == task_id and command.uav_id == resource:
+                return {"command_id": command.command_id, "uav_id": command.uav_id, "token": command.token}
+        return None
+
+    def _create_bounded_completion_notice(self, task_id: str, event: dict[str, Any], task: Any) -> None:
+        arrival_time = float(event["time"])
+        resource = str(event["resource"])
+        notice_id = f"completion|{task_id}|{resource}|{arrival_time:.9f}"
+        record = {
+            "task_id": task_id,
+            "uav_id": resource,
+            "physical_arrival_time": arrival_time,
+            "deadline": float(task.deadline),
+            "execution_identity": self._execution_identity_for_arrival(task_id, resource),
+            "completion_notice_id": notice_id,
+            "completion_notice_attempts": 0,
+            "completion_message_id": notice_id,
+            "completion_message_send_time": None,
+            "host_confirmation_time": None,
+            "physical_arrival_before_deadline": bool(arrival_time <= float(task.deadline)),
+            "host_confirmation_before_deadline": None,
+        }
+        self._completion_records[task_id] = record
+        self._completion_notice_ids.add(notice_id)
+        self._completion_notice_state[task_id] = {
+            "notice_id": notice_id,
+            "next_attempt": 0,
+            "next_retry_time": arrival_time + self.config.completion_notice_retry_interval,
+            "retention_deadline": arrival_time + self.config.completion_notice_retention,
+            "status": "pending",
+        }
+        self._transmit_bounded_completion_notice(task_id, 0, self.clock.time)
+
+    def _transmit_bounded_completion_notice(self, task_id: str, attempt: int, now: float) -> None:
+        record = self._completion_records[task_id]
+        state = self._completion_notice_state[task_id]
+        notice_id = str(state["notice_id"])
+        if record.get("host_confirmation_time") is not None or now > float(state["retention_deadline"]):
+            state["status"] = "expired"
+            return
+        state["next_attempt"] = int(attempt) + 1
+        record["completion_notice_attempts"] = int(attempt) + 1
+        if record.get("completion_message_send_time") is None:
+            record["completion_message_send_time"] = float(now)
+        transport_id = f"{notice_id}|attempt|{attempt}"
+        impairment = self.communication.telemetry(
+            seed=self.scenario.seed,
+            identity=self._random_identity(transport_id),
+            now=now,
+        )
+        if impairment["dropped"]:
+            self._communication_log.append({
+                "link": "completion_notice", "message_kind": "completion",
+                "status": "dropped", "message_id": notice_id, "notice_id": notice_id,
+                "attempt": int(attempt), "time": float(now), "measured_at": record["physical_arrival_time"],
+                "reason": "outage" if impairment["outage"] else "random_loss",
+            })
+            return
+        received_at = now + self.config.telemetry_delay + self.communication.telemetry_extra_delay + impairment["jitter"]
+        message = Telemetry(
+            entity=task_id, field="completion", value=1.0,
+            measured_at=float(record["physical_arrival_time"]), received_at=float(received_at),
+            sequence=int(attempt), message_id=notice_id,
+        )
+        self._communication_log.append({
+            "link": "completion_notice", "message_kind": "completion",
+            "status": "sent", "message_id": notice_id, "notice_id": notice_id,
+            "attempt": int(attempt), "time": float(now), "measured_at": message.measured_at,
+            "received_at": float(received_at),
+        })
+        if received_at <= now:
+            self._accept_bounded_completion_notice(message, now, int(attempt))
+        else:
+            self._pending_completion_messages.append((message, int(attempt)))
+
+    def _completion_identity_is_valid(self, record: dict[str, Any]) -> bool:
+        identity = record.get("execution_identity")
+        if not isinstance(identity, dict):
+            return False
+        command = self.execution.commands.get(identity.get("command_id"))
+        return bool(
+            command is not None
+            and command.task_id == record.get("task_id")
+            and command.uav_id == identity.get("uav_id") == record.get("uav_id")
+            and command.token == identity.get("token")
+            and self.execution.task_tokens.get(str(record.get("task_id"))) == identity.get("token")
+        )
+
+    def _accept_bounded_completion_notice(self, message: Telemetry, now: float, attempt: int) -> bool:
+        task_id = str(message.entity)
+        record = self._completion_records.get(task_id)
+        if record is None or message.message_id != record.get("completion_notice_id"):
+            self._communication_log.append({"link": "completion_notice", "message_kind": "completion", "status": "rejected", "reason": "unknown_notice_or_identity", "message_id": message.message_id, "attempt": int(attempt), "time": float(now)})
+            return False
+        if not self._completion_identity_is_valid(record):
+            self._communication_log.append({"link": "completion_notice", "message_kind": "completion", "status": "rejected", "reason": "execution_identity_or_fencing", "message_id": message.message_id, "attempt": int(attempt), "time": float(now)})
+            return False
+        if record.get("host_confirmation_time") is None:
+            record["host_confirmation_time"] = float(now)
+            record["host_confirmation_before_deadline"] = bool(float(now) <= float(record["deadline"]))
+            self.view.mark_completed(task_id, now)
+            self._communication_log.append({"link": "completion_notice", "message_kind": "completion", "status": "received", "message_id": message.message_id, "attempt": int(attempt), "time": float(now), "measured_at": message.measured_at})
+            self._completion_notice_state[task_id]["status"] = "confirmed"
+        else:
+            self._communication_log.append({"link": "completion_notice", "message_kind": "completion", "status": "duplicate_ignored", "message_id": message.message_id, "attempt": int(attempt), "time": float(now), "measured_at": message.measured_at})
+        ack_identity = f"{message.message_id}|completion-ack|{attempt}"
+        ack_delivered = self.communication.ack_delivered(seed=self.scenario.seed, identity=self._random_identity(ack_identity))
+        self._communication_log.append({"link": "completion_ack", "message_kind": "completion_ack", "status": "received" if ack_delivered else "dropped", "message_id": message.message_id, "attempt": int(attempt), "time": float(now)})
+        return True
+
+    def _flush_completion_messages(self) -> None:
+        now = self.clock.time
+        ready = [item for item in self._pending_completion_messages if item[0].received_at <= now]
+        self._pending_completion_messages = [item for item in self._pending_completion_messages if item[0].received_at > now]
+        for message, attempt in sorted(ready, key=lambda item: (item[0].received_at, item[0].message_id, item[1])):
+            if now - message.measured_at > self.config.completion_notice_retention:
+                self._communication_log.append({"link": "completion_notice", "message_kind": "completion", "status": "expired", "message_id": message.message_id, "attempt": int(attempt), "time": float(now), "measured_at": message.measured_at})
+                continue
+            self._accept_bounded_completion_notice(message, now, attempt)
+
+    def _retry_bounded_completion_notices(self) -> None:
+        if self.config.completion_notice_mode != "bounded_retry":
+            return
+        now = float(self.clock.time)
+        for task_id, state in self._completion_notice_state.items():
+            if state["status"] != "pending":
+                continue
+            if now > float(state["retention_deadline"]):
+                state["status"] = "expired"
+                continue
+            attempt = int(state["next_attempt"])
+            if attempt <= self.config.completion_notice_max_retries and now >= float(state["next_retry_time"]):
+                self._transmit_bounded_completion_notice(task_id, attempt, now)
+                state["next_retry_time"] = now + self.config.completion_notice_retry_interval
 
     def _renew_active_leases(self, *, skip: set[str] | None = None) -> dict[str, str]:
         """Schedule one renewal per ACK-known lease through the command link."""
@@ -673,7 +830,11 @@ class M10Environment:
         return result
 
     def _all_terminal_or_future_empty(self) -> bool:
-        return all(task.state in (TaskState.COMPLETED, TaskState.EXPIRED) for task in self.clock.tasks.values()) and self.clock.cursor >= len(self.clock.events)
+        if not (all(task.state in (TaskState.COMPLETED, TaskState.EXPIRED) for task in self.clock.tasks.values()) and self.clock.cursor >= len(self.clock.events)):
+            return False
+        if self.config.completion_notice_mode == "bounded_retry":
+            return not any(state["status"] == "pending" for state in self._completion_notice_state.values())
+        return True
 
     def _reward_and_counts(self, feedback: str | TaskCommand) -> tuple[float, dict[str, int]]:
         if self.config.task_completion_mode == "arrival_to_region":
@@ -767,6 +928,8 @@ class M10Environment:
         self._advance_execution(target_time)
         self._deliver_observations()
         self._flush_messages()
+        self._flush_completion_messages()
+        self._retry_bounded_completion_notices()
         self._step_index += 1
         next_obs = self._observation(clear_trigger=True)
         reward, counts = self._reward_and_counts(feedback)

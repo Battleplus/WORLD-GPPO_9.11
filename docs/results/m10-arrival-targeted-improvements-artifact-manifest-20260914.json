@@ -1,0 +1,29 @@
+{
+  "manifest_version": "m10-arrival-targeted-improvements/20260914-v2",
+  "source_head": "391ec5e7d004d050ad3311dcc714011f2addb740",
+  "run_id": "m10-targeted-improvements-full-20260914-v2",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "artifacts": [
+    {"path": "gppo_world/m10_environment.py", "sha256": "45f1695e9d9e7054bdc1bc1215b9cc1f15cb1a3362941d8a7519919936afc5b4", "role": "bounded completion notification implementation"},
+    {"path": "gppo_world/task_policy_view.py", "sha256": "d3eb71c35261fc89f6812a041b3fbc5b2d8629f6dda1cd606340305475fe8575", "role": "public completion state handling"},
+    {"path": "tools/run_m10_targeted_improvements.py", "sha256": "79d5b245d50fb149a128e2b62098e07bfe36d9bdf7ec86faa7b8a1cee669968b", "role": "bounded A/B/C/D comparison runner"},
+    {"path": "tests/test_m10_arrival_protocol.py", "sha256": "b7996ba2cb025f22827bd276f0533a0d7102f3b89d1b7cc7b94c4265946f51f3", "role": "notification regression tests"},
+    {"path": "docs/results/m10-arrival-targeted-improvements-20260914.md", "sha256": "356df10712f030eda1122823d408ce778d447e97215229934c2bce70e1ef6944", "role": "targeted improvement report"},
+    {"path": "docs/results/m10-arrival-targeted-improvements-20260914.json", "sha256": "53c5fa89d4664912c3daac80ff305867b1153d0988f573413f4ef5599fe1094f", "role": "machine-readable result summary"},
+    {"path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-local-runs\\m10-targeted-improvements-full-20260914-v2\\targeted-improvements.json", "bytes": 159383244, "sha256": "6b9ac4d5365224fc08584ae5e9e2607337440502aefc815bba4d788cc525ba9a", "role": "full task/message/execution paired ledger"},
+    {"path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-local-runs\\m10-system-closure-paired-20260914-v1\\system-closure.json", "bytes": 44413064, "sha256": "8a251c2a70992e4d26ddea1a57d76bab1175cc8d078e9f02effe7427d1f93b75", "role": "reused original baseline ledger"}
+  ],
+  "comparison": {
+    "new_variants": ["notification", "scheduling", "combined"],
+    "original_reexecuted": false,
+    "conditions": ["ideal", "composite"],
+    "tapes_per_condition": 16,
+    "tasks_per_condition": 96
+  },
+  "notes": [
+    "Legacy null completion_message_id rows remain unresolved at the generated-vs-dropped split; the new version records message_kind explicitly.",
+    "No world-model training or evaluation was run in this turn.",
+    "Communication byte totals are canonical serialization proxies, not physical network traffic.",
+    "No variant is adopted as the default; weak-communication availability remains unestablished."
+  ]
+}

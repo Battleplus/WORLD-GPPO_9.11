@@ -32,6 +32,7 @@
 - 本地新仓库分支：`world-model-consequence-v1`。
 - 新到达协议：16 episode/96 task 旧账本核对完成；物理到达为研发主口径，主机确认独立报告。
 - 系统可用性闭环：`docs/results/m10-arrival-system-availability-closure-20260914.md`、对应 JSON 和制品清单；同一 16 条 tape 的 ideal/composite 规则配对 replay 已完成，旧 `not_recorded` 不变。
+- 针对性改进：`docs/results/m10-arrival-targeted-improvements-20260914.md`、对应 JSON 和 `tools/run_m10_targeted_improvements.py`；通知/调度/合并三变体共96个新 episode 已完成，原规则结果复用旧 ledger，三种新方案均未采纳为默认。
 - 新后果模型：正式数据 v2 已冻结；单 seed CPU 有界训练 670 updates 后因 validation patience 停止；test/OOD 局部预测改善但候选调度价值未建立，融合未启动。
 - 基础对照训练：已完成 49152 环境步；融合矩阵未启动。
 - 旧服务器：未连接，历史中断状态不变。

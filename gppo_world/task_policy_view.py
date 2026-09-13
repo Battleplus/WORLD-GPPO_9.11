@@ -39,6 +39,7 @@ class TaskPolicyView:
         self._tasks = []
         self._uavs = ReceivedTelemetry()
         self._task_values = ReceivedTelemetry()
+        self._completed_tasks = set()
         self._time = 0.0
         self.version = 0
 
@@ -73,6 +74,15 @@ class TaskPolicyView:
             self.version += 1
         return accepted
 
+    def mark_completed(self, task_id: str, now: float) -> None:
+        """Record a legally received completion without exposing simulator truth."""
+        if task_id not in self._tasks:
+            raise ValueError('Completion for an unknown public task')
+        self._advance(now)
+        if task_id not in self._completed_tasks:
+            self._completed_tasks.add(task_id)
+            self.version += 1
+
     def snapshot(self, now: float) -> TaskPolicySnapshot:
         self._advance(now)
 
@@ -97,7 +107,7 @@ class TaskPolicyView:
             u_ok = (all(v['valid'] for v in uav.values()) and uav['energy']['value'] > 0
                     and all(uav[f]['value'] == 1 for f in ('alive', 'connected', 'idle')))
             for task in tv:
-                t_ok = (bool(task) and all(task[field]['valid'] for field in TASK_REQUIRED_FIELDS)
+                t_ok = (not self._tasks[i] in self._completed_tasks if i < len(self._tasks) else True) and (bool(task) and all(task[field]['valid'] for field in TASK_REQUIRED_FIELDS)
                         and task['pending']['value'] == 1 and task['deadline']['value'] > now
                         and task['remaining_service']['value'] > 0)
                 mask.append(bool(u_ok and t_ok))
