@@ -1,0 +1,25 @@
+{
+  "report_id": "m10-arrival-notification-candidate-selection-20260914",
+  "date": "2026-09-14",
+  "source_head_at_start": "7c40108d8f62a1e1a249c31bffcf895c2e34c4a7",
+  "scope": {"new_training": false, "new_evaluation": false, "scheduling_rule_expansion": false, "independent_validation_completed": false},
+  "dataset_identity": {
+    "development_regression_original": {"run_id": "m10-system-closure-paired-20260914-v1", "parent_tapes": 16, "task_denominator": 96, "sha256": "8a251c2a70992e4d26ddea1a57d76bab1175cc8d078e9f02effe7427d1f93b75"},
+    "development_regression_frozen_parameter_replay": {"run_id": "m10-targeted-improvements-full-20260914-v2", "parent_tapes": 16, "task_denominator": 96, "sha256": "6b9ac4d5365224fc08584ae5e9e2607337440502aefc815bba4d788cc525ba9a", "same_parent_tape_ids_as_original": true, "used_for_further_tuning": false},
+    "independent_validation": {"status": "not_completed", "no_new_data_generated": true}
+  },
+  "results": {
+    "original": {
+      "ideal": {"on_time_physical": "96/96", "on_time_host_confirmation": "95/96", "physical_events": 96, "host_events": 96, "coverage": "96/96", "safety_violations": 0, "communication_proxy_bytes": 4470680},
+      "composite": {"on_time_physical": "48/96", "on_time_host_confirmation": "9/96", "physical_events": 48, "host_events": 10, "coverage": "96/96", "safety_violations": 0, "communication_proxy_bytes": 5899716}
+    },
+    "notification": {
+      "ideal": {"on_time_physical": "96/96", "on_time_host_confirmation": "95/96", "physical_events": 96, "host_events": 96, "coverage": "96/96", "safety_violations": 0, "communication_proxy_bytes": 4486150},
+      "composite": {"on_time_physical": "46/96", "on_time_host_confirmation": "21/96", "physical_events": 46, "host_events": 29, "coverage": "96/96", "safety_violations": 0, "communication_proxy_bytes": 6354451, "completion_notice_transmission_attempts": 92, "completion_notice_initial": {"sent": 23, "dropped": 23}, "completion_notice_retries": {"sent": 28, "dropped": 18, "retries_sent": 28}, "completion_notice_status": {"sent": 51, "dropped": 41, "received": 29, "expired": 17, "duplicate_ignored": 4, "identity_rejected": 1}, "completion_ack": {"received": 30, "dropped": 3}, "completion_notice_and_ack_proxy_bytes": 38082, "host_rescued": 15, "host_losses": 3, "physical_rescued": 0, "physical_losses": 2}
+    },
+    "scheduling_composite": {"on_time_physical": "32/96", "on_time_host_confirmation": "6/96", "delta_physical_vs_original": -16, "delta_host_vs_original": -3},
+    "combined_composite": {"on_time_physical": "31/96", "on_time_host_confirmation": "14/96", "delta_physical_vs_original": -17, "delta_host_vs_original": 5}
+  },
+  "candidate_decision": {"recommended_simulation_candidate": "original_scheduler_plus_bounded_retry_notification", "status": "candidate_only_not_formal_acceptance", "arrival_slack_default": false, "combined_default": false, "reasons": ["independent validation incomplete", "communication cost threshold undefined", "notification composite physical arrival decreased 48/96 to 46/96"]},
+  "claims": {"notification_gain_is_world_model_gain": false, "world_model_strategy_gain_established": false, "weak_communication_availability_passed": false, "real_network_traffic_measured": false}
+}

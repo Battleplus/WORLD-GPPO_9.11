@@ -1,0 +1,11 @@
+{
+  "manifest_id": "m10-arrival-notification-selection-artifact-manifest-20260914",
+  "source_head_at_start": "7c40108d8f62a1e1a249c31bffcf895c2e34c4a7",
+  "dataset_artifacts": {
+    "original_closure_ledger": {"path": "E:/Z博士/9.2日/WORLD-GPPO_9.11-local-runs/m10-system-closure-paired-20260914-v1/system-closure.json", "sha256": "8a251c2a70992e4d26ddea1a57d76bab1175cc8d078e9f02effe7427d1f93b75", "role": "development_regression_baseline"},
+    "targeted_improvements_ledger": {"path": "E:/Z博士/9.2日/WORLD-GPPO_9.11-local-runs/m10-targeted-improvements-full-20260914-v2/targeted-improvements.json", "sha256": "6b9ac4d5365224fc08584ae5e9e2607337440502aefc815bba4d788cc525ba9a", "role": "post_freeze_replay_same_development_parent_tapes"}
+  },
+  "independent_validation": {"status": "not_completed", "no_new_data_generated": true},
+  "reports": {"markdown": "docs/results/m10-arrival-notification-candidate-selection-20260914.md", "json": "docs/results/m10-arrival-notification-candidate-selection-20260914.json", "meeting_one_pager": "docs/meeting/m10-arrival-phase-progress-20260914.md"},
+  "claims_boundary": ["candidate_only", "no_formal_acceptance", "no_world_model_strategy_gain", "no_real_network_traffic_measurement", "weak_communication_availability_not_passed"]
+}
