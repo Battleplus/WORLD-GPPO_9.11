@@ -1,0 +1,22 @@
+{
+  "manifest_version": "m10-arrival-system-closure/20260914-v1",
+  "source_head": "524668695c2c563f842ce24b2b10e1d38b516033",
+  "run_id": "m10-system-closure-paired-20260914-v1",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "artifacts": [
+    {"path": "tools/run_m10_arrival_system_closure.py", "sha256": "604a1915aba68ab50d7b7feab9c01673091e9bb950a0d0e30fbf740d55fe0b50", "role": "rule-only paired replay runner"},
+    {"path": "tools/run_m10_arrival_rule_baseline.py", "sha256": "6605d55acf43aabf2876b44511040a308060540eecdb0532739efb7e63c3bec1", "role": "legal traditional action policy"},
+    {"path": "gppo_world/m10_environment.py", "sha256": "d48a92f04734aa1c1e032a88029a32eaf4b7af066d6d3b51221814d3f01d552d", "role": "arrival environment and communication profiles"},
+    {"path": "configs/world-gppo-9.11-arrival-v0.1.0.json", "sha256": "2ce326bda92670203792faf97eaca36ef2dbfdff9f287de963011826d7ad8d22", "role": "arrival protocol configuration"},
+    {"path": "docs/results/m10-arrival-system-availability-closure-20260914.md", "sha256": "71ec20fbe7d7f79ace81f4a1f4f158634de46cee300a3c0f667ea717ceadaeac", "role": "human-readable closure report"},
+    {"path": "docs/results/m10-arrival-system-availability-closure-20260914.json", "sha256": "c391bbbfe3b2e5e3b48e234a916e084c80d5e6dcdc4b9bcae343265f0ecb874a", "role": "machine-readable summary"},
+    {"path": "docs/results/m10-arrival-system-closure-asset-package-README-20260914.md", "sha256": "b9607c955bf88116857ab51e0e563b00f11496f8eaee3416121dded96615bf41", "role": "asset package README"},
+    {"path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-local-runs\\m10-system-closure-paired-20260914-v1\\system-closure.json", "bytes": 44413064, "sha256": "8a251c2a70992e4d26ddea1a57d76bab1175cc8d078e9f02effe7427d1f93b75", "role": "full paired replay ledger; external local artifact"},
+    {"path": "docs/results/m10-arrival-protocol-outcome-and-model-20260913.json", "role": "prior arrival/model evidence; preserved, not rerun"}
+  ],
+  "notes": [
+    "The 96 task rows in the paired replay are new evidence and do not repair missing rows in the old aggregate-only ledger.",
+    "ideal and composite use the same 16 tapes; communication proxy counts are simulator records, not measured network traffic.",
+    "No training, world-model evaluation, server connection, protocol relaxation, or safety-gate bypass occurred in this closure run."
+  ]
+}

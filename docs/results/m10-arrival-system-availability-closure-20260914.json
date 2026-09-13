@@ -1,0 +1,57 @@
+{
+  "source_head": "524668695c2c563f842ce24b2b10e1d38b516033",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "run_id": "m10-system-closure-paired-20260914-v1",
+  "training_performed": false,
+  "world_model_evaluation_performed": false,
+  "tapes": {
+    "count": 16,
+    "ids": ["test-mixed-seed-2093001", "test-mixed-seed-2093002", "test-mixed-seed-2093003", "test-mixed-seed-2093004", "test-mixed-seed-2093005", "test-mixed-seed-2093006", "test-mixed-seed-2093007", "test-mixed-seed-2093008", "test-mixed-seed-2093009", "test-mixed-seed-2093010", "test-mixed-seed-2093011", "test-mixed-seed-2093012", "test-mixed-seed-2093013", "test-mixed-seed-2093014", "test-mixed-seed-2093015", "test-mixed-seed-2093016"],
+    "tasks": 96,
+    "same_tapes_across_conditions": true
+  },
+  "conditions": {
+    "ideal": {
+      "tasks": 96,
+      "physical_arrival_events": 96,
+      "on_time_physical": 96,
+      "host_confirmation_events": 96,
+      "on_time_host_confirmation": 95,
+      "host_status": {"completed": 95, "expired_or_unconfirmed": 1},
+      "primary_failure_causes": {},
+      "host_confirmation_causes": {"received_after_deadline": 1},
+      "observed_safety_violations": 0,
+      "guard_rejections": 0,
+      "decision_wall_ms": {"n": 162, "mean": 2.7450092595784676, "p95": 4.064845000354863, "max": 45.71510000005219},
+      "return_mean": 59.51678037685551
+    },
+    "composite": {
+      "tasks": 96,
+      "physical_arrival_events": 48,
+      "on_time_physical": 48,
+      "host_confirmation_events": 10,
+      "on_time_host_confirmation": 9,
+      "physical_status": {"completed": 48, "expired": 48},
+      "host_status": {"completed": 9, "expired_or_unconfirmed": 39, "expired_without_arrival": 48},
+      "primary_failure_causes": {"scheduling_no_selection": 20, "execution_gate_or_resource": 16, "time_or_execution_budget": 9, "command_transport": 3},
+      "host_confirmation_causes": {"completion_notice_dropped_or_not_generated": 26, "not_legally_received_by_observation_cutoff": 7, "received_after_deadline": 1, "received_but_duplicate_or_identity_rejected": 5},
+      "observed_safety_violations": 0,
+      "guard_rejections": 0,
+      "decision_wall_ms": {"n": 256, "mean": 2.0231460938049395, "p95": 3.4177750001163076, "max": 8.436299999630137},
+      "return_mean": 16.49826016685923
+    }
+  },
+  "coverage": {"ideal_explicit_task_rows": 96, "ideal_unresolved_rows": 0, "composite_explicit_task_rows": 96, "composite_unresolved_rows": 0},
+  "physical_failure_primary_causes_mutually_exclusive": true,
+  "old_not_recorded_preserved": true,
+  "evidence": {
+    "run_artifact": {"path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-local-runs\\m10-system-closure-paired-20260914-v1\\system-closure.json", "bytes": 44413064, "sha256": "8a251c2a70992e4d26ddea1a57d76bab1175cc8d078e9f02effe7427d1f93b75"},
+    "runner_sha256": "604a1915aba68ab50d7b7feab9c01673091e9bb950a0d0e30fbf740d55fe0b50",
+    "rule_sha256": "6605d55acf43aabf2876b44511040a308060540eecdb0532739efb7e63c3bec1",
+    "environment_sha256": "d48a92f04734aa1c1e032a88029a32eaf4b7af066d6d3b51221814d3f01d552d",
+    "protocol_sha256": "2ce326bda92670203792faf97eaca36ef2dbfdff9f287de963011826d7ad8d22"
+  },
+  "world_model": {"status": "not_a_gate", "prior_decision_value": "not_established", "new_training": "paused"},
+  "availability_claim": "measured_simulator_capability_only",
+  "business_acceptance_basis": "pending_confirmation"
+}
