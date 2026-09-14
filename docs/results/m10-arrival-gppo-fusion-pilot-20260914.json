@@ -1,0 +1,34 @@
+{
+  "run_id": "m10-arrival-gppo-fusion-pilot-20260914-seed1101",
+  "status": "pilot_complete",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "torch": "2.7.0+cu128",
+  "cuda": "12.8",
+  "python": "3.11.15",
+  "numpy": "1.26.0",
+  "threads": 4,
+  "train_tapes": 32,
+  "validation_tapes": 16,
+  "policy_seed": 1101,
+  "budget": {
+    "environment_steps_per_learning_group": 512,
+    "optimizer_updates_per_learning_group": 128,
+    "group_wall_seconds": 1800
+  },
+  "actual_training": {
+    "GPPO": {"environment_steps": 512, "optimizer_updates": 8},
+    "GPPO-History": {"environment_steps": 512, "optimizer_updates": 8},
+    "GPPO-History-CandidateArrival": {"environment_steps": 512, "optimizer_updates": 8, "world_model_calls": 512}
+  },
+  "validation_tasks": 96,
+  "validation": {
+    "legal-public-rule": {"physical_on_time": 53, "host_on_time": 12, "return_mean": 20.891991554466372, "actor_calls": 260, "world_model_calls": 0, "latency_mean_ms": 1.9717653845313738, "communication_proxy_bytes": 6529067, "safety_violations": 0},
+    "GPPO": {"physical_on_time": 41, "host_on_time": 5, "return_mean": 10.340095039612976, "actor_calls": 274, "world_model_calls": 0, "latency_mean_ms": 5.74593868645768, "communication_proxy_bytes": 6980204, "safety_violations": 0},
+    "GPPO-History": {"physical_on_time": 42, "host_on_time": 7, "return_mean": 11.27019827795401, "actor_calls": 273, "world_model_calls": 0, "latency_mean_ms": 5.9613373626071295, "communication_proxy_bytes": 6958952, "safety_violations": 0},
+    "GPPO-History-CandidateArrival": {"physical_on_time": 44, "host_on_time": 7, "return_mean": 13.147496359489656, "actor_calls": 272, "world_model_calls": 272, "latency_mean_ms": 10.885587132259602, "communication_proxy_bytes": 6925642, "safety_violations": 0}
+  },
+  "model": {"path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-m10-arrival-model-verify-20260913-v1\\training\\best-inference.pt", "sha256": "a5acd173b3c57301fd744cb1e6105789278de8f58438f0e42e7535a23e500b86", "format": "gppo-arrival-consequence-inference-v1", "horizon_steps": 6},
+  "checkpoint_load_verification": {"status": "passed", "sha256": "f1a40a9fdcc2baf1150ff52a5a68905e8cce00540475374a67dc904dfe36a70f"},
+  "conclusion": "single-seed exploratory pilot only; no stable strategy gain or weak-communication availability claim"
+}

@@ -64,3 +64,14 @@
 - 定向测试：`tests/test_arrival_gppo_fusion.py`；与到达协议回归合计 12 passed。
 - 研究边界：旧持续服务 policy、旧联合任务集合 checkpoint 和动作前平均 context 均不作为新 arrival 融合输入；本轮未训练、未生成数据、未启动 GPPO 融合。
 - 计划与追踪：`refine-logs/EXPERIMENT_PLAN-m10-arrival-gppo-fusion-20260914.md`、`refine-logs/EXPERIMENT_TRACKER-m10-arrival-gppo-fusion-20260914.md`，固定副本为 `refine-logs/EXPERIMENT_PLAN.md`、`refine-logs/EXPERIMENT_TRACKER.md`。
+
+## 当前新增：到达协议融合单 seed pilot（2026-09-14）
+
+- 真实 PPO runner：`tools/run_m10_arrival_gppo_fusion_pilot.py`
+- 保存/加载核验：`tools/verify_m10_arrival_gppo_fusion_pilot.py`
+- Pilot 报告：`docs/results/m10-arrival-gppo-fusion-pilot-20260914.md`、对应 JSON
+- run-id：`m10-arrival-gppo-fusion-pilot-20260914-seed1101`；本地输出为 `E:\Z博士\9.2日\WORLD-GPPO_9.11-local-runs\m10-arrival-gppo-fusion-pilot-20260914-v2`
+- 到达模型：外部本地归档路径由 `run-identity.json` 登记，SHA-256 `a5acd173b3c57301fd744cb1e6105789278de8f58438f0e42e7535a23e500b86`；本轮冻结、未更新。
+- 实际训练：GPPO、GPPO-History、GPPO-History-CandidateArrival 均 512 environment steps、8 次 optimizer updates；融合训练期间 512 次 world calls；规则组不训练。
+- 结果边界：规则 53/96、GPPO 41/96、History 42/96、融合 44/96 按时物理到达；单 seed/16 validation tape，只是探索性 pilot，不构成稳定增益或弱通信可用性通过。
+- checkpoint 首决策加载复核通过；大型 pilot 输出保留在本地，未在本清单中伪称已上传 Release。
