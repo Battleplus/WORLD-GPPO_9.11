@@ -41,7 +41,8 @@ from tools.run_m10_baseline_comparison import traditional_action  # noqa: E402
 
 
 SCHEMA = "gppo-arrival-joint-consequence/v1"
-PROTOCOL = "world-gppo-9.11-arrival/0.1.0"
+PROTOCOL = "world-gppo-9.11-joint-consequence/0.1.0"
+PARENT_PROTOCOL = "world-gppo-9.11-arrival/0.1.0"
 
 
 def digest(value: Any) -> str:
@@ -145,10 +146,11 @@ def _branch(
     parent_id: str,
     prefix_id: str,
     repeat_id: str,
+    prefix_exogenous_key: str,
     exogenous_key: str,
     horizon_steps: int,
 ) -> dict[str, Any]:
-    env = M10Environment(config=arrival_config(), scenario=scenario, exogenous_key=exogenous_key)
+    env = M10Environment(config=arrival_config(), scenario=scenario, exogenous_key=prefix_exogenous_key)
     obs = env.reset()
     prefix_trace = []
     for action in prefix_actions:
@@ -160,6 +162,11 @@ def _branch(
     public_task_set = _public_task_set(env, obs)
     if public_task_set != task_set:
         raise RuntimeError("branch public task set differs from prefix task set")
+
+    # Prefix delivery must be identical across candidates and repeats.  The
+    # branch key is switched only after the public decision state is frozen,
+    # so repeat-specific randomness cannot change task-set membership.
+    env._exogenous_key = exogenous_key
 
     branch_trace = []
     branch_actions = []
@@ -274,6 +281,7 @@ def make_split(
                         parent_id=parent_id,
                         prefix_id=prefix_id,
                         repeat_id=repeat_id,
+                        prefix_exogenous_key=prefix_key,
                         exogenous_key=exogenous_key,
                         horizon_steps=horizon_steps,
                     )
@@ -375,6 +383,7 @@ def main() -> int:
     manifest = {
         "schema": SCHEMA,
         "protocol": PROTOCOL,
+        "parent_protocol": PARENT_PROTOCOL,
         "status": "generated_for_development_only",
         "task_completion_mode": "arrival_to_region",
         "primary_deadline_basis": "physical_arrival",
