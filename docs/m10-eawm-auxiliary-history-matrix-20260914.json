@@ -41,6 +41,6 @@
     "local_zip": "E:/Z博士/9.2日/m10-eawm-auxiliary-history-matrix-20260914-v1.zip",
     "local_zip_bytes": 192312533,
     "local_zip_sha256": "aa1576c7ae2740494bcfe93c118fae335102bfe6361506bf5d2db6f63bdfb550",
-    "remote_release": "not attempted in this bounded local run"
+    "remote_release": "upload attempted via gh but stalled with zero assets; empty draft was deleted; no remote asset verification"
   }
 }
