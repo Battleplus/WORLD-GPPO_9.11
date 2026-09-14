@@ -430,7 +430,7 @@ def train_one(variant: str, seed: int, steps: int, max_updates: int, *, root: Pa
             np.random.set_state(rng_state["numpy"])
             torch.set_rng_state(rng_state["torch"].cpu())
             if device.type == "cuda" and rng_state.get("cuda") is not None:
-                torch.cuda.set_rng_state_all(rng_state["cuda"])
+                torch.cuda.set_rng_state_all([item.cpu() for item in rng_state["cuda"]])
     started = time.perf_counter()
     updates_path = output / "updates.jsonl"
     ledger_path = output / "training-rollout-ledger.jsonl.gz"
