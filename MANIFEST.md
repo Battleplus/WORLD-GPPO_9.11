@@ -9,6 +9,7 @@
 - 固定 fixture 测试：`tests/test_joint_consequence.py`（本阶段 6 passed）
 - 实现说明与 pilot 登记：`docs/plans/m10-joint-consequence-implementation-20260914.md`
 - 实验计划与 tracker：`refine-logs/EXPERIMENT_PLAN-m10-joint-consequence-20260914.md`、`refine-logs/EXPERIMENT_TRACKER-m10-joint-consequence-20260914.md`
+- pilot 启动前登记：`docs/results/m10-joint-consequence-pilot-preregistration-20260914.md`
 
 本阶段仅完成设计、schema、接口和测试；没有新数据、模型训练或策略融合运行。通知/调度工程候选、旧到达时间/系统能耗模型和负结果保持原版本。
 

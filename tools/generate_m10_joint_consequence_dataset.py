@@ -49,6 +49,10 @@ def digest(value: Any) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+def file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def arrival_config() -> M10Config:
     # The notification candidate is deliberately not enabled in this route.
     return M10Config(task_completion_mode="arrival_to_region", deadline_basis="physical_arrival")
@@ -413,6 +417,12 @@ def main() -> int:
             "generator": "tools/generate_m10_joint_consequence_dataset.py",
             "schema_adapter": "gppo_world.joint_consequence",
             "protocol": PROTOCOL,
+            "sha256": {
+                "generator": file_sha256(Path(__file__)),
+                "schema_adapter": file_sha256(ROOT / "gppo_world" / "joint_consequence.py"),
+                "baseline": file_sha256(ROOT / "gppo_world" / "joint_consequence_baseline.py"),
+                "protocol_config": file_sha256(ROOT / "configs" / "world-gppo-9.11-joint-consequence-v0.1.0.json"),
+            },
         },
     }
     _write_json(args.out / "manifest.json", manifest)
