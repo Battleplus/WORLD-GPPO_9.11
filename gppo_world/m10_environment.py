@@ -811,6 +811,10 @@ class M10Environment:
             "flat": flat,
             "uavs": uavs,
             "tasks": tasks,
+            "entity_ids": {
+                "uavs": tuple(self.view.public_entity_ids()[0]),
+                "tasks": tuple(self.view.public_entity_ids()[1]),
+            },
             "graph": {"node_features": np.concatenate((uav_nodes, regions, targets, task_nodes, events), axis=0), "relations": relations},
             "mask": np.asarray(snapshot.mask, dtype=np.bool_),
             "time": float(self.clock.time),

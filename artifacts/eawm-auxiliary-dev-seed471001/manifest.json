@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public-event-labels.jsonl": {
+      "path": "public-event-labels.jsonl",
+      "records": 126,
+      "sha256": "d058eb88ff98c7c86676214427cd31aacf7058a5ce21e687fd2117373485ca66"
+    },
+    "scenarios.json": {
+      "path": "scenarios.json",
+      "sha256": "88e403dd9fd24ddcbc5810d71f359b03de599b034bc672193c1201ea71c208f1"
+    },
+    "stats.json": {
+      "path": "stats.json",
+      "sha256": "8b88ce893032a959e238bda497d91f18d913789f0595e1a21c1d301b23a8e77e"
+    }
+  },
+  "run_id": "eawm-aux-dev-seed471001",
+  "schema": "gppo-eawm-inspired-public-transition-v1"
+}

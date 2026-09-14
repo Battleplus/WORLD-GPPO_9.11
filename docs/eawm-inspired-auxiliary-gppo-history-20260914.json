@@ -1,0 +1,45 @@
+{
+  "schema": "gppo-eawm-inspired-development-report-v1",
+  "method": "EAWM-inspired auxiliary GPPO-History",
+  "source_commit": "c17fc405b79e7f9dfc0f0f12ad0edb7384dca89e",
+  "formal_training_started": false,
+  "parameter_updates": 0,
+  "pilot": {
+    "seed": 471001,
+    "parent_episodes": {"requested": 8, "actual": 8},
+    "environment_steps": {"maximum": 1024, "actual": 126},
+    "records": 126,
+    "wall_seconds": 0.3343075000011595,
+    "protocol": {"task_completion_mode": "arrival_to_region", "deadline_basis": "physical_arrival"},
+    "communication": "composite weak communication",
+    "controller": "traditional_action using public observation only"
+  },
+  "labels": {
+    "schema": "gppo-eawm-inspired-public-transition-v1",
+    "effective": {"position": 562, "energy": 270, "task_state": 313},
+    "class_counts": {
+      "position_x": {"decrease": 1, "unchanged": 251, "increase": 21},
+      "position_y": {"decrease": 3, "unchanged": 269, "increase": 17},
+      "energy": {"decrease": 159, "unchanged": 111, "increase": 0},
+      "task_state": {"unchanged": 292, "changed": 21}
+    },
+    "identity_matches": {"uav": 504, "task": 536},
+    "mask_reasons": {"episode_boundary": 0, "identity_mismatch": 220, "missing_or_invalid": 903, "nonfinite": 0},
+    "nonfinite_public_values": 0
+  },
+  "tests": {"targeted": "10 passed", "full_regression": "194 passed"},
+  "training_entry": {
+    "path": "tools/train_m10_eawm_auxiliary_history.py",
+    "not_invoked": true,
+    "frozen_auxiliary_coefficient": 0.1,
+    "default_environment_step_budget": 8192,
+    "default_update_budget": 4096,
+    "default_wall_seconds": 3600
+  },
+  "artifact_hashes": {
+    "scenarios.json": "88e403dd9fd24ddcbc5810d71f359b03de599b034bc672193c1201ea71c208f1",
+    "public-event-labels.jsonl": "d058eb88ff98c7c86676214427cd31aacf7058a5ce21e687fd2117373485ca66",
+    "stats.json": "8b88ce893032a959e238bda497d91f18d913789f0595e1a21c1d301b23a8e77e",
+    "manifest.json": "a62102c73ca0d492dc5bc184367820c1d4769d399c6321c9cae59f176475da04"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "class_counts": {
+    "energy": {
+      "decrease": 159,
+      "increase": 0,
+      "unchanged": 111
+    },
+    "position_x": {
+      "decrease": 1,
+      "increase": 21,
+      "unchanged": 251
+    },
+    "position_y": {
+      "decrease": 3,
+      "increase": 17,
+      "unchanged": 269
+    },
+    "task_state": {
+      "changed": 21,
+      "unchanged": 292
+    }
+  },
+  "effective_records": {
+    "energy": 270,
+    "position": 562,
+    "task_state": 313
+  },
+  "environment_steps": 126,
+  "identity_matches": {
+    "task": 536,
+    "uav": 504
+  },
+  "mask_reasons": {
+    "episode_boundary": 0,
+    "identity_mismatch": 220,
+    "missing_or_invalid": 903,
+    "nonfinite": 0
+  },
+  "nonfinite_public_values": 0,
+  "parent_episodes": 8,
+  "parent_record_counts": {
+    "eawm-aux-dev-mixed-seed-471001": 16,
+    "eawm-aux-dev-mixed-seed-471002": 18,
+    "eawm-aux-dev-mixed-seed-471003": 17,
+    "eawm-aux-dev-mixed-seed-471004": 13,
+    "eawm-aux-dev-mixed-seed-471005": 17,
+    "eawm-aux-dev-mixed-seed-471006": 15,
+    "eawm-aux-dev-mixed-seed-471007": 14,
+    "eawm-aux-dev-mixed-seed-471008": 16
+  },
+  "records": 126,
+  "schema": "gppo-eawm-inspired-public-transition-v1",
+  "wall_seconds": 0.3343075000011595
+}

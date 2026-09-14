@@ -1,0 +1,35 @@
+{
+  "schema": "gppo-eawm-inspired-verification-v1",
+  "source_commit_at_start": "c17fc405b79e7f9dfc0f0f12ad0edb7384dca89e",
+  "tests": {
+    "targeted_command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests/test_eawm_auxiliary.py",
+    "targeted_result": "10 passed",
+    "full_command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q",
+    "full_result": "194 passed"
+  },
+  "development_run": {
+    "run_id": "eawm-aux-dev-seed471001",
+    "status": "complete",
+    "parameter_updates": 0,
+    "environment_steps": 126,
+    "parent_episodes": 8,
+    "formal_training": false,
+    "formal_test_or_ood": false
+  },
+  "sha256": {
+    "gppo_world/eawm_auxiliary.py": "167356173b77f1fc09c72461da1379690dfbf34c4cb66e11955e8443daf23b2c",
+    "gppo_world/m10_environment.py": "811f4c228f2bacf58d1ca69ba447543e85e5d3a93373a30522baba658136c646",
+    "gppo_world/task_policy_view.py": "5ee2ff2158c92e758cde07a86749f1e9f57216cfd3a12926a5845c4119d42a2c",
+    "tests/test_eawm_auxiliary.py": "160d5a39900afeaaf7c12be5d71c3f6a65bcee040830a0251e3bc9f26437c1fc",
+    "tools/generate_m10_eawm_auxiliary_dev.py": "0727d0c59ac68e20e159bb3aa99567602a3a7efe3a7f4b2e05faba7f85b7f1bc",
+    "tools/train_m10_eawm_auxiliary_history.py": "59281cb336a055ead384dd14696464498a8069a1bdfd422b92d05d9bb65c1151",
+    "docs/eawm-inspired-auxiliary-gppo-history-20260914.md": "62546178a67adeecba9a94b6202c2bf20a355d3b74f5b0d8fcd86054bb55eba2",
+    "docs/eawm-inspired-auxiliary-gppo-history-20260914.json": "b52274c813a32477508f08020ad17824179fa82f9cea3c1a11bf0c9ab863e043",
+    "artifacts/eawm-auxiliary-dev-seed471001/manifest.json": "a62102c73ca0d492dc5bc184367820c1d4769d399c6321c9cae59f176475da04",
+    "artifacts/eawm-auxiliary-dev-seed471001/public-event-labels.jsonl": "d058eb88ff98c7c86676214427cd31aacf7058a5ce21e687fd2117373485ca66",
+    "artifacts/eawm-auxiliary-dev-seed471001/scenarios.json": "88e403dd9fd24ddcbc5810d71f359b03de599b034bc672193c1201ea71c208f1",
+    "artifacts/eawm-auxiliary-dev-seed471001/stats.json": "8b88ce893032a959e238bda497d91f18d913789f0595e1a21c1d301b23a8e77e",
+    "artifacts/eawm-auxiliary-dev-seed471001/run-identity.json": "55cd68cc4a9e82a8836ead0b21c34389b90ce119d87da09f5b27eef603dc0c46",
+    "artifacts/eawm-auxiliary-dev-seed471001/run-status.json": "c6e35ea004e9b9c3b2917302b546fca4df7a0e6f9486ac788c3e5998c315dbfe"
+  }
+}

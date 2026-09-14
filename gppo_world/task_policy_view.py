@@ -124,3 +124,12 @@ class TaskPolicyView:
         if t >= len(self._tasks):
             raise ValueError('Undelivered task slot')
         return self._tasks[t], self.uav_ids[u]
+
+    def public_entity_ids(self):
+        """Return the public identity order used by the snapshot slots.
+
+        These IDs are metadata for label alignment and audit only.  They are
+        not included in the numeric policy vector and therefore cannot expose
+        simulator truth to an online policy.
+        """
+        return tuple(self.uav_ids), tuple(self._tasks)

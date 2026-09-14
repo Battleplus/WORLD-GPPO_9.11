@@ -1,0 +1,906 @@
+[
+  {
+    "communication": {
+      "ack_loss_probability": 0.1,
+      "command_loss_probability": 0.05,
+      "name": "composite",
+      "renewal_duplicate_probability": 0.0,
+      "renewal_extra_delay": 0.0,
+      "renewal_reorder_window": 0.0,
+      "telemetry_duplicate_probability": 0.0,
+      "telemetry_extra_delay": 0.5,
+      "telemetry_loss_probability": 0.15,
+      "telemetry_outage_intervals": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          10.0,
+          12.0
+        ]
+      ],
+      "telemetry_reorder_window": 0.75
+    },
+    "events": [
+      {
+        "kind": "disconnect",
+        "resource": "uav-0",
+        "time": 3.6851242142465503
+      },
+      {
+        "kind": "reconnect",
+        "resource": "uav-0",
+        "time": 7.415785500864926
+      },
+      {
+        "kind": "damage",
+        "resource": "uav-2",
+        "time": 7.463616193714571
+      }
+    ],
+    "name": "mixed",
+    "seed": 471001,
+    "split": "eawm-aux-dev",
+    "tape_id": "eawm-aux-dev-mixed-seed-471001",
+    "tasks": [
+      {
+        "arrival": 0.0,
+        "deadline": 7.618180154909825,
+        "priority": 0.863045091960714,
+        "region_id": 1,
+        "service": 1.1564240751585508,
+        "target_id": 2,
+        "task_id": "task-0",
+        "x": 1.3899703338598848,
+        "y": 0.5678401686534863
+      },
+      {
+        "arrival": 0.0,
+        "deadline": 7.43389075893914,
+        "priority": 1.618515026756965,
+        "region_id": 2,
+        "service": 1.8621061469311333,
+        "target_id": 0,
+        "task_id": "task-1",
+        "x": 2.4959851554664274,
+        "y": 2.0133296928383073
+      },
+      {
+        "arrival": 1.6382544335780511,
+        "deadline": 10.599913767497071,
+        "priority": 1.1170531386166975,
+        "region_id": 2,
+        "service": 1.2058407824408583,
+        "target_id": 0,
+        "task_id": "task-2",
+        "x": 0.49775408849891467,
+        "y": 2.6661461192204703
+      },
+      {
+        "arrival": 2.797524821466898,
+        "deadline": 12.165844791381822,
+        "priority": 2.1202916774618528,
+        "region_id": 1,
+        "service": 1.6318631244340804,
+        "target_id": 3,
+        "task_id": "task-3",
+        "x": 3.2578920926059984,
+        "y": 0.37894266696508716
+      },
+      {
+        "arrival": 5.263176537778856,
+        "deadline": 15.359703658815123,
+        "priority": 1.1318852139797182,
+        "region_id": 0,
+        "service": 1.0437781651532427,
+        "target_id": 2,
+        "task_id": "task-4",
+        "x": 0.7395519910773113,
+        "y": 3.068061133577381
+      },
+      {
+        "arrival": 7.40290079776658,
+        "deadline": 17.44121201096642,
+        "priority": 1.5436789753738525,
+        "region_id": 0,
+        "service": 1.3850872754405987,
+        "target_id": 1,
+        "task_id": "task-5",
+        "x": 3.0379075693581306,
+        "y": 2.9348337423284545
+      }
+    ]
+  },
+  {
+    "communication": {
+      "ack_loss_probability": 0.1,
+      "command_loss_probability": 0.05,
+      "name": "composite",
+      "renewal_duplicate_probability": 0.0,
+      "renewal_extra_delay": 0.0,
+      "renewal_reorder_window": 0.0,
+      "telemetry_duplicate_probability": 0.0,
+      "telemetry_extra_delay": 0.5,
+      "telemetry_loss_probability": 0.15,
+      "telemetry_outage_intervals": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          10.0,
+          12.0
+        ]
+      ],
+      "telemetry_reorder_window": 0.75
+    },
+    "events": [
+      {
+        "kind": "disconnect",
+        "resource": "uav-3",
+        "time": 2.61879853344021
+      },
+      {
+        "kind": "reconnect",
+        "resource": "uav-3",
+        "time": 6.078987242933839
+      },
+      {
+        "kind": "damage",
+        "resource": "uav-2",
+        "time": 6.764161588422009
+      }
+    ],
+    "name": "mixed",
+    "seed": 471002,
+    "split": "eawm-aux-dev",
+    "tape_id": "eawm-aux-dev-mixed-seed-471002",
+    "tasks": [
+      {
+        "arrival": 0.0,
+        "deadline": 7.064066280136728,
+        "priority": 0.8613297741940026,
+        "region_id": 0,
+        "service": 1.2376935003742129,
+        "target_id": 0,
+        "task_id": "task-0",
+        "x": 1.6038060009563235,
+        "y": 0.47443630100062717
+      },
+      {
+        "arrival": 0.0,
+        "deadline": 8.534135480196877,
+        "priority": 1.599074851317428,
+        "region_id": 0,
+        "service": 1.7956637229172874,
+        "target_id": 0,
+        "task_id": "task-1",
+        "x": 2.369507438495708,
+        "y": 2.3024130568198284
+      },
+      {
+        "arrival": 1.8967703864283119,
+        "deadline": 10.499746575161806,
+        "priority": 1.2219427681687178,
+        "region_id": 2,
+        "service": 0.803487185452547,
+        "target_id": 3,
+        "task_id": "task-2",
+        "x": 0.636904745956379,
+        "y": 2.5645304583249815
+      },
+      {
+        "arrival": 3.4330428928517795,
+        "deadline": 12.384341243193761,
+        "priority": 2.175357599755083,
+        "region_id": 0,
+        "service": 2.1160368419186986,
+        "target_id": 2,
+        "task_id": "task-3",
+        "x": 3.0024404429873734,
+        "y": 0.4011822148337744
+      },
+      {
+        "arrival": 5.392256070731949,
+        "deadline": 14.58990812691558,
+        "priority": 1.116158147316392,
+        "region_id": 0,
+        "service": 0.9646725975501605,
+        "target_id": 0,
+        "task_id": "task-4",
+        "x": 1.021623650544275,
+        "y": 3.184062105562993
+      },
+      {
+        "arrival": 7.00843535792044,
+        "deadline": 17.19211732375788,
+        "priority": 1.9711376827770295,
+        "region_id": 1,
+        "service": 1.6901228414175051,
+        "target_id": 1,
+        "task_id": "task-5",
+        "x": 3.157704190522763,
+        "y": 2.86196986724359
+      }
+    ]
+  },
+  {
+    "communication": {
+      "ack_loss_probability": 0.1,
+      "command_loss_probability": 0.05,
+      "name": "composite",
+      "renewal_duplicate_probability": 0.0,
+      "renewal_extra_delay": 0.0,
+      "renewal_reorder_window": 0.0,
+      "telemetry_duplicate_probability": 0.0,
+      "telemetry_extra_delay": 0.5,
+      "telemetry_loss_probability": 0.15,
+      "telemetry_outage_intervals": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          10.0,
+          12.0
+        ]
+      ],
+      "telemetry_reorder_window": 0.75
+    },
+    "events": [
+      {
+        "kind": "disconnect",
+        "resource": "uav-0",
+        "time": 3.3074757404845925
+      },
+      {
+        "kind": "reconnect",
+        "resource": "uav-0",
+        "time": 7.170478805951122
+      },
+      {
+        "kind": "damage",
+        "resource": "uav-3",
+        "time": 9.455580873836361
+      }
+    ],
+    "name": "mixed",
+    "seed": 471003,
+    "split": "eawm-aux-dev",
+    "tape_id": "eawm-aux-dev-mixed-seed-471003",
+    "tasks": [
+      {
+        "arrival": 0.0,
+        "deadline": 6.775145569564884,
+        "priority": 1.0361965271976523,
+        "region_id": 2,
+        "service": 1.2878550840314966,
+        "target_id": 1,
+        "task_id": "task-0",
+        "x": 1.5427478572873572,
+        "y": 0.4234346047459251
+      },
+      {
+        "arrival": 0.0,
+        "deadline": 8.14125093988557,
+        "priority": 1.6283467244432785,
+        "region_id": 0,
+        "service": 1.614705460823591,
+        "target_id": 1,
+        "task_id": "task-1",
+        "x": 2.5886062163964074,
+        "y": 1.7510717417251507
+      },
+      {
+        "arrival": 1.663544559722405,
+        "deadline": 11.314627084199682,
+        "priority": 1.1041022861368122,
+        "region_id": 0,
+        "service": 0.8282537419017375,
+        "target_id": 0,
+        "task_id": "task-2",
+        "x": 0.13454675527503107,
+        "y": 2.7851742047318884
+      },
+      {
+        "arrival": 2.5630033073277074,
+        "deadline": 11.967027465393627,
+        "priority": 1.7292365848399203,
+        "region_id": 0,
+        "service": 2.3522236097243376,
+        "target_id": 2,
+        "task_id": "task-3",
+        "x": 2.9010774915497706,
+        "y": 0.24277827419113684
+      },
+      {
+        "arrival": 4.90192891990022,
+        "deadline": 15.638523102132705,
+        "priority": 1.2085051381898033,
+        "region_id": 1,
+        "service": 1.355929574960989,
+        "target_id": 3,
+        "task_id": "task-4",
+        "x": 1.1869323999196484,
+        "y": 3.3115245178806707
+      },
+      {
+        "arrival": 6.573954938414829,
+        "deadline": 17.33619053947008,
+        "priority": 1.6353988597092377,
+        "region_id": 2,
+        "service": 1.6234323166013145,
+        "target_id": 2,
+        "task_id": "task-5",
+        "x": 2.9949253248302146,
+        "y": 2.844616270658145
+      }
+    ]
+  },
+  {
+    "communication": {
+      "ack_loss_probability": 0.1,
+      "command_loss_probability": 0.05,
+      "name": "composite",
+      "renewal_duplicate_probability": 0.0,
+      "renewal_extra_delay": 0.0,
+      "renewal_reorder_window": 0.0,
+      "telemetry_duplicate_probability": 0.0,
+      "telemetry_extra_delay": 0.5,
+      "telemetry_loss_probability": 0.15,
+      "telemetry_outage_intervals": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          10.0,
+          12.0
+        ]
+      ],
+      "telemetry_reorder_window": 0.75
+    },
+    "events": [
+      {
+        "kind": "disconnect",
+        "resource": "uav-1",
+        "time": 4.547167011724387
+      },
+      {
+        "kind": "reconnect",
+        "resource": "uav-1",
+        "time": 7.359252408743834
+      },
+      {
+        "kind": "damage",
+        "resource": "uav-3",
+        "time": 7.874993969651232
+      }
+    ],
+    "name": "mixed",
+    "seed": 471004,
+    "split": "eawm-aux-dev",
+    "tape_id": "eawm-aux-dev-mixed-seed-471004",
+    "tasks": [
+      {
+        "arrival": 0.0,
+        "deadline": 7.517374597712086,
+        "priority": 1.1159086949180836,
+        "region_id": 1,
+        "service": 1.2026914342361825,
+        "target_id": 1,
+        "task_id": "task-0",
+        "x": 1.8739691754197882,
+        "y": 0.4502308992534028
+      },
+      {
+        "arrival": 0.0,
+        "deadline": 7.605273540723793,
+        "priority": 1.794637574019079,
+        "region_id": 1,
+        "service": 1.6024731396266265,
+        "target_id": 3,
+        "task_id": "task-1",
+        "x": 2.567557881854373,
+        "y": 1.8703475308140065
+      },
+      {
+        "arrival": 2.148680686719969,
+        "deadline": 11.041495083207884,
+        "priority": 1.23899442272193,
+        "region_id": 1,
+        "service": 0.9977075330437509,
+        "target_id": 0,
+        "task_id": "task-2",
+        "x": 0.23986532308056757,
+        "y": 2.6186267736689057
+      },
+      {
+        "arrival": 3.004004490120036,
+        "deadline": 12.152172649405733,
+        "priority": 2.1993669433899434,
+        "region_id": 0,
+        "service": 2.269515161698999,
+        "target_id": 3,
+        "task_id": "task-3",
+        "x": 2.881873415946191,
+        "y": 0.24315950763559568
+      },
+      {
+        "arrival": 4.567432352368732,
+        "deadline": 15.288573254912206,
+        "priority": 1.1983413781205934,
+        "region_id": 2,
+        "service": 1.1508411157120761,
+        "target_id": 3,
+        "task_id": "task-4",
+        "x": 1.187373306356093,
+        "y": 2.993482807577123
+      },
+      {
+        "arrival": 6.653194382079302,
+        "deadline": 16.5518507451606,
+        "priority": 1.768606042403813,
+        "region_id": 1,
+        "service": 1.5351672351755117,
+        "target_id": 1,
+        "task_id": "task-5",
+        "x": 3.2830559213664667,
+        "y": 2.7870975650073877
+      }
+    ]
+  },
+  {
+    "communication": {
+      "ack_loss_probability": 0.1,
+      "command_loss_probability": 0.05,
+      "name": "composite",
+      "renewal_duplicate_probability": 0.0,
+      "renewal_extra_delay": 0.0,
+      "renewal_reorder_window": 0.0,
+      "telemetry_duplicate_probability": 0.0,
+      "telemetry_extra_delay": 0.5,
+      "telemetry_loss_probability": 0.15,
+      "telemetry_outage_intervals": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          10.0,
+          12.0
+        ]
+      ],
+      "telemetry_reorder_window": 0.75
+    },
+    "events": [
+      {
+        "kind": "disconnect",
+        "resource": "uav-0",
+        "time": 4.721976738728313
+      },
+      {
+        "kind": "reconnect",
+        "resource": "uav-0",
+        "time": 6.867040060994901
+      },
+      {
+        "kind": "damage",
+        "resource": "uav-2",
+        "time": 8.050304185019371
+      }
+    ],
+    "name": "mixed",
+    "seed": 471005,
+    "split": "eawm-aux-dev",
+    "tape_id": "eawm-aux-dev-mixed-seed-471005",
+    "tasks": [
+      {
+        "arrival": 0.0,
+        "deadline": 6.3636588608282265,
+        "priority": 1.1384087956853188,
+        "region_id": 2,
+        "service": 1.343369595814578,
+        "target_id": 2,
+        "task_id": "task-0",
+        "x": 1.54006981490592,
+        "y": 0.44033741240152136
+      },
+      {
+        "arrival": 0.0,
+        "deadline": 8.24967983133981,
+        "priority": 1.8267256612311351,
+        "region_id": 0,
+        "service": 1.787142466217379,
+        "target_id": 0,
+        "task_id": "task-1",
+        "x": 2.51643365576462,
+        "y": 1.8857041955797662
+      },
+      {
+        "arrival": 2.307115564987834,
+        "deadline": 11.335466868108131,
+        "priority": 1.1604988107410878,
+        "region_id": 2,
+        "service": 1.014387425405008,
+        "target_id": 2,
+        "task_id": "task-2",
+        "x": 0.4862401670978852,
+        "y": 2.273179249991119
+      },
+      {
+        "arrival": 3.4161111560235695,
+        "deadline": 11.522679255236831,
+        "priority": 1.8306416850115805,
+        "region_id": 2,
+        "service": 1.7703321293781693,
+        "target_id": 3,
+        "task_id": "task-3",
+        "x": 2.5735437768388243,
+        "y": 0.05
+      },
+      {
+        "arrival": 5.354925402728377,
+        "deadline": 14.833232396270702,
+        "priority": 1.1940948209245295,
+        "region_id": 2,
+        "service": 1.417897955407318,
+        "target_id": 3,
+        "task_id": "task-4",
+        "x": 1.2094683565156266,
+        "y": 3.492663381247296
+      },
+      {
+        "arrival": 6.796298715251343,
+        "deadline": 16.476893744970496,
+        "priority": 1.8913293868535652,
+        "region_id": 2,
+        "service": 1.7799242477527546,
+        "target_id": 2,
+        "task_id": "task-5",
+        "x": 3.222309279581834,
+        "y": 3.176870633496893
+      }
+    ]
+  },
+  {
+    "communication": {
+      "ack_loss_probability": 0.1,
+      "command_loss_probability": 0.05,
+      "name": "composite",
+      "renewal_duplicate_probability": 0.0,
+      "renewal_extra_delay": 0.0,
+      "renewal_reorder_window": 0.0,
+      "telemetry_duplicate_probability": 0.0,
+      "telemetry_extra_delay": 0.5,
+      "telemetry_loss_probability": 0.15,
+      "telemetry_outage_intervals": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          10.0,
+          12.0
+        ]
+      ],
+      "telemetry_reorder_window": 0.75
+    },
+    "events": [
+      {
+        "kind": "disconnect",
+        "resource": "uav-0",
+        "time": 3.672545930831908
+      },
+      {
+        "kind": "reconnect",
+        "resource": "uav-0",
+        "time": 6.416234855829055
+      },
+      {
+        "kind": "damage",
+        "resource": "uav-1",
+        "time": 7.250724280166745
+      }
+    ],
+    "name": "mixed",
+    "seed": 471006,
+    "split": "eawm-aux-dev",
+    "tape_id": "eawm-aux-dev-mixed-seed-471006",
+    "tasks": [
+      {
+        "arrival": 0.0,
+        "deadline": 7.028462290139525,
+        "priority": 1.0449331170330844,
+        "region_id": 1,
+        "service": 1.2169551781244283,
+        "target_id": 3,
+        "task_id": "task-0",
+        "x": 1.818237222513868,
+        "y": 0.5720421550853876
+      },
+      {
+        "arrival": 0.0,
+        "deadline": 8.485600238554921,
+        "priority": 1.4072626477849612,
+        "region_id": 2,
+        "service": 1.9927288716000007,
+        "target_id": 0,
+        "task_id": "task-1",
+        "x": 2.538812215644895,
+        "y": 2.120679847434173
+      },
+      {
+        "arrival": 1.563001966383696,
+        "deadline": 11.298934927077283,
+        "priority": 1.367054984966459,
+        "region_id": 2,
+        "service": 0.8575938205375443,
+        "target_id": 3,
+        "task_id": "task-2",
+        "x": 0.46401120251845396,
+        "y": 2.648163832039304
+      },
+      {
+        "arrival": 3.2909958772781907,
+        "deadline": 11.914151969946323,
+        "priority": 1.9029894283504838,
+        "region_id": 0,
+        "service": 1.748947831921167,
+        "target_id": 1,
+        "task_id": "task-3",
+        "x": 2.9682350572345153,
+        "y": 0.3164532800693212
+      },
+      {
+        "arrival": 5.441488706670164,
+        "deadline": 15.583235437763935,
+        "priority": 1.216885121375776,
+        "region_id": 1,
+        "service": 1.3157484768439403,
+        "target_id": 1,
+        "task_id": "task-4",
+        "x": 0.6660605683727867,
+        "y": 2.5623445887009706
+      },
+      {
+        "arrival": 6.977350968039534,
+        "deadline": 17.211214460056866,
+        "priority": 2.038023557544532,
+        "region_id": 2,
+        "service": 1.5302207281180098,
+        "target_id": 0,
+        "task_id": "task-5",
+        "x": 2.9987597986722294,
+        "y": 2.587059881537355
+      }
+    ]
+  },
+  {
+    "communication": {
+      "ack_loss_probability": 0.1,
+      "command_loss_probability": 0.05,
+      "name": "composite",
+      "renewal_duplicate_probability": 0.0,
+      "renewal_extra_delay": 0.0,
+      "renewal_reorder_window": 0.0,
+      "telemetry_duplicate_probability": 0.0,
+      "telemetry_extra_delay": 0.5,
+      "telemetry_loss_probability": 0.15,
+      "telemetry_outage_intervals": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          10.0,
+          12.0
+        ]
+      ],
+      "telemetry_reorder_window": 0.75
+    },
+    "events": [
+      {
+        "kind": "disconnect",
+        "resource": "uav-2",
+        "time": 2.8338961183939784
+      },
+      {
+        "kind": "reconnect",
+        "resource": "uav-2",
+        "time": 5.017528004091229
+      },
+      {
+        "kind": "damage",
+        "resource": "uav-0",
+        "time": 6.848365629725708
+      }
+    ],
+    "name": "mixed",
+    "seed": 471007,
+    "split": "eawm-aux-dev",
+    "tape_id": "eawm-aux-dev-mixed-seed-471007",
+    "tasks": [
+      {
+        "arrival": 0.0,
+        "deadline": 6.839998623066026,
+        "priority": 0.9388760262481469,
+        "region_id": 0,
+        "service": 1.3245251052861355,
+        "target_id": 2,
+        "task_id": "task-0",
+        "x": 1.150845282964848,
+        "y": 0.5512483462052824
+      },
+      {
+        "arrival": 0.0,
+        "deadline": 8.44845065262878,
+        "priority": 1.5689049464271623,
+        "region_id": 0,
+        "service": 1.6883076400126376,
+        "target_id": 1,
+        "task_id": "task-1",
+        "x": 2.4466872027208986,
+        "y": 2.0851429838844084
+      },
+      {
+        "arrival": 2.389030659782499,
+        "deadline": 11.607635239635501,
+        "priority": 1.2037947897795767,
+        "region_id": 1,
+        "service": 1.0347234991680878,
+        "target_id": 1,
+        "task_id": "task-2",
+        "x": 0.5282032011983336,
+        "y": 2.420264061089386
+      },
+      {
+        "arrival": 3.1472431062146873,
+        "deadline": 11.611355368480279,
+        "priority": 1.9893043775108539,
+        "region_id": 2,
+        "service": 2.3264299286816006,
+        "target_id": 1,
+        "task_id": "task-3",
+        "x": 2.95130549525678,
+        "y": 0.05
+      },
+      {
+        "arrival": 4.981990193141804,
+        "deadline": 14.47718306644689,
+        "priority": 1.2266551868250584,
+        "region_id": 0,
+        "service": 1.2413971723752761,
+        "target_id": 0,
+        "task_id": "task-4",
+        "x": 0.9820715117295932,
+        "y": 3.2743692734405583
+      },
+      {
+        "arrival": 6.839510508535966,
+        "deadline": 16.83317190098446,
+        "priority": 1.5955583033553464,
+        "region_id": 2,
+        "service": 1.8871170205861383,
+        "target_id": 0,
+        "task_id": "task-5",
+        "x": 3.4703347306177905,
+        "y": 2.940272441427003
+      }
+    ]
+  },
+  {
+    "communication": {
+      "ack_loss_probability": 0.1,
+      "command_loss_probability": 0.05,
+      "name": "composite",
+      "renewal_duplicate_probability": 0.0,
+      "renewal_extra_delay": 0.0,
+      "renewal_reorder_window": 0.0,
+      "telemetry_duplicate_probability": 0.0,
+      "telemetry_extra_delay": 0.5,
+      "telemetry_loss_probability": 0.15,
+      "telemetry_outage_intervals": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          10.0,
+          12.0
+        ]
+      ],
+      "telemetry_reorder_window": 0.75
+    },
+    "events": [
+      {
+        "kind": "disconnect",
+        "resource": "uav-3",
+        "time": 4.107790855809387
+      },
+      {
+        "kind": "reconnect",
+        "resource": "uav-3",
+        "time": 6.38395043669655
+      },
+      {
+        "kind": "damage",
+        "resource": "uav-2",
+        "time": 7.565793184136128
+      }
+    ],
+    "name": "mixed",
+    "seed": 471008,
+    "split": "eawm-aux-dev",
+    "tape_id": "eawm-aux-dev-mixed-seed-471008",
+    "tasks": [
+      {
+        "arrival": 0.0,
+        "deadline": 6.924071203343224,
+        "priority": 1.050921787615568,
+        "region_id": 2,
+        "service": 1.4770818696203512,
+        "target_id": 1,
+        "task_id": "task-0",
+        "x": 1.2776054419079717,
+        "y": 0.4289405935545222
+      },
+      {
+        "arrival": 0.0,
+        "deadline": 7.829233731410213,
+        "priority": 1.6937268973681814,
+        "region_id": 2,
+        "service": 2.0827448842466025,
+        "target_id": 0,
+        "task_id": "task-1",
+        "x": 2.520523255923407,
+        "y": 1.745717870685986
+      },
+      {
+        "arrival": 2.4400277330871094,
+        "deadline": 11.361811828475261,
+        "priority": 1.095534508331243,
+        "region_id": 0,
+        "service": 1.1154715917650504,
+        "target_id": 0,
+        "task_id": "task-2",
+        "x": 0.45409598349525576,
+        "y": 2.715772763269743
+      },
+      {
+        "arrival": 3.064595575544787,
+        "deadline": 12.409897571818714,
+        "priority": 1.8094207704453842,
+        "region_id": 0,
+        "service": 2.4908648765329895,
+        "target_id": 0,
+        "task_id": "task-3",
+        "x": 3.2183900432569557,
+        "y": 0.4092907006934099
+      },
+      {
+        "arrival": 5.430206055190956,
+        "deadline": 14.860094823613752,
+        "priority": 0.9822944568053649,
+        "region_id": 2,
+        "service": 1.1112391842691374,
+        "target_id": 3,
+        "task_id": "task-4",
+        "x": 1.0587239860288742,
+        "y": 2.828184532378858
+      },
+      {
+        "arrival": 7.324660409223309,
+        "deadline": 16.92052957377064,
+        "priority": 1.7446134024790183,
+        "region_id": 2,
+        "service": 1.9443497149428783,
+        "target_id": 1,
+        "task_id": "task-5",
+        "x": 3.19686821336472,
+        "y": 2.737267047621886
+      }
+    ]
+  }
+]
