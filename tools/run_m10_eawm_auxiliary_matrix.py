@@ -533,6 +533,10 @@ def completed_run_result(root: Path, variant: str, seed: int, label: str) -> dic
     return {"run_id": f"m10-eawm-aux-{variant.lower()}-{seed}-{label}", "variant": variant, "seed": seed, "output": str(output), "status": status["status"], "environment_steps": status.get("environment_steps", 0), "optimizer_updates": status.get("optimizer_updates", 0), "stop_reason": status.get("stop_reason"), "elapsed_seconds": status.get("elapsed_seconds")}
 
 
+def run_directory_exists(root: Path, variant: str, seed: int, label: str) -> bool:
+    return (root / "runs" / f"m10-eawm-aux-{variant.lower()}-{seed}-{label}").exists()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
@@ -560,7 +564,7 @@ def main() -> int:
         for variant in ("H", "E"):
             result = completed_run_result(args.root, variant, 1101, "pilot") if args.resume else None
             if result is None:
-                result = train_one(variant, 1101, PILOT_STEPS, max_updates=MAX_UPDATES, root=args.root, config=config, train_tape=tapes["train"], validation_tape=tapes["validation"], device=device, wall_deadline=min(deadline, time.perf_counter() + PILOT_GROUP_WALL_SECONDS), run_label="pilot", pilot=True, resume=args.resume)
+                result = train_one(variant, 1101, PILOT_STEPS, max_updates=MAX_UPDATES, root=args.root, config=config, train_tape=tapes["train"], validation_tape=tapes["validation"], device=device, wall_deadline=min(deadline, time.perf_counter() + PILOT_GROUP_WALL_SECONDS), run_label="pilot", pilot=True, resume=args.resume and run_directory_exists(args.root, variant, 1101, "pilot"))
             results["pilot"].append(result)
         if args.stage == "pilot":
             dump(args.root / "matrix-results.json", results); return 0
@@ -571,7 +575,7 @@ def main() -> int:
                     break
                 result = completed_run_result(args.root, variant, seed, "formal") if args.resume else None
                 if result is None:
-                    result = train_one(variant, seed, FORMAL_STEPS, max_updates=MAX_UPDATES, root=args.root, config=config, train_tape=tapes["train"], validation_tape=tapes["validation"], device=device, wall_deadline=deadline, run_label="formal", pilot=False, resume=args.resume)
+                    result = train_one(variant, seed, FORMAL_STEPS, max_updates=MAX_UPDATES, root=args.root, config=config, train_tape=tapes["train"], validation_tape=tapes["validation"], device=device, wall_deadline=deadline, run_label="formal", pilot=False, resume=args.resume and run_directory_exists(args.root, variant, seed, "formal"))
                 results["formal"].append(result)
             if time.perf_counter() >= deadline:
                 break
