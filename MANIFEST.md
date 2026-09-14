@@ -1,5 +1,17 @@
 # WORLD-GPPO_9.11 交付清单
 
+## 本阶段新增：联合任务集合后果设计（2026-09-14）
+
+- 协议与标签定义：`docs/world-model/m10-joint-consequence-protocol-20260914.md`、`configs/world-gppo-9.11-joint-consequence-v0.1.0.json`
+- 标签 schema：`schemas/m10-joint-consequence-v1.schema.json`
+- 现有反事实生成器适配入口：`tools/generate_m10_joint_consequence_dataset.py`（仅实现，未生成数据）
+- 合法公开联合机会成本基线：`gppo_world/joint_consequence_baseline.py`
+- 固定 fixture 测试：`tests/test_joint_consequence.py`（本阶段 6 passed）
+- 实现说明与 pilot 登记：`docs/plans/m10-joint-consequence-implementation-20260914.md`
+- 实验计划与 tracker：`refine-logs/EXPERIMENT_PLAN-m10-joint-consequence-20260914.md`、`refine-logs/EXPERIMENT_TRACKER-m10-joint-consequence-20260914.md`
+
+本阶段仅完成设计、schema、接口和测试；没有新数据、模型训练或策略融合运行。通知/调度工程候选、旧到达时间/系统能耗模型和负结果保持原版本。
+
 ## 本提交
 
 - 会议要求与新任务合同差距：`docs/contracts/m10-arrival-protocol-gap-analysis-20260913.md`、`configs/world-gppo-9.11-arrival-v0.1.0.json`
@@ -39,3 +51,4 @@
 - 基础对照训练：已完成 49152 环境步；融合矩阵未启动。
 - 旧服务器：未连接，历史中断状态不变。
 - 历史负结果：保留，不改写。
+- 联合任务集合后果方向：协议与生成接口已冻结，开发 pilot 未执行，尚无预测质量或调度增益结论。
