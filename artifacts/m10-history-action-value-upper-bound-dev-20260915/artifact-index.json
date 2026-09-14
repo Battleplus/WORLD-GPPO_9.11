@@ -1,0 +1,23 @@
+{
+  "schema": "m10-history-candidate-value-upper-bound-artifact-index-v1",
+  "status": "local_sealed",
+  "source_commit": "8c06e528101f1af54131d90b499cfbd7fe04ab28",
+  "valid_run": "E:\\Z博士\\9.2日\\m10-history-action-value-upper-bound-dev-20260915-v4",
+  "checkpoint": {
+    "path": "E:\\Z博士\\9.2日\\m10-history-budget-extension-20260914-v1\\runs\\m10-eawm-aux-h-1101-budget-extension\\checkpoint-32768.pt",
+    "sha256": "e77a8ccba9f65d806eeb27e8404c8b3ea0600295dfa0afe43bfb154892919027"
+  },
+  "files": [
+    {"path": "tapes.json", "bytes": 77748, "sha256": "f4118cdb715c511ff28f088a324b6bfb5317f67462424d76c5365462a646d11"},
+    {"path": "run-identity.json", "bytes": 92978, "sha256": "190ce5cb306e0fc8897f94835f9397bae581f39c9a3675548cd58b9739406f36"},
+    {"path": "branches.jsonl.gz", "bytes": 9635034, "sha256": "ef34d89e39fb9f924b861eed3f7ae664ceaa44f9dda7462fcbb393bf72a556f4f"},
+    {"path": "branches.jsonl.gz.meta.json", "bytes": 376, "sha256": "afd5227dad03b02afba2a8825f3434eb716e0a5c84792d58536f133c1f02b3354"},
+    {"path": "selections.jsonl", "bytes": 277432, "sha256": "a4b20a6615ca43951e94046d561d84709d8a39d5eff8f4940c3a935c0ea6523f"},
+    {"path": "summary.json", "bytes": 1978, "sha256": "6bb8121a96c140a4fc3f9692e284cd8fd9886b5101530ec38160a600d1a50354"},
+    {"path": "verification.json", "bytes": 378, "sha256": "8d3a6b32bebdd314c5ebe6159e096ed1691b184d0063597853a0a56eb05fd54d"},
+    {"path": "repo:artifacts/m10-history-action-value-upper-bound-dev-20260915/analysis.json", "bytes": 17774, "sha256": "551f969ec32060fec5e6d087d202e2224ba846769f2f24e9d8678455681be"},
+    {"path": "repo:tools/run_m10_history_candidate_value_upper_bound.py", "sha256": "ec7ddf779776b1eb24aa0be2a470f34893878a08eb7197fc3d3f4e4c5e6df689"},
+    {"path": "repo:tools/analyze_m10_history_candidate_value_upper_bound.py", "sha256": "a1bb07d3865e703943483e965746ab6713c8b9df2ec0f1fdd98fb1deea0d3eed"}
+  ],
+  "remote_release": "not_attempted; local artifact is sealed and no remote asset is claimed"
+}
