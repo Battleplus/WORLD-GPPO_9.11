@@ -1,0 +1,33 @@
+{
+  "evidence_run": "m10-arrival-gppo-fusion-matrix-20260914-v2",
+  "document_source_commit": "491a442bfc7885f428d96d4a92cdcbaac2bbc0ae",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "frozen_world_model_sha256": "a5acd173b3c57301fd744cb1e6105789278de8f58438f0e42e7535a23e500b86",
+  "selection": "do_not_adopt_fusion_as_engineering_default",
+  "classification": "point_estimate_improvement_but_insufficient_evidence",
+  "results": {
+    "rule_shared": {"physical_on_time": 196, "tasks": 384, "rate": 0.5104166666666666, "host_on_time": 36, "return_mean": 17.385414711742552, "latency_mean_ms": 1.3958141075111279, "latency_p95_ms": 1.8485600015083035, "latency_p99_ms": 2.270451000349564},
+    "gppo": {"physical_on_time": 565, "tasks": 1152, "rate": 0.4904513888888889, "host_on_time": 97, "return_mean": 15.743963042421141, "latency_mean_ms": 4.654965848273139, "latency_p95_ms": 6.990160000350442, "latency_p99_ms": 8.564971999585378},
+    "history": {"physical_on_time": 540, "tasks": 1152, "rate": 0.46875, "host_on_time": 94, "return_mean": 13.896579223868235, "latency_mean_ms": 6.234656673942763, "latency_p95_ms": 11.370119999628514, "latency_p99_ms": 15.357720001848065},
+    "fusion": {"physical_on_time": 542, "tasks": 1152, "rate": 0.4704861111111111, "host_on_time": 85, "return_mean": 14.048010908078442, "latency_mean_ms": 10.666004778368826, "latency_p95_ms": 18.30809999955818, "latency_p99_ms": 27.728479999586297}
+  },
+  "per_seed": {
+    "1101": {"rule_shared": 196, "gppo": 187, "history": 176, "fusion": 165, "fusion_minus_history": -11, "fusion_minus_gppo": -22},
+    "2203": {"rule_shared": 196, "gppo": 193, "history": 177, "fusion": 186, "fusion_minus_history": 9, "fusion_minus_gppo": -7},
+    "3307": {"rule_shared": 196, "gppo": 185, "history": 187, "fusion": 191, "fusion_minus_history": 4, "fusion_minus_gppo": 6}
+  },
+  "uncertainty": {
+    "unit": "tasks per parent tape, six tasks per tape",
+    "estimate": "mean paired fusion-minus-history physical on-time task difference across 64 parent tapes, each tape averaged over three seeds",
+    "bootstrap": "20000 resamples of 64 parent tapes; conditional on the three training seeds; does not cover training-seed uncertainty",
+    "mean": 0.010416666666666668,
+    "bootstrap_95_ci": [-0.13541666666666669, 0.15625]
+  },
+  "boundaries": {
+    "world_model_real_in_ppo": true,
+    "world_model_updated": false,
+    "safety_zero_scope": "recorded audit checks in this simulation only",
+    "training_raw_rollout_ledger_exported": false,
+    "test_ledger_not_used_to_fill_training_ledger": true
+  }
+}
