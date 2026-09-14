@@ -65,6 +65,44 @@ def new_test_tape(config: M10Config) -> list:
     return list(weak_communication_tape("test", count=NEW_TEST_COUNT, base_seed=NEW_TEST_BASE_SEED, level="composite"))
 
 
+def verify_source_checkpoint(path: Path, seed: int, source_root: Path, out: Path) -> dict:
+    payload = torch.load(path, map_location="cpu", weights_only=False)
+    recovery = payload.get("recovery_state") or {}
+    metadata = payload.get("metadata") or {}
+    state = metadata.get("state") or {}
+    optimizer = payload.get("optimizer_state_dict")
+    rng = recovery.get("rng_state") or {}
+    checks = {
+        "format": payload.get("format"),
+        "format_expected": "gppo-history-arrival-training-v1",
+        "format_match": payload.get("format") == "gppo-history-arrival-training-v1",
+        "state_dict_present": isinstance(payload.get("state_dict"), dict) and bool(payload.get("state_dict")),
+        "optimizer_present": isinstance(optimizer, dict) and bool(optimizer.get("param_groups")),
+        "optimizer_state_entries": len((optimizer or {}).get("state", {})),
+        "rng_keys": sorted(rng),
+        "rng_complete": all(key in rng for key in ("python", "numpy", "torch", "cuda")),
+        "environment_steps": recovery.get("environment_steps", state.get("environment_steps")),
+        "optimizer_updates": recovery.get("optimizer_updates", state.get("optimizer_updates")),
+        "seed": recovery.get("seed", seed),
+        "config_present": bool(metadata.get("config")),
+        "ppo_present": bool(metadata.get("ppo")),
+        "data_order": "frozen train tape order; no shuffle; next rollout starts at cumulative step boundary",
+        "rollout_boundary": "runner resets M10Environment and History at each rollout batch; no in-progress env state is required",
+        "source_checkpoint": str(path),
+        "source_checkpoint_sha256": sha256(path),
+        "source_root": str(source_root),
+    }
+    checks["ready_for_safe_boundary_resume"] = bool(
+        checks["format_match"] and checks["state_dict_present"] and checks["optimizer_present"]
+        and checks["rng_complete"] and checks["environment_steps"] == START_STEPS
+        and checks["optimizer_updates"] == 128 and checks["config_present"] and checks["ppo_present"]
+    )
+    dump(out / f"recovery-preflight-{seed}.json", checks)
+    if not checks["ready_for_safe_boundary_resume"]:
+        raise RuntimeError(f"recovery preflight failed for seed {seed}: {checks}")
+    return checks
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--source-root", type=Path, required=True)
@@ -128,6 +166,12 @@ def main() -> int:
         "recovery_boundary": "only after a completed rollout batch; runner resets env and History at each batch and derives next rollout seed from cumulative environment_steps",
         "variants": ["H only"],
     })
+
+    preflight = []
+    for seed in SEEDS:
+        old_dir = source_root / "runs" / f"m10-eawm-aux-h-{seed}-formal"
+        preflight.append(verify_source_checkpoint(old_dir / "last.pt", seed, source_root, root))
+    dump(root / "recovery-preflight.json", {"status": "passed", "checks": preflight})
 
     deadline = time.perf_counter() + TOTAL_WALL_SECONDS
     for seed in SEEDS:
