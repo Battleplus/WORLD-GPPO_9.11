@@ -428,7 +428,7 @@ def train_one(variant: str, seed: int, steps: int, max_updates: int, *, root: Pa
         if rng_state:
             random.setstate(rng_state["python"])
             np.random.set_state(rng_state["numpy"])
-            torch.set_rng_state(rng_state["torch"])
+            torch.set_rng_state(rng_state["torch"].cpu())
             if device.type == "cuda" and rng_state.get("cuda") is not None:
                 torch.cuda.set_rng_state_all(rng_state["cuda"])
     started = time.perf_counter()
