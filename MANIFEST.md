@@ -5,6 +5,7 @@
 - 协议与标签定义：`docs/world-model/m10-joint-consequence-protocol-20260914.md`、`configs/world-gppo-9.11-joint-consequence-v0.1.0.json`
 - 标签 schema：`schemas/m10-joint-consequence-v1.schema.json`
 - 现有反事实生成器适配入口：`tools/generate_m10_joint_consequence_dataset.py`（仅实现，未生成数据）
+- 新 schema 数据 loader、轻量模型和有界训练入口：`gppo_world/joint_consequence_data.py`、`gppo_world/joint_consequence_model.py`、`tools/train_m10_joint_consequence_model.py`
 - 合法公开联合机会成本基线：`gppo_world/joint_consequence_baseline.py`
 - 固定 fixture 测试：`tests/test_joint_consequence.py`（本阶段 6 passed）
 - 实现说明与 pilot 登记：`docs/plans/m10-joint-consequence-implementation-20260914.md`

@@ -8,6 +8,8 @@
 - `gppo_world/joint_consequence_baseline.py`：只读取 Graph-5 公共快照的联合机会成本评分，保留候选差异，不访问仿真真值。
 - `tools/generate_m10_joint_consequence_dataset.py`：基于现有 M10 反事实环境的显式适配器。默认生成器参数是开发 pilot，输出目录非空即拒绝；运行本身不属于本提交动作。
 - `schemas/m10-joint-consequence-v1.schema.json`：记录字段合同。
+- `gppo_world/joint_consequence_data.py`、`gppo_world/joint_consequence_model.py`：新 schema loader、候选逐行动作轻量回归模型和有效标签 mask loss。
+- `tools/train_m10_joint_consequence_model.py`：独立的 best/last、RNG/数据顺序/optimizer/早停状态保存与显式有界恢复入口。
 
 ## 登记的开发 pilot 命令
 
@@ -23,9 +25,9 @@ python tools/generate_m10_joint_consequence_dataset.py `
 
 预期数据规模上限为 12 个父 episode、每父 4 个前缀、每前缀最多 25 个候选、每候选 3 个重复；实际规模由公开任务集合和合法动作 mask 决定，跳过原因写入 manifest。该命令不产生 test/OOD 盲测。
 
-## 后续模型 pilot（条件性登记，未实现运行）
+## 后续模型 pilot（条件性登记，已实现入口，未运行）
 
-模型训练必须消费本协议的新 schema，而不能直接调用旧单候选到达时间训练器。启动前需实现并审阅对应的 loader、模型和恢复入口；冻结后使用 seed `1101`、最多 512 updates、4 epochs、patience 2、20 分钟墙钟，train/validation 选模，test/OOD 只在冻结后一次性评估。策略融合不在本阶段自动启动。
+模型训练消费本协议的新 schema，不能调用旧单候选到达时间训练器。冻结后使用 seed `1101`、最多 512 updates、4 epochs、patience 2、20 分钟墙钟，train/validation 选模，test/OOD 只在冻结后一次性评估。策略融合不在本阶段自动启动。
 
 ## 证据顺序
 

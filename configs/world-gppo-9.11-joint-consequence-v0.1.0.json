@@ -1,7 +1,7 @@
 {
   "protocol": "world-gppo-9.11-joint-consequence/0.1.0",
   "parent_protocol": "world-gppo-9.11-arrival/0.1.0",
-  "status": "design_and_interface_only",
+  "status": "development_pilot_ready_no_formal_test",
   "research_hypothesis": "Candidate-wise prediction of joint task-set consequences can improve action ranking beyond single-task arrival estimates when UAV occupancy creates opportunity cost.",
   "primary_target": "new_on_time_count_for_fixed_public_task_set_within_observation_window",
   "secondary_targets": ["deadline_failure_count_for_fixed_public_task_set", "paired_delta_vs_reference_action"],
@@ -11,6 +11,6 @@
   "reference": {"required": true, "selection": "predeclared_legal_public_reference_action", "delta_sign": "candidate_minus_reference", "reference_is_not_posthoc_best_branch": true},
   "baselines": ["frozen_legal_rule", "public_joint_opportunity_cost_score", "train_mean_or_event_rate_if_applicable"],
   "data_plan": {"development_pilot": {"train_parent_episodes": 8, "validation_parent_episodes": 4, "prefixes_per_parent": 4, "max_candidates_per_prefix": 25, "exogenous_repeats": 3}, "formal_if_gate_passes": {"train_parent_episodes": 64, "validation_parent_episodes": 32, "test_parent_episodes": 64, "ood_parent_episodes": 32, "prefixes_per_parent": 4, "max_candidates_per_prefix": 25, "exogenous_repeats": 3}, "split_rule": "all prefixes, candidates and repeats of one parent episode stay in one split", "failure_sampling": "retain failures; no selection by old policy outcome"},
-  "model_pilot": {"seed": 1101, "max_optimizer_updates": 512, "max_epochs": 4, "validation_patience": 2, "wall_clock_limit_minutes": 20, "device": "explicitly selected before run", "reward_shaping": false, "notification_change": false, "event_trigger": false},
+  "model_pilot": {"entry": "tools/train_m10_joint_consequence_model.py", "seed": 1101, "max_optimizer_updates": 512, "max_epochs": 4, "validation_patience": 2, "wall_clock_limit_minutes": 20, "device": "cuda", "threads": 4, "data_workers": 0, "reward_shaping": false, "notification_change": false, "event_trigger": false},
   "decision_gates": {"before_training": ["valid label mask and nonzero candidate differences", "simple public baseline is frozen", "no split leakage", "shared random stream evidence present"], "stop_if": ["all joint labels masked", "public baseline explains ranking and model has no residual value", "candidate ranking no better than public baseline", "nonfinite state or safety violation", "budget exhausted"], "online_gain_requires": ["independent parent-tape ranking improvement", "selected-branch joint outcome improvement", "no physical-arrival regression", "fixed communication and compute cost bound", "same safety gates"]}
 }
