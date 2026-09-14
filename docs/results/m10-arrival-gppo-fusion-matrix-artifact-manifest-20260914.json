@@ -1,0 +1,27 @@
+{
+  "run_id": "m10-arrival-gppo-fusion-matrix-20260914-v2",
+  "source_commit": "a02273fe351a6d6ec8c724c490f78aac254153fd",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "frozen_world_model_sha256": "a5acd173b3c57301fd744cb1e6105789278de8f58438f0e42e7535a23e500b86",
+  "files": [
+    {"path": "run-identity.json", "bytes": 7334, "sha256": "cb9ea5158051521d3bbd7ff1870fdeed74495289d4afe08eaa2783bccc21173a"},
+    {"path": "run-status.json", "bytes": 505, "sha256": "083dbe4b424f01c950eaf44ae5e5c046aeccb29a296dc1e001e39e711e100c03"},
+    {"path": "tapes.json", "bytes": 362520, "sha256": "ce3739d630f2b0ab56476775f3ec1fefb4e45e00dc508ec81d12220c3c1f57a0"},
+    {"path": "traditional-evaluation.json", "bytes": 309928, "sha256": "5cce9371917bd88f4b712d477446d54d5ef3eee88e1efa232a7133c85a2371fb"},
+    {"path": "matrix-results.json", "bytes": 3894713, "sha256": "93a1de971b70734b7ff885d30aa5ae6029205e8fcdd3d2b3cfefede140b82808"},
+    {"path": "checkpoints/GPPO/seed-1101/last-recovery.pt", "bytes": 524921, "sha256": "0d17575e16fb7621680e644c8b1661c8c69c043af978c33492dc30d6b4f11b1f"},
+    {"path": "checkpoints/GPPO/seed-2203/last-recovery.pt", "bytes": 524985, "sha256": "db9eb04a02fbd5f846fdb1c1779fc73efb3eaa4e97b165d7941a20aec4b56f2b"},
+    {"path": "checkpoints/GPPO/seed-3307/last-recovery.pt", "bytes": 524921, "sha256": "9344a2274c0f7ea0c8fc4938c813e1127c3ac013683a87e7b738dba87f7406a0"},
+    {"path": "checkpoints/GPPO-History/seed-1101/last-recovery.pt", "bytes": 1718354, "sha256": "cee845cb1cdb49f185655dea240ec31f7ebd035739bce3662356129968414882"},
+    {"path": "checkpoints/GPPO-History/seed-2203/last-recovery.pt", "bytes": 1718418, "sha256": "3b3c16b36368ed1faaed8915f0e25fe19879d111414dfa48e86fd94b893f55f5"},
+    {"path": "checkpoints/GPPO-History/seed-3307/last-recovery.pt", "bytes": 1718354, "sha256": "0944e31029323fa991f3846fc0fb1eadf8700428c0bf4a282c75568601852fa4"},
+    {"path": "checkpoints/GPPO-History-CandidateArrival/seed-1101/last-recovery.pt", "bytes": 1731258, "sha256": "a2084387140747a14f04bf6fc32f298caf6efbf4c6987cbaea73a25f03a172ad"},
+    {"path": "checkpoints/GPPO-History-CandidateArrival/seed-2203/last-recovery.pt", "bytes": 1731322, "sha256": "4f1024bc3fc8d2df8bf4df7dab4b2df1f51ff57e7ea4ed9cd3bc3d93e582cb50"},
+    {"path": "checkpoints/GPPO-History-CandidateArrival/seed-3307/last-recovery.pt", "bytes": 1731258, "sha256": "4b6d104e9280f88ca395366339e2dea1c16cd1bb9982ead76b00919f0ba6c9ba"}
+  ],
+  "notes": [
+    "matrix-results.json includes test per-episode and per-decision records plus update summaries",
+    "the existing training API did not export a separate raw training rollout ledger",
+    "the frozen world-model asset is referenced by SHA-256 and is not duplicated in this policy matrix package"
+  ]
+}
