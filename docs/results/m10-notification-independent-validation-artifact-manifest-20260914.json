@@ -7,7 +7,7 @@
     {"path": "tools/run_m10_targeted_improvements.py", "sha256": "79d5b245d50fb149a128e2b62098e07bfe36d9bdf7ec86faa7b8a1cee669968b", "role": "frozen_episode_runner_reused"},
     {"path": "gppo_world/m10_environment.py", "sha256": "45f1695e9d9e7054bdc1bc1215b9cc1f15cb1a3362941d8a7519919936afc5b4", "role": "frozen_arrival_environment"},
     {"path": "configs/world-gppo-9.11-arrival-v0.1.0.json", "sha256": "2ce326bda92670203792faf97eaca36ef2dbfdff9f287de963011826d7ad8d22", "role": "frozen_protocol_config"},
-    {"path": "E:/Z博士/9.2日/WORLD-GPPO_9.11-local-runs/m10-notification-independent-validation-20260914-v1/notification-independent-validation.json", "bytes": 203926577, "sha256": "2afc1c3ae1a129c339935c1c8cf59d2999c0b5ac04a4dc5de00c2ec970a5e89c", "role": "complete_independent_ledger"}
+    {"path": "E:/Z博士/9.2日/WORLD-GPPO_9.11-local-runs/m10-notification-independent-validation-20260914-v1/notification-independent-validation.json", "bytes": 98139848, "sha256": "2afc1c3ae1a129c339935c1c8cf59d2999c0b5ac04a4dc5de00c2ec970a5e89c", "role": "complete_independent_ledger"}
   ],
   "design": {"base_seed": 193001, "parent_tapes": 16, "tasks": 96, "episodes": 64, "variants": ["original", "notification"], "conditions": ["ideal", "composite"], "rejected_variants_not_run": ["scheduling", "combined"]},
   "claims": {"independent_validation": "completed_for_frozen_two_variant_scope", "formal_acceptance": false, "notification_default": false, "original_default": true, "world_model_strategy_gain": false, "weak_communication_availability": "not_passed"}

@@ -13,7 +13,7 @@
 
 `E:\Z博士\9.2日\WORLD-GPPO_9.11-local-runs\m10-notification-independent-validation-20260914-v1\notification-independent-validation.json`
 
-ledger 大小为 203,926,577 bytes，SHA-256 为 `2afc1c3ae1a129c339935c1c8cf59d2999c0b5ac04a4dc5de00c2ec970a5e89c`。
+ledger 大小为 98,139,848 bytes，SHA-256 为 `2afc1c3ae1a129c339935c1c8cf59d2999c0b5ac04a4dc5de00c2ec970a5e89c`。
 
 ## 2. 结果总表
 
