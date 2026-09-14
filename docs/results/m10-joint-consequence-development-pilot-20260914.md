@@ -4,6 +4,8 @@
 源码：分支 `joint-consequence-design-20260914`，启动前 HEAD `83f6d6342be9cc3a40b8832c60ef3ce99fa611ad`  
 范围：开发 train/validation；没有 test/OOD、策略融合或通知实验。
 
+Release：[m10-joint-consequence-development-pilot-20260914-v1](https://github.com/Battleplus/WORLD-GPPO_9.11/releases/tag/m10-joint-consequence-development-pilot-20260914-v1)
+
 ## 运行与数据
 
 使用 `world-gppo-911-local-pilot-venv`、Python 3.11.15、Torch 2.7.0+cu128、CUDA 12.8、RTX 3060 Laptop 6 GiB、4 个 CPU 线程、0 个数据 worker、seed 1101。系统 Python 的 CPU-only Torch 未使用。启动前 GPU 已占用约 1.4 GiB，未停止其他进程；训练后同样约 1.4 GiB，未记录可归因于本进程的峰值显存。
@@ -11,6 +13,8 @@
 冻结命令为生成器 v4 配置：8/4 个父 episode、每父最多4个前缀、每前缀最多25个合法候选、每候选3次重复、horizon 6、base seed 193001。实际生成 600 train 分支、243 validation 分支，共 843 分支和 7,278 次模拟环境步；输出时间戳跨度约6秒，命令编排总耗时约16.3秒。13个前缀因没有公开 pending 任务集合而跳过，未按结果筛选或补齐。
 
 v2 生成结果因适配器没有透传完整 provenance 被废弃；v3/v4保留但只有 v4 的协议字段与最终训练输入一致。v4 的 manifest、split SHA、身份、任务集合、Graph-5 快照、prefix trace 和外生 key 审计通过；隐藏/未来输入字段为0。
+
+独立下载校验通过：ZIP 967,479 bytes，SHA-256 `8dce568be046ace16d15822c0fec5123107d806c16a904c8ff66a59967718fc5`；下载后 train/validation 内部 SHA 与 manifest 一致。
 
 ## 标签审计
 
@@ -59,4 +63,3 @@ best 推理 checkpoint 与 last recovery checkpoint 分离保存。last 含模�
 4. 本 pilot 支持的下一步最多是预先冻结的独立父 tape 验证；不支持正式策略融合、GPPO 增益结论或扩大训练预算。本轮训练和归档完成不等于研究假设通过。
 
 通知机制、调度规则、奖励、事件触发和旧到达时间/系统能耗路线均未改变。历史通知收益仍是工程候选，不是世界模型贡献。
-

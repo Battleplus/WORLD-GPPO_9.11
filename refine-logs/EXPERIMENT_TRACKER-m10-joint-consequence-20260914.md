@@ -11,4 +11,6 @@
 | Formal test/OOD | NOT RUN | No formal data generated |
 | Online GPPO fusion | NOT RUN | Conditional on independent parent-tape ranking evidence |
 
+Release `m10-joint-consequence-development-pilot-20260914-v1` uploaded and independently downloaded; ZIP SHA-256 `8dce568be046ace16d15822c0fec5123107d806c16a904c8ff66a59967718fc5`.
+
 Historical arrival-time/system-energy results and notification candidate results remain in their original versions and are not relabeled as evidence for this hypothesis.

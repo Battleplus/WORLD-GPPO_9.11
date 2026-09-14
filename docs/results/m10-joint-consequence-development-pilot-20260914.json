@@ -59,6 +59,8 @@
     "run_identity_sha256": "9f65c6130e02a7a9141761a20f8acf83c37735aace7a87b903cb3ac4c697405b",
     "runtime_sha256": "e40bc8ce9b14b6844e6418288d4b805e6f0b6985c7ab597988e6ec8cada07873",
     "status_sha256": "4e2fc59bc9e692aec6aec05a0183fe731dcbca5e22f7e4004384d4ca6b6b2f46"
+    ,"release_zip_bytes": 967479
+    ,"release_zip_sha256": "8dce568be046ace16d15822c0fec5123107d806c16a904c8ff66a59967718fc5"
   },
   "decision": "development_signal_only; independent_parent_tape_validation_required_before_any_fusion",
   "formal_test_ood_run": false,
