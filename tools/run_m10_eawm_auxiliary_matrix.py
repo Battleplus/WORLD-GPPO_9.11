@@ -534,7 +534,7 @@ def completed_run_result(root: Path, variant: str, seed: int, label: str) -> dic
 
 
 def run_directory_exists(root: Path, variant: str, seed: int, label: str) -> bool:
-    return (root / "runs" / f"m10-eawm-aux-{variant.lower()}-{seed}-{label}").exists()
+    return (root / "runs" / f"m10-eawm-aux-{variant.lower()}-{seed}-{label}" / "last.pt").exists()
 
 
 def main() -> int:
