@@ -34,6 +34,7 @@
 - 系统可用性闭环：`docs/results/m10-arrival-system-availability-closure-20260914.md`、对应 JSON 和制品清单；同一 16 条 tape 的 ideal/composite 规则配对 replay 已完成，旧 `not_recorded` 不变。
 - 针对性改进：`docs/results/m10-arrival-targeted-improvements-20260914.md`、对应 JSON 和 `tools/run_m10_targeted_improvements.py`；通知/调度/合并三变体共96个新 episode 已完成，原规则结果复用旧 ledger，三种新方案均未采纳为默认。
 - 通知候选选型与阶段结论：`docs/results/m10-arrival-notification-candidate-selection-20260914.md`、对应 JSON、`docs/meeting/m10-arrival-phase-progress-20260914.md` 和制品清单；明确 9→21、48→32、48→31 均来自同一开发回归父 tape，独立验证尚未完成；当前仅保留原调度器 + 有界通知为仿真工程候选。
+- 通知方案独立验证：`docs/results/m10-notification-independent-validation-20260914.md`、对应 JSON、`docs/meeting/m10-arrival-overall-status-20260914.md` 和制品清单；使用新父 tape `2193001–2193016` 完成原系统/通知两变体的64 episode配对验证。结论为原系统继续默认，通知保留为未定效果—成本权衡候选；不再扩展通知/调度机制。
 - 新后果模型：正式数据 v2 已冻结；单 seed CPU 有界训练 670 updates 后因 validation patience 停止；test/OOD 局部预测改善但候选调度价值未建立，融合未启动。
 - 基础对照训练：已完成 49152 环境步；融合矩阵未启动。
 - 旧服务器：未连接，历史中断状态不变。
