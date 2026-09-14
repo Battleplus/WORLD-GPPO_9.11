@@ -191,11 +191,23 @@ def main() -> int:
         for target in TARGETS:
             if time.perf_counter() >= deadline:
                 raise RuntimeError("global wall-clock budget exhausted before all seeds completed")
+            stage = run_dir / "stages" / str(target)
+            # A completed resume must never rewrite an earlier stage with the
+            # already-final checkpoint.  This keeps 16384/24576 evidence
+            # immutable and makes a rerun fail closed if a stage is partial.
+            if args.resume and (stage / "last.pt").exists():
+                prior = torch.load(stage / "last.pt", map_location="cpu", weights_only=False)
+                prior_recovery = prior.get("recovery_state", {})
+                if (prior_recovery.get("environment_steps") == target
+                        and prior_recovery.get("optimizer_updates") == UPDATES[target]):
+                    shutil.copy2(stage / "last.pt", run_dir / "last.pt")
+                    shutil.copy2(stage / "last.pt", run_dir / f"checkpoint-{target}.pt")
+                    continue
+                raise RuntimeError(f"refusing to overwrite partial or inconsistent stage: {stage}")
             result = train_one("H", seed, target, max_updates=UPDATES[target], root=root,
                                config=config, train_tape=train_tape, validation_tape=validation_tape,
                                device=device, wall_deadline=deadline, run_label="budget-extension", pilot=False,
                                resume=True)
-            stage = run_dir / "stages" / str(target)
             stage.mkdir(parents=True, exist_ok=True)
             shutil.copy2(run_dir / "last.pt", stage / "last.pt")
             shutil.copy2(run_dir / "last.pt", run_dir / f"checkpoint-{target}.pt")
