@@ -398,18 +398,39 @@ def evaluate_variant(policy, variant: str, scenarios: list[M10Scenario], config:
 def train_one(variant: str, seed: int, steps: int, max_updates: int, *, root: Path,
               config: M10Config, train_tape: list[M10Scenario], validation_tape: list[M10Scenario],
               device: torch.device, wall_deadline: float, run_label: str,
-              pilot: bool = False) -> dict[str, Any]:
+              pilot: bool = False, resume: bool = False) -> dict[str, Any]:
     run_id = f"m10-eawm-aux-{variant.lower()}-{seed}-{run_label}"
     output = root / "runs" / run_id
-    if output.exists() and any(output.iterdir()):
+    if output.exists() and any(output.iterdir()) and not resume:
         raise RuntimeError(f"refusing non-empty run directory: {output}")
-    output.mkdir(parents=True, exist_ok=False)
+    output.mkdir(parents=True, exist_ok=True)
     if device.type == "cuda":
         torch.cuda.reset_peak_memory_stats(device)
     policy = make_policy(config, variant, seed, device)
     optimizer = torch.optim.Adam(policy.parameters(), lr=3e-4)
     ppo = PPOConfig(rollout_steps=ROLLOUT_STEPS, update_epochs=UPDATE_EPOCHS, minibatch_size=ROLLOUT_STEPS)
     state = {"environment_steps": 0, "optimizer_updates": 0, "batches": 0, "best_loss": None, "stop_reason": None}
+    if resume:
+        last_path = output / "last.pt"
+        if not last_path.exists():
+            raise RuntimeError(f"resume requested but checkpoint is missing: {last_path}")
+        payload = torch.load(last_path, map_location=device, weights_only=False)
+        expected_format = "gppo-history-arrival-training-v1" if variant == "H" else EventAwareHistoryPolicy.format_version
+        if payload.get("format") != expected_format:
+            raise RuntimeError(f"resume format mismatch for {run_id}: {payload.get('format')}")
+        policy.load_state_dict(payload["state_dict"])
+        if payload.get("optimizer_state_dict") is None:
+            raise RuntimeError("resume checkpoint lacks optimizer state")
+        optimizer.load_state_dict(payload["optimizer_state_dict"])
+        state.update(payload.get("metadata", {}).get("state", {}))
+        recovery = payload.get("recovery_state") or {}
+        rng_state = recovery.get("rng_state")
+        if rng_state:
+            random.setstate(rng_state["python"])
+            np.random.set_state(rng_state["numpy"])
+            torch.set_rng_state(rng_state["torch"])
+            if device.type == "cuda" and rng_state.get("cuda") is not None:
+                torch.cuda.set_rng_state_all(rng_state["cuda"])
     started = time.perf_counter()
     updates_path = output / "updates.jsonl"
     ledger_path = output / "training-rollout-ledger.jsonl.gz"
@@ -446,6 +467,7 @@ def train_one(variant: str, seed: int, steps: int, max_updates: int, *, root: Pa
                 "selection_used": False,
             })
             dump(output / "validation-curve.json", validation_curve)
+            policy.train()
         if state["best_loss"] is None or metrics["loss"] < state["best_loss"]:
             state["best_loss"] = metrics["loss"]
             metadata = {"run_id": run_id, "variant": variant, "seed": seed, "environment_steps": state["environment_steps"], "optimizer_updates": state["optimizer_updates"], "selection_scope": "training loss only; final analysis uses last checkpoint"}
@@ -500,20 +522,32 @@ def run_rules(scenarios: list[M10Scenario], config: M10Config, device: torch.dev
     dump(output / "summary.json", result); return result
 
 
+def completed_run_result(root: Path, variant: str, seed: int, label: str) -> dict[str, Any] | None:
+    output = root / "runs" / f"m10-eawm-aux-{variant.lower()}-{seed}-{label}"
+    status_path = output / "run-status.json"
+    if not status_path.exists():
+        return None
+    status = json.loads(status_path.read_text(encoding="utf-8"))
+    if status.get("status") != "complete":
+        return None
+    return {"run_id": f"m10-eawm-aux-{variant.lower()}-{seed}-{label}", "variant": variant, "seed": seed, "output": str(output), "status": status["status"], "environment_steps": status.get("environment_steps", 0), "optimizer_updates": status.get("optimizer_updates", 0), "stop_reason": status.get("stop_reason"), "elapsed_seconds": status.get("elapsed_seconds")}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--stage", choices=("all", "pilot", "formal"), default="all")
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
     parser.add_argument("--threads", type=int, default=THREADS)
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     if args.threads < 1 or args.threads > 4:
         raise SystemExit("threads must be 1..4")
     if args.device == "cuda" and not torch.cuda.is_available():
         raise SystemExit("CUDA requested but unavailable; refusing silent fallback")
-    if args.root.exists() and any(args.root.iterdir()):
+    if args.root.exists() and any(args.root.iterdir()) and not args.resume:
         raise SystemExit(f"refusing non-empty matrix root: {args.root}")
-    args.root.mkdir(parents=True, exist_ok=False)
+    args.root.mkdir(parents=True, exist_ok=True)
     if args.device == "cpu":
         torch.set_num_threads(args.threads)
     device = torch.device(args.device)
@@ -524,7 +558,9 @@ def main() -> int:
     results = {"pilot": [], "formal": [], "validation": [], "final_test": None, "rule": None}
     if args.stage in ("all", "pilot"):
         for variant in ("H", "E"):
-            result = train_one(variant, 1101, PILOT_STEPS, max_updates=MAX_UPDATES, root=args.root, config=config, train_tape=tapes["train"], validation_tape=tapes["validation"], device=device, wall_deadline=min(deadline, time.perf_counter() + PILOT_GROUP_WALL_SECONDS), run_label="pilot", pilot=True)
+            result = completed_run_result(args.root, variant, 1101, "pilot") if args.resume else None
+            if result is None:
+                result = train_one(variant, 1101, PILOT_STEPS, max_updates=MAX_UPDATES, root=args.root, config=config, train_tape=tapes["train"], validation_tape=tapes["validation"], device=device, wall_deadline=min(deadline, time.perf_counter() + PILOT_GROUP_WALL_SECONDS), run_label="pilot", pilot=True, resume=args.resume)
             results["pilot"].append(result)
         if args.stage == "pilot":
             dump(args.root / "matrix-results.json", results); return 0
@@ -533,7 +569,9 @@ def main() -> int:
             for variant in ("H", "E"):
                 if time.perf_counter() >= deadline:
                     break
-                result = train_one(variant, seed, FORMAL_STEPS, max_updates=MAX_UPDATES, root=args.root, config=config, train_tape=tapes["train"], validation_tape=tapes["validation"], device=device, wall_deadline=deadline, run_label="formal", pilot=False)
+                result = completed_run_result(args.root, variant, seed, "formal") if args.resume else None
+                if result is None:
+                    result = train_one(variant, seed, FORMAL_STEPS, max_updates=MAX_UPDATES, root=args.root, config=config, train_tape=tapes["train"], validation_tape=tapes["validation"], device=device, wall_deadline=deadline, run_label="formal", pilot=False, resume=args.resume)
                 results["formal"].append(result)
             if time.perf_counter() >= deadline:
                 break
