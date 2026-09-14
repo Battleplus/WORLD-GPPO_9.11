@@ -506,6 +506,11 @@ def train_one(variant: str, seed: int, steps: int, max_updates: int, *, root: Pa
 
 def run_rules(scenarios: list[M10Scenario], config: M10Config, device: torch.device, root: Path) -> dict[str, Any]:
     output = root / "rules-final-test"
+    if output.exists():
+        summary = output / "summary.json"
+        if summary.exists():
+            return json.loads(summary.read_text(encoding="utf-8"))
+        raise RuntimeError(f"rule output exists without a complete summary: {output}")
     output.mkdir(parents=True, exist_ok=False)
     records = []
     latencies = []
