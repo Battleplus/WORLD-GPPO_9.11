@@ -1,0 +1,40 @@
+{
+  "run_id": "m10-arrival-gppo-fusion-matrix-20260914-v2",
+  "source_commit": "a02273fe351a6d6ec8c724c490f78aac254153fd",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "world_model_sha256": "a5acd173b3c57301fd744cb1e6105789278de8f58438f0e42e7535a23e500b86",
+  "test": {
+    "parent_tapes": 64,
+    "tasks_per_tape": 6,
+    "task_denominator_per_method_seed": 384,
+    "base_seed": 94001,
+    "results_read_after_training": true,
+    "model_data_overlap": false
+  },
+  "budget": {
+    "seeds": [1101, 2203, 3307],
+    "environment_steps_per_group_seed": 8192,
+    "rollout_steps": 256,
+    "update_epochs": 4,
+    "expected_optimizer_steps_per_group_seed": 128,
+    "actual_optimizer_steps_per_group_seed": 128,
+    "total_wall_seconds": 2501.4167283
+  },
+  "results": {
+    "legal_rule": {"physical_on_time": 196, "tasks": 384, "host_on_time": 36, "return_mean": 17.385414711742552, "actor_calls": 1042, "world_calls": 0, "communication_proxy_bytes": 26117204, "latency_ms": {"mean": 1.3958141075111279, "p95": 1.8485600015083035, "p99": 2.270451000349564}, "safety_violations": 0},
+    "gppo": {"physical_on_time": 565, "tasks": 1152, "host_on_time": 97, "return_mean": 15.743963042421141, "actor_calls": 3177, "world_calls": 0, "communication_proxy_bytes": 80013080, "latency_ms": {"mean": 4.654965848273139, "p95": 6.990160000350442, "p99": 8.564971999585378}, "safety_violations": 0},
+    "history": {"physical_on_time": 540, "tasks": 1152, "host_on_time": 94, "return_mean": 13.896579223868235, "actor_calls": 3199, "world_calls": 0, "communication_proxy_bytes": 80716100, "latency_ms": {"mean": 6.234656673942763, "p95": 11.370119999628514, "p99": 15.357720001848065}, "safety_violations": 0},
+    "fusion": {"physical_on_time": 542, "tasks": 1152, "host_on_time": 85, "return_mean": 14.048010908078442, "actor_calls": 3181, "world_calls": 3181, "communication_proxy_bytes": 80152934, "latency_ms": {"mean": 10.666004778368826, "p95": 18.30809999955818, "p99": 27.728479999586297}, "safety_violations": 0}
+  },
+  "fusion_minus_history": {
+    "seed_task_deltas": {"1101": -11, "2203": 9, "3307": 4},
+    "aggregate_task_delta": 2,
+    "aggregate_percentage_points": 0.1736111111111111,
+    "parent_tape_cluster_mean": 0.010416666666666668,
+    "bootstrap_95_percent_ci": [-0.13541666666666669, 0.15625],
+    "seed_tape_pairs": {"improved": 43, "worse": 45, "tie": 104}
+  },
+  "decision": "point_estimate_improvement_but_insufficient_evidence",
+  "training_raw_rollout_ledger_exported": false
+}
