@@ -347,7 +347,24 @@ def evaluate_group(policy: torch.nn.Module, scenarios: list[M10Scenario], config
             "world_model_calls": sum(record["world_model_calls"] for record in records),
             "communication_proxy_bytes": sum(record["communication_proxy_bytes"] for record in records),
             "safety_violations": sum(record["safety"]["duplicate_accepts"] + record["safety"]["unauthorized_or_fenced"] for record in records),
-            "decision_latency_ms": {"n": sum(record["decision_latency_ms"]["n"] for record in records), "mean": float(np.mean([v for r in records for v in r["decision_latency_ms"]["raw"]])) if records else None},
+            "decision_latency_ms": {
+                "n": sum(record["decision_latency_ms"]["n"] for record in records),
+                "mean": float(np.mean([v for r in records for v in r["decision_latency_ms"]["raw"]])) if records else None,
+                "p95": float(np.percentile([v for r in records for v in r["decision_latency_ms"]["raw"]], 95)) if records else None,
+                "p99": float(np.percentile([v for r in records for v in r["decision_latency_ms"]["raw"]], 99)) if records else None,
+            },
+            "task_denominator": sum(len(record.get("tasks", [])) for record in records),
+            "physical_on_time": sum(record["counts"].get("completed", 0) for record in records),
+            "host_on_time": sum(
+                1 for record in records
+                for task in record.get("completion_records", {}).values()
+                if task.get("host_confirmation_before_deadline") is True
+            ),
+            "pending_tasks": sum(
+                1 for record in records
+                for task in record.get("tasks", [])
+                if task.get("status") in ("pending", "censored_window", "unknown")
+            ),
         },
     }
 
