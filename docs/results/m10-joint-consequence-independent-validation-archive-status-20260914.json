@@ -1,0 +1,23 @@
+{
+  "report_id": "m10-joint-consequence-independent-validation-archive-status-20260914",
+  "branch": "joint-consequence-independent-validation-20260914",
+  "pushed_commit": "20ef683",
+  "local_run_dir": "runs/m10-joint-consequence-independent-validation-20260914-v1",
+  "local_zip": {
+    "path": "release-staging/m10-joint-consequence-independent-validation-20260914-v1.zip",
+    "bytes": 65817635,
+    "sha256": "d900b589ebf9dbeb9de3aea8518d9cbeb7e08707a187c4a5531919822c515854e"
+  },
+  "remote": {
+    "repository": "Battleplus/WORLD-GPPO_9.11",
+    "release_tag": "m10-joint-consequence-independent-validation-20260914-v1",
+    "branch_push": "succeeded",
+    "release_created": false,
+    "asset_uploaded": false,
+    "independent_download_verified": false,
+    "attempts": 2,
+    "failure": "uploads.github.com connection closed/EOF",
+    "further_retries": "stopped_after_limited_retries"
+  },
+  "historical_assets_preserved": true
+}
