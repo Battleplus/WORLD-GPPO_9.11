@@ -1,0 +1,497 @@
+{
+  "schema": "gppo-eawm-auxiliary-matrix-artifact-index-v1",
+  "source_root": "E:\\Z博士\\9.2日\\m10-eawm-auxiliary-history-matrix-20260914-v1",
+  "files": [
+    {
+      "path": "auxiliary-prediction-diagnostics.json",
+      "bytes": 10974,
+      "sha256": "30bebc46b1e8b515f8581e5ebfe885b332647c16549925cd60c98d9b069b77e9"
+    },
+    {
+      "path": "frozen-tapes.json",
+      "bytes": 362530,
+      "sha256": "52a6fda6baf91ec9928272c82490e381f4c11740e14c8eb9cfaeafb77fe8405f"
+    },
+    {
+      "path": "matrix-identity.json",
+      "bytes": 3998,
+      "sha256": "e844ff2fb6dbe653c7daef421587a339324694461f85f215231e618a91f04ac9"
+    },
+    {
+      "path": "matrix-results.json",
+      "bytes": 517359,
+      "sha256": "8e09e293d081c86dd1e26aaddbd0e0a323efa0c7a3b09a1a3da6a23484319477"
+    },
+    {
+      "path": "rules-final-test\\summary.json",
+      "bytes": 44678,
+      "sha256": "956401257816146bbe6c66eb180510c7661c990c854cfc7a3a9acb683eff2581"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\best-inference.pt",
+      "bytes": 593173,
+      "sha256": "946a41ae0b2af3134d449b629fadf2566e18cfef17a73d991a445e3ba22e8259"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\checkpoint-roundtrip.json",
+      "bytes": 218,
+      "sha256": "7d763e852b5e6a915a4b57438c589feeafb9075729225d83c0c086534732d0b5"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\evaluation-ledger.jsonl.gz",
+      "bytes": 2529206,
+      "sha256": "8edd2dd622544a4ffe1d5b8fb6ab84f6a44337eb3be63f27958d01f8cd267158"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\last.pt",
+      "bytes": 1798681,
+      "sha256": "1a9c376700ec0e203bd41d867aa58a5c4c60d5f97ba3f2e947de36d222352573"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\run-identity.json",
+      "bytes": 2967,
+      "sha256": "4373be8c2ba22fc1df64a3070ac8aac1d7933c9de68a8254052e08bfade960d8"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\run-status.json",
+      "bytes": 1197,
+      "sha256": "bbc329339e9e67e329354578dd4f98617ba8563a62afb4541c2dca4eaaf4de60"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\training-rollout-ledger.jsonl.gz",
+      "bytes": 23833321,
+      "sha256": "c40cc93b23c29145a080a5966b412f2a12d300064f046bb32b637934c291337c"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\updates.jsonl",
+      "bytes": 1076737,
+      "sha256": "7847e62fba034fb5ceee5991a238ec100d08503699fcde89fc78bba617123a13"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\validation\\2048\\evaluation-ledger.jsonl.gz",
+      "bytes": 591280,
+      "sha256": "eaffc6a9e1d774a2c38ab9897d4347e498280ca555548457d11303dfe2d72fd2"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\validation\\4096\\evaluation-ledger.jsonl.gz",
+      "bytes": 594799,
+      "sha256": "a587796821eaf899cff7bc4e07f6e759ac9fcb831572c7bc293434536d38b526"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\validation\\6144\\evaluation-ledger.jsonl.gz",
+      "bytes": 602480,
+      "sha256": "fdb41732abdc5767e0e1f0df6df7a63a3a0c7321f1715d0bc21afa3b68a37f9f"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\validation\\8192\\evaluation-ledger.jsonl.gz",
+      "bytes": 591111,
+      "sha256": "b53906ecf238f6b25e7ce77028e6b77a6caf5e56ad05c98d8ff562d6717f7bfe"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-formal\\validation-curve.json",
+      "bytes": 797,
+      "sha256": "1418b19a3ad1a8f384c18046c099077bc319bae82a7792d09dafd81349c8bc38"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-pilot\\best-inference.pt",
+      "bytes": 593173,
+      "sha256": "adf63ab0552a7c50e96ea4904429622f74c121b22e21ca65de9641a7159641ff"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-pilot\\checkpoint-roundtrip.json",
+      "bytes": 215,
+      "sha256": "2e5db24038d06464dbc06bd33728b122db285eee8bfe17f6bf5edaff10245ed4"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-pilot\\last.pt",
+      "bytes": 1798681,
+      "sha256": "7a55fb09bfb705a9045e9dc383d4ac9981799a93533e4729e9907cb8bc98b545"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-pilot\\run-identity.json",
+      "bytes": 2035,
+      "sha256": "e8e80ada3f08df0302be2870175e9b8f1a87d6ba6d3e4646c6a501ff8bb5ed4a"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-pilot\\run-status.json",
+      "bytes": 333,
+      "sha256": "33bc53796fad3c5b8ea72574c002d6c5a291e888fee2468424f1050b7efa464b"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-pilot\\training-rollout-ledger.jsonl.gz",
+      "bytes": 1489978,
+      "sha256": "af1fc6272a096b03e19eb9ca6de62c67425b781f15ed84ea34e1e57e9416cc51"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-1101-pilot\\updates.jsonl",
+      "bytes": 67168,
+      "sha256": "24b7706937f31b27f878cb8c3fc68a0c432049e686dfa1672ef4b433d842be78"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\best-inference.pt",
+      "bytes": 593173,
+      "sha256": "a667603fc79cb25b0e9b57dd16501155b0666521e994d5d9714b19e124124dc6"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\checkpoint-roundtrip.json",
+      "bytes": 218,
+      "sha256": "7d763e852b5e6a915a4b57438c589feeafb9075729225d83c0c086534732d0b5"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\evaluation-ledger.jsonl.gz",
+      "bytes": 2475803,
+      "sha256": "7db0c22c4e79b52e85f9e781c88e04ca9fa080b1874c2b81a0e2ae1856f2f495"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\last.pt",
+      "bytes": 1798745,
+      "sha256": "beb79ca7fd5f6b21ba421f2ec25dab82204ba98b140651f95c331290fc06b1c9"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\run-identity.json",
+      "bytes": 2964,
+      "sha256": "b2572b5983b10732ea63a4cf687a867ab20abc9f3ea92f91701049c8d7d4316d"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\run-status.json",
+      "bytes": 1194,
+      "sha256": "7f6371d60c06aa533698ff10f8a66816861e2894150df2e39318e0baf44324c0"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\training-rollout-ledger.jsonl.gz",
+      "bytes": 23832746,
+      "sha256": "85fbb213a08fbf3dea3bcefe29334a7f39364e3ee0764ca36d78e91c55e53cba"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\updates.jsonl",
+      "bytes": 1077454,
+      "sha256": "1ce6db870b5e81ef3658a5bacaadc9c75cef2e8d964c6063bad87f4a5b5d0efd"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\validation\\2048\\evaluation-ledger.jsonl.gz",
+      "bytes": 623642,
+      "sha256": "6ab1b4dcc73a2729f2e7514ce0cd2b0942bac74db45dfb2b7c861429c05b25df"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\validation\\4096\\evaluation-ledger.jsonl.gz",
+      "bytes": 618772,
+      "sha256": "c65c9409a1489621d321951a3be60e757ecc76b389f7e853d0ecb8a8f043278b"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\validation\\6144\\evaluation-ledger.jsonl.gz",
+      "bytes": 607715,
+      "sha256": "6e601e2049f61183b3a142bf64719f3b3f63227df483e6ca728843afa63f045a"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\validation\\8192\\evaluation-ledger.jsonl.gz",
+      "bytes": 611637,
+      "sha256": "81bac8c65578687ff1fb5876f1dc450e51fbb8eaaa8984589c6a26fe903fde18"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-2203-formal\\validation-curve.json",
+      "bytes": 795,
+      "sha256": "5418d4e999b8320dd40a7957d857421ac50d76bfa0916173d86cad9bb9bc9c63"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\best-inference.pt",
+      "bytes": 593173,
+      "sha256": "3101c9a7e640a7aa0e98f12ffa2eedbfc0038c6ba303a73bf48582128b926705"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\checkpoint-roundtrip.json",
+      "bytes": 218,
+      "sha256": "7d763e852b5e6a915a4b57438c589feeafb9075729225d83c0c086534732d0b5"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\evaluation-ledger.jsonl.gz",
+      "bytes": 2501427,
+      "sha256": "ad5c8f1e6fa078bb388d13e4d8b2b7e20100bb28090f77c141649f9b269970a6"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\last.pt",
+      "bytes": 1798681,
+      "sha256": "4cae6800aefb3e2e5e5ce83e4dddfe9898a0c234fdc9bfdce8f7b65d3c59bf35"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\run-identity.json",
+      "bytes": 2966,
+      "sha256": "bf4d7e150c060deac1e6394555ae71e460925baa2354ae4581192fe2e544cf6a"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\run-status.json",
+      "bytes": 1196,
+      "sha256": "deeca18ffaf4850594f6b978bcb513092348f206f819bfbd10f050e2cb401024"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\training-rollout-ledger.jsonl.gz",
+      "bytes": 23891121,
+      "sha256": "89570de177e8f76a21809f41e6035c2a638e0cb68fae4c28370a5d3c4e2ea97e"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\updates.jsonl",
+      "bytes": 1077325,
+      "sha256": "3b7b0e4e9af9549c542b4726b42d8c8833c6049ebf4fe902bbac3342824611d6"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\validation\\2048\\evaluation-ledger.jsonl.gz",
+      "bytes": 614709,
+      "sha256": "e8fa2d149917727904304b60be18eb344f385b0374f57b38cbf98a44e48b4bf6"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\validation\\4096\\evaluation-ledger.jsonl.gz",
+      "bytes": 635486,
+      "sha256": "831f9cdcd509e456bcae204fa12dc9d44fc2bb8c57bce26912795b4073a9e600"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\validation\\6144\\evaluation-ledger.jsonl.gz",
+      "bytes": 622276,
+      "sha256": "d7b16ee1f786f3e43a6134d0491debcd88f23657fd603f67f809c5f7b5aa2750"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\validation\\8192\\evaluation-ledger.jsonl.gz",
+      "bytes": 621953,
+      "sha256": "7c61284bbf3ec1cb75da8044f74f2a5ec7a5f3b9b988dfcaed6a658d593496d0"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-e-3307-formal\\validation-curve.json",
+      "bytes": 798,
+      "sha256": "4094a98ba90209d0c2428fab4641b9d78482fde967aeff902666de9a5ecc636a"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\best-inference.pt",
+      "bytes": 564967,
+      "sha256": "b422681c5fd53c5b47d0584ec5512439c6290a75ba291b6972ea619e9d70f5c4"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\checkpoint-roundtrip.json",
+      "bytes": 212,
+      "sha256": "8936531dc53c4f5ebf037fb9a3d44dc98120e523b45908621e6db6c69e40740f"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\evaluation-ledger.jsonl.gz",
+      "bytes": 2481667,
+      "sha256": "1073c089114511bee8cb645920e1b29700b5529ecd114e44ed67cbcfde152413"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\last.pt",
+      "bytes": 1714322,
+      "sha256": "ba7337d1aeacd3fca652132a3ddd53cbe7c7fddad4bf7a02e62a6c4a973d5d7d"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\run-identity.json",
+      "bytes": 2738,
+      "sha256": "c4bef4000bd545c638bafd5b812c2698e669fbcc2f3215dad0d8e4dbf7c10d96"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\run-status.json",
+      "bytes": 984,
+      "sha256": "1cdde19140b78f6c0168d819b3b87c8f12f6b5cc7133c2d4432ceab9ee3d6043"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\training-rollout-ledger.jsonl.gz",
+      "bytes": 24634611,
+      "sha256": "2a83c311f0be75703e333f077d2e51e4593d2d4620bcedbf15cef81590991cc2"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\updates.jsonl",
+      "bytes": 18387,
+      "sha256": "60a1d0796a31237d6588d8ca92c524e0a690068f3a179ff4d1393f3d71f89d57"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\validation\\2048\\evaluation-ledger.jsonl.gz",
+      "bytes": 605560,
+      "sha256": "6fde072ac2f7550c74d0354ca93495baad5b3ca59746eb592310a2fa244cd5ee"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\validation\\4096\\evaluation-ledger.jsonl.gz",
+      "bytes": 607772,
+      "sha256": "d3e8c3878a03475af998043eaf1c4dfe9bd72fffcecc7b1f2131406f81d02add"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\validation\\6144\\evaluation-ledger.jsonl.gz",
+      "bytes": 580034,
+      "sha256": "904ae3e000410cd5f4d238df77050560912b355b9ae36b05be92b92c3c9a8a0c"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\validation\\8192\\evaluation-ledger.jsonl.gz",
+      "bytes": 596591,
+      "sha256": "8c324123f9f063f96c10e2992e079fa233b8e606886ac9fb4226734ea2079022"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-formal\\validation-curve.json",
+      "bytes": 601,
+      "sha256": "32b381a64b1f63f019792e5f47ecb4326e91235868206c4a861ee60550f89f29"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-pilot\\best-inference.pt",
+      "bytes": 564967,
+      "sha256": "2aa088dfd75c825f575682c3b8d97a5aa39ded03418fb16f5977cdf21a4cf69a"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-pilot\\checkpoint-roundtrip.json",
+      "bytes": 209,
+      "sha256": "759bfd3a6b4d3732c1a4ea0eea6b5b7d83d3860d17a74a9c997faab08160f102"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-pilot\\last.pt",
+      "bytes": 1714066,
+      "sha256": "5d8f4eacaa9844a460a7cad1015831430e0d7734f779e8f0037c0a2e61e8bf51"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-pilot\\run-identity.json",
+      "bytes": 2036,
+      "sha256": "7437309d756b352de0ed8abe4995f6087bfd41c033177ff9f49471481da889a7"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-pilot\\run-status.json",
+      "bytes": 334,
+      "sha256": "e098f00eb728c6c7dda675f8fff9baaf2700715bcbb7111a44d99fd9e3d1aeec"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-pilot\\training-rollout-ledger.jsonl.gz",
+      "bytes": 1492631,
+      "sha256": "4c03cbb9db73ebf991fa6450eb43b3cf7123be6e4a13edad2d9ba0852445d6a9"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-1101-pilot\\updates.jsonl",
+      "bytes": 1136,
+      "sha256": "78a56e9b8383512f7bdfd811881c67d05d8991a32afd9360849fc45530d7ba11"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\best-inference.pt",
+      "bytes": 564967,
+      "sha256": "2cef79c1d5ef68ef7f8f5006bc0efbddc4a5f5b0afb780cef266746f9d27cd59"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\checkpoint-roundtrip.json",
+      "bytes": 212,
+      "sha256": "8936531dc53c4f5ebf037fb9a3d44dc98120e523b45908621e6db6c69e40740f"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\evaluation-ledger.jsonl.gz",
+      "bytes": 2544835,
+      "sha256": "7900f12355c651274b05577e6dacd762c251ea4f4c17e1da69cde6d0b07548d2"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\last.pt",
+      "bytes": 1714130,
+      "sha256": "e25bd7f39a596f3de5b65c6a7d19493fecaf3ad0984c836285d5ca14f1e636d2"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\run-identity.json",
+      "bytes": 2970,
+      "sha256": "4642a4809fab799b99634f59bdb9b330b67142983ae7e240625cbc48a87540c4"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\run-status.json",
+      "bytes": 1200,
+      "sha256": "3a0df9f4b0c297c160e713d7dd1282f784e5324140859396a6d41936b733ccf7"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\training-rollout-ledger.jsonl.gz",
+      "bytes": 23868427,
+      "sha256": "52c938f19ce393eef2864e3b62abf5355ce8c5452bef00e707c0f0fe51259922"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\updates.jsonl",
+      "bytes": 18392,
+      "sha256": "78d848a361710bdf731b90c34b1fe9900d29b2017fd160e18a6f6370ce97ab4c"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\validation\\2048\\evaluation-ledger.jsonl.gz",
+      "bytes": 632836,
+      "sha256": "c9f7a2d0a7702e9ce5c0677eada568c6b887f95eaac496d4a8c3de985bc6175b"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\validation\\4096\\evaluation-ledger.jsonl.gz",
+      "bytes": 601055,
+      "sha256": "5d6509cb5c42293dca568c240654f15a247e9691414d25dfd00270aece340044"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\validation\\6144\\evaluation-ledger.jsonl.gz",
+      "bytes": 608986,
+      "sha256": "f0b9ab6b352e4f0417c60cc8cbbd1309328910d64829193a49106030776da9e0"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\validation\\8192\\evaluation-ledger.jsonl.gz",
+      "bytes": 609673,
+      "sha256": "73c607cc7abf5bb1f96088229c920be7376daf23c0b6ac00ea3fdf7af4cab706"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-2203-formal\\validation-curve.json",
+      "bytes": 801,
+      "sha256": "9d2e2d2863929e364aadbfacc0d8862d4558e82486d8f371c91e6b38cba0ae1f"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\best-inference.pt",
+      "bytes": 564967,
+      "sha256": "72423d3875140de4f83c67c6b3a3a2375ec3a105c918ca6dab960a9419f757b1"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\checkpoint-roundtrip.json",
+      "bytes": 212,
+      "sha256": "8936531dc53c4f5ebf037fb9a3d44dc98120e523b45908621e6db6c69e40740f"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\evaluation-ledger.jsonl.gz",
+      "bytes": 2558307,
+      "sha256": "f806bd7fa213706259b0c18ff3fced84f65095dfc5f9c94917911a90f806f948"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\last.pt",
+      "bytes": 1714066,
+      "sha256": "b46e2ab66422d4204e69fb48b16567b823b8cdcc730295a9d43b70475a0f1e04"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\run-identity.json",
+      "bytes": 2969,
+      "sha256": "5a0f7befcc1877a6f8dd2f82b6394c971b487bcabfeda238c3cb2749b0053ff2"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\run-status.json",
+      "bytes": 1199,
+      "sha256": "15ce9c625a8b8e1e19d6d34f235d0379fd9b1d5ca44bd2cdd74c5cfd5ddc7cd7"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\training-rollout-ledger.jsonl.gz",
+      "bytes": 23899728,
+      "sha256": "48b19b94c28f809def845bdf9a54528dfa5b41a653d5c53cd1d55a6fd124eb1e"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\updates.jsonl",
+      "bytes": 18393,
+      "sha256": "7a3d4b277474b12fb428a1e84767286c6f590cc5071c8c0d62bba9740cffc4ee"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\validation\\2048\\evaluation-ledger.jsonl.gz",
+      "bytes": 593811,
+      "sha256": "1d9e3226e2dc4f715097dcf0c6e56eef3587ecb73b5a27dd365251dd1e76c1e0"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\validation\\4096\\evaluation-ledger.jsonl.gz",
+      "bytes": 610661,
+      "sha256": "3abc9cae841d93585cf01d12da965fd77fa840ae453c3852d5535f87ce3c7f12"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\validation\\6144\\evaluation-ledger.jsonl.gz",
+      "bytes": 621602,
+      "sha256": "4689a3fb54b76d9066703a8bf010cf76f47e1351826f8acb71bb1c6bdb4d1b15"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\validation\\8192\\evaluation-ledger.jsonl.gz",
+      "bytes": 630583,
+      "sha256": "54945e192ec680f4cc449b2a1d73899ec59fd8027d347085de5d34848a3eee8d"
+    },
+    {
+      "path": "runs\\m10-eawm-aux-h-3307-formal\\validation-curve.json",
+      "bytes": 800,
+      "sha256": "dccbdc63b1bc7b8ab2207cb2f337d26fc347bcdbd1f8fefbc917936f1e908462"
+    },
+    {
+      "path": "tape-manifest.json",
+      "bytes": 506,
+      "sha256": "d090d6674184c08072c51ff61131bfdb0dabb155ec17ee7cf2fb8754e884f558"
+    }
+  ],
+  "file_count": 98
+}

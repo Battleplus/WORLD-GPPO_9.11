@@ -1,0 +1,46 @@
+{
+  "schema": "gppo-eawm-auxiliary-matrix-report-v1",
+  "method": "EAWM-inspired auxiliary GPPO-History",
+  "scope": "local CUDA bounded pilot and three-seed formal matrix",
+  "experiment_source_commit": "a266df2faede8535cb5208c3b1e6b0600d73dc89",
+  "protocol": {
+    "task_completion_mode": "arrival_to_region",
+    "deadline_basis": "physical_arrival",
+    "communication": "composite weak communication",
+    "variants": ["H: GPPO-History", "E: H + 0.1 event auxiliary loss"],
+    "world_model_used": false,
+    "old_candidate_prior_used": false,
+    "notification_changed": false
+  },
+  "budgets": {
+    "pilot": {"seed": 1101, "steps_per_variant": 512, "updates_per_variant": 8},
+    "formal": {"seeds": [1101, 2203, 3307], "steps_per_run": 8192, "updates_per_run": 128, "total_steps": 49152, "total_updates": 768, "wall_clock_seconds": 14400}
+  },
+  "final_test": {
+    "tapes": 64,
+    "tasks_per_run": 384,
+    "H": {"on_time_physical": 544, "tasks": 1152, "rate": 0.4722222222, "on_time_host": 95, "deadline_failures": 608, "unresolved": 0, "security_violations": 0},
+    "E": {"on_time_physical": 551, "tasks": 1152, "rate": 0.4782986111, "on_time_host": 88, "deadline_failures": 601, "unresolved": 0, "security_violations": 0},
+    "rule_shared": {"on_time_physical": 189, "tasks": 384, "rate": 0.4921875, "on_time_host": 34},
+    "E_minus_H": {"on_time_physical": 7, "rate_points": 0.0060763889, "on_time_host": -7},
+    "parent_tape_bootstrap_rate_difference_ci95": [-0.0121527778, 0.0243055556],
+    "bootstrap_unit": "64 shared parent tapes; tape uncertainty only; not training-seed uncertainty"
+  },
+  "auxiliary_train_replay": {
+    "records": 24576,
+    "parameter_updates": 0,
+    "public_observation_replay_mismatches": 0,
+    "position_x": {"valid": 53297, "accuracy": 0.9162804661, "majority": 0.9162804661},
+    "position_y": {"valid": 54487, "accuracy": 0.9216877420, "majority": 0.9216877420},
+    "energy": {"valid": 54434, "accuracy": 0.5836425763, "majority": 0.5647940625, "majority_delta": 0.0188485138, "unsupported_class": 2},
+    "task_state": {"valid": 63767, "accuracy": 0.9402198629, "majority": 0.9402198629}
+  },
+  "decision": "E does not establish stable task-effect improvement and is not an engineering default; this does not prove all world-model methods ineffective.",
+  "artifact_summary": {
+    "repo_index": "artifacts/m10-eawm-auxiliary-history-matrix-20260914/artifact-index.json",
+    "local_zip": "E:/Z博士/9.2日/m10-eawm-auxiliary-history-matrix-20260914-v1.zip",
+    "local_zip_bytes": 192312533,
+    "local_zip_sha256": "aa1576c7ae2740494bcfe93c118fae335102bfe6361506bf5d2db6f63bdfb550",
+    "remote_release": "not attempted in this bounded local run"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "base_seed": 991001,
+  "communication": "composite weak communication",
+  "deadline_basis": "physical_arrival",
+  "frozen_tapes_sha256": "52a6fda6baf91ec9928272c82490e381f4c11740e14c8eb9cfaeafb77fe8405f",
+  "no_formal_test_read_before_training_freeze": true,
+  "source_commit": "71ffcd90a98c2666821aeb81a479b8709c3e40a8",
+  "split_counts": {
+    "final_test": 64,
+    "train": 32,
+    "validation": 16
+  },
+  "task_completion_mode": "arrival_to_region",
+  "task_count_per_scenario": 6
+}

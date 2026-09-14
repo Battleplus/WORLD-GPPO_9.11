@@ -1,0 +1,478 @@
+{
+  "parameter_updates": 0,
+  "read_only_recorded_train_replay": true,
+  "runs": [
+    {
+      "checkpoint": "E:\\Z博士\\9.2日\\m10-eawm-auxiliary-history-matrix-20260914-v1\\runs\\m10-eawm-aux-e-1101-formal\\last.pt",
+      "metrics": {
+        "energy": {
+          "accuracy": 0.5939820672204191,
+          "confusion": [
+            [
+              7317,
+              2957,
+              0
+            ],
+            [
+              4424,
+              3481,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.5750610829587662,
+          "majority_accuracy": 0.5651575994279113,
+          "majority_class": 0,
+          "predicted": [
+            11741,
+            6438,
+            0
+          ],
+          "support": [
+            10274,
+            7905,
+            0
+          ],
+          "supported_class_recall": [
+            0.7121861008370645,
+            0.4403542061986085
+          ],
+          "valid_count": 18179
+        },
+        "position_x": {
+          "accuracy": 0.9175101214574899,
+          "confusion": [
+            [
+              0,
+              226,
+              0
+            ],
+            [
+              0,
+              16317,
+              0
+            ],
+            [
+              0,
+              1241,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.31899357790094135,
+          "majority_accuracy": 0.9175101214574899,
+          "majority_class": 1,
+          "predicted": [
+            0,
+            17784,
+            0
+          ],
+          "support": [
+            226,
+            16317,
+            1241
+          ],
+          "supported_class_recall": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "valid_count": 17784
+        },
+        "position_y": {
+          "accuracy": 0.9232629727352683,
+          "confusion": [
+            [
+              0,
+              71,
+              0
+            ],
+            [
+              0,
+              16796,
+              0
+            ],
+            [
+              0,
+              1325,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.3200335353073435,
+          "majority_accuracy": 0.9232629727352683,
+          "majority_class": 1,
+          "predicted": [
+            0,
+            18192,
+            0
+          ],
+          "support": [
+            71,
+            16796,
+            1325
+          ],
+          "supported_class_recall": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "valid_count": 18192
+        },
+        "task_state": {
+          "accuracy": 0.9391058823529411,
+          "confusion": [
+            [
+              19956,
+              0
+            ],
+            [
+              1294,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.48429840314517303,
+          "majority_accuracy": 0.9391058823529411,
+          "majority_class": 0,
+          "predicted": [
+            21250,
+            0
+          ],
+          "support": [
+            19956,
+            1294
+          ],
+          "supported_class_recall": [
+            1.0,
+            0.0
+          ],
+          "valid_count": 21250
+        }
+      },
+      "model_updates": 0,
+      "records": 8192,
+      "replay_public_mismatches": {
+        "current_public": 0,
+        "next_public": 0
+      },
+      "run_id": "m10-eawm-aux-e-1101-formal"
+    },
+    {
+      "checkpoint": "E:\\Z博士\\9.2日\\m10-eawm-auxiliary-history-matrix-20260914-v1\\runs\\m10-eawm-aux-e-2203-formal\\last.pt",
+      "metrics": {
+        "energy": {
+          "accuracy": 0.5659188860647585,
+          "confusion": [
+            [
+              9590,
+              628,
+              0
+            ],
+            [
+              7228,
+              652,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.4258912748391115,
+          "majority_accuracy": 0.5645927726820643,
+          "majority_class": 0,
+          "predicted": [
+            16818,
+            1280,
+            0
+          ],
+          "support": [
+            10218,
+            7880,
+            0
+          ],
+          "supported_class_recall": [
+            0.9385398316696026,
+            0.08274111675126904
+          ],
+          "valid_count": 18098
+        },
+        "position_x": {
+          "accuracy": 0.914504849988721,
+          "confusion": [
+            [
+              0,
+              215,
+              0
+            ],
+            [
+              0,
+              16216,
+              0
+            ],
+            [
+              0,
+              1301,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.318447822159381,
+          "majority_accuracy": 0.914504849988721,
+          "majority_class": 1,
+          "predicted": [
+            0,
+            17732,
+            0
+          ],
+          "support": [
+            215,
+            16216,
+            1301
+          ],
+          "supported_class_recall": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "valid_count": 17732
+        },
+        "position_y": {
+          "accuracy": 0.9196226623269157,
+          "confusion": [
+            [
+              0,
+              74,
+              0
+            ],
+            [
+              0,
+              16670,
+              0
+            ],
+            [
+              0,
+              1383,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.3193761914341275,
+          "majority_accuracy": 0.9196226623269157,
+          "majority_class": 1,
+          "predicted": [
+            0,
+            18127,
+            0
+          ],
+          "support": [
+            74,
+            16670,
+            1383
+          ],
+          "supported_class_recall": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "valid_count": 18127
+        },
+        "task_state": {
+          "accuracy": 0.9408351026185421,
+          "confusion": [
+            [
+              19941,
+              0
+            ],
+            [
+              1254,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.4847578763127188,
+          "majority_accuracy": 0.9408351026185421,
+          "majority_class": 0,
+          "predicted": [
+            21195,
+            0
+          ],
+          "support": [
+            19941,
+            1254
+          ],
+          "supported_class_recall": [
+            1.0,
+            0.0
+          ],
+          "valid_count": 21195
+        }
+      },
+      "model_updates": 0,
+      "records": 8192,
+      "replay_public_mismatches": {
+        "current_public": 0,
+        "next_public": 0
+      },
+      "run_id": "m10-eawm-aux-e-2203-formal"
+    },
+    {
+      "checkpoint": "E:\\Z博士\\9.2日\\m10-eawm-auxiliary-history-matrix-20260914-v1\\runs\\m10-eawm-aux-e-3307-formal\\last.pt",
+      "metrics": {
+        "energy": {
+          "accuracy": 0.5909566558352151,
+          "confusion": [
+            [
+              8073,
+              2179,
+              0
+            ],
+            [
+              5248,
+              2657,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.5510074390033685,
+          "majority_accuracy": 0.564630720934075,
+          "majority_class": 0,
+          "predicted": [
+            13321,
+            4836,
+            0
+          ],
+          "support": [
+            10252,
+            7905,
+            0
+          ],
+          "supported_class_recall": [
+            0.787456106125634,
+            0.33611638203668565
+          ],
+          "valid_count": 18157
+        },
+        "position_x": {
+          "accuracy": 0.9168213261346381,
+          "confusion": [
+            [
+              0,
+              217,
+              0
+            ],
+            [
+              0,
+              16302,
+              0
+            ],
+            [
+              0,
+              1262,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.31886864419211924,
+          "majority_accuracy": 0.9168213261346381,
+          "majority_class": 1,
+          "predicted": [
+            0,
+            17781,
+            0
+          ],
+          "support": [
+            217,
+            16302,
+            1262
+          ],
+          "supported_class_recall": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "valid_count": 17781
+        },
+        "position_y": {
+          "accuracy": 0.9221708498458828,
+          "confusion": [
+            [
+              0,
+              92,
+              0
+            ],
+            [
+              0,
+              16754,
+              0
+            ],
+            [
+              0,
+              1322,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.31983658820609734,
+          "majority_accuracy": 0.9221708498458828,
+          "majority_class": 1,
+          "predicted": [
+            0,
+            18168,
+            0
+          ],
+          "support": [
+            92,
+            16754,
+            1322
+          ],
+          "supported_class_recall": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "valid_count": 18168
+        },
+        "task_state": {
+          "accuracy": 0.9407185067066879,
+          "confusion": [
+            [
+              20058,
+              0
+            ],
+            [
+              1264,
+              0
+            ]
+          ],
+          "macro_f1_supported_classes": 0.48472692121797967,
+          "majority_accuracy": 0.9407185067066879,
+          "majority_class": 0,
+          "predicted": [
+            21322,
+            0
+          ],
+          "support": [
+            20058,
+            1264
+          ],
+          "supported_class_recall": [
+            1.0,
+            0.0
+          ],
+          "valid_count": 21322
+        }
+      },
+      "model_updates": 0,
+      "records": 8192,
+      "replay_public_mismatches": {
+        "current_public": 0,
+        "next_public": 0
+      },
+      "run_id": "m10-eawm-aux-e-3307-formal"
+    }
+  ],
+  "schema": "gppo-eawm-auxiliary-prediction-diagnostics-v1"
+}
