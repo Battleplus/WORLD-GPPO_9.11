@@ -363,7 +363,8 @@ def evaluate_group(policy: torch.nn.Module, scenarios: list[M10Scenario], config
             "pending_tasks": sum(
                 1 for record in records
                 for task in record.get("tasks", [])
-                if task.get("status") in ("pending", "censored_window", "unknown")
+                if (task.get("status") if isinstance(task, dict) else task)
+                in ("pending", "censored_window", "unknown")
             ),
         },
     }

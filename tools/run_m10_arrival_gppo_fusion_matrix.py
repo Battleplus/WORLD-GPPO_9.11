@@ -48,7 +48,7 @@ from tools.run_m10_arrival_gppo_fusion_pilot import (  # noqa: E402
 )
 
 
-RUN_ID = "m10-arrival-gppo-fusion-matrix-20260914-v1"
+RUN_ID = "m10-arrival-gppo-fusion-matrix-20260914-v2"
 SEEDS = (1101, 2203, 3307)
 LEARNING_GROUPS = ("GPPO", "GPPO-History", "GPPO-History-CandidateArrival")
 ENV_STEPS = 8192
