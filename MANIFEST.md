@@ -55,3 +55,12 @@
 - 旧服务器：未连接，历史中断状态不变。
 - 历史负结果：保留，不改写。
 - 联合任务集合后果方向：开发 pilot 已完成；结果为有限开发信号，尚无独立泛化或策略增益结论。数据/模型制品已发布 Release `m10-joint-consequence-development-pilot-20260914-v1` 并完成独立下载校验。
+
+## 当前新增：到达协议 GPPO 候选后果融合接口（2026-09-14）
+
+- 可执行方案：`docs/plans/m10-arrival-gppo-fusion-executable-20260914.md`
+- 接口合同：`docs/contracts/m10-arrival-gppo-fusion-interface-v1-20260914.md`
+- 候选级冻结模型加载、逐动作特征、GPPO prior 与合法动作选择：`gppo_world/arrival_gppo_fusion.py`
+- 定向测试：`tests/test_arrival_gppo_fusion.py`；与到达协议回归合计 12 passed。
+- 研究边界：旧持续服务 policy、旧联合任务集合 checkpoint 和动作前平均 context 均不作为新 arrival 融合输入；本轮未训练、未生成数据、未启动 GPPO 融合。
+- 计划与追踪：`refine-logs/EXPERIMENT_PLAN-m10-arrival-gppo-fusion-20260914.md`、`refine-logs/EXPERIMENT_TRACKER-m10-arrival-gppo-fusion-20260914.md`，固定副本为 `refine-logs/EXPERIMENT_PLAN.md`、`refine-logs/EXPERIMENT_TRACKER.md`。
