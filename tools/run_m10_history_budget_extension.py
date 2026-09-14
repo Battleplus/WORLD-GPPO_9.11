@@ -221,12 +221,18 @@ def main() -> int:
                 raise RuntimeError(f"checkpoint format mismatch: {checkpoint}")
             policy.load_state_dict(payload["state_dict"])
             out = root / "evaluations" / f"h-{seed}-{label}"
-            out.mkdir(parents=True, exist_ok=False)
-            result = evaluate_variant(policy, "H", test_tape, config, device, f"history-budget-h-{seed}-{label}", out)
-            result["seed"] = seed
-            result["checkpoint_steps"] = int(label)
-            result["checkpoint_sha256"] = sha256(checkpoint)
-            dump(out / "summary.json", result)
+            existing = out / "summary.json"
+            if existing.exists():
+                result = json.loads(existing.read_text(encoding="utf-8"))
+            else:
+                if out.exists() and any(out.iterdir()):
+                    raise RuntimeError(f"evaluation directory exists without summary: {out}")
+                out.mkdir(parents=True, exist_ok=False)
+                result = evaluate_variant(policy, "H", test_tape, config, device, f"history-budget-h-{seed}-{label}", out)
+                result["seed"] = seed
+                result["checkpoint_steps"] = int(label)
+                result["checkpoint_sha256"] = sha256(checkpoint)
+                dump(out / "summary.json", result)
             evaluations.append(result)
     rule_out = root / "evaluations" / "rule"
     rule = run_rules(test_tape, config, device, rule_out)
