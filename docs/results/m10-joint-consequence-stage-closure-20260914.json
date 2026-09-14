@@ -1,0 +1,14 @@
+{
+  "report_id": "m10-joint-consequence-stage-closure-20260914",
+  "source_head": "9ad9a2bdcec654cf47d178be58e3d26cd3a70dac",
+  "scope": {"training": false, "new_data": false, "new_simulation": false, "gppo_fusion": false},
+  "design": {"parent_tapes": 16, "planned_units": 128, "eligible_units": {"ideal": 52, "weak": 45}, "ineligible_units": {"ideal": 12, "weak": 19}, "selected_branch_rows": 3104, "complete_prefix_repeat_groups": 776},
+  "denominators": {
+    "ideal": {"current_rule": {"planned": 416, "valid": 392, "censored": 24, "missing": 0}, "public_joint": {"planned": 416, "valid": 392, "censored": 24, "missing": 0}, "zero_delta": {"planned": 416, "valid": 392, "censored": 24, "missing": 0}, "joint_model": {"planned": 416, "valid": 384, "censored": 32, "missing": 0}},
+    "weak": {"current_rule": {"planned": 360, "valid": 205, "censored": 155, "missing": 0}, "public_joint": {"planned": 360, "valid": 168, "censored": 192, "missing": 0}, "zero_delta": {"planned": 360, "valid": 160, "censored": 200, "missing": 0}, "joint_model": {"planned": 360, "valid": 210, "censored": 150, "missing": 0}}
+  },
+  "weak_model_minus_public_joint": {"common_valid_branches": 167, "eligible_branches": 360, "excluded_branches": 193, "excluded_fraction": 0.5361111111, "common_valid_parent_tapes": 14, "parent_tape_total": 16, "branch_mean": 0.1856287425, "parent_mean": 0.1301020408, "bootstrap_95ci": [0.0, 0.2831632653], "wins_ties_losses": [33, 132, 2], "conservative_mean_bounds_on_eligible_units": [-0.9861111111, 1.2305555556]},
+  "ideal_model_minus_public_joint": {"common_valid_branches": 360, "eligible_branches": 416, "excluded_branches": 56, "excluded_fraction": 0.1346153846, "parent_tapes": 16, "branch_mean": 0.0, "parent_mean": 0.0, "bootstrap_95ci": [0.0, 0.0], "conservative_mean_bounds_on_eligible_units": [-0.0769230769, 0.0576923077]},
+  "decision": {"status": "independent_decision_value_not_established", "current_fusion": "stop", "world_model_universally_invalid": false, "formal_acceptance": false},
+  "archive": {"local_zip_sha256": "d900b589ebf9dbe9de3aea8518d9cbeb7e08707a187c4a5531919822c515854e", "remote_release_created": false, "remote_asset_verified": false}
+}
