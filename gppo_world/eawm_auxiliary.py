@@ -394,37 +394,56 @@ def update_event_aware_policy(policy: EventAwareHistoryPolicy, transitions: list
     value_loss = F.mse_loss(values, returns)
     entropy = entropies.mean()
     ppo_loss = policy_loss + ppo.value_weight * value_loss - ppo.entropy_weight * entropy
-    event_losses, event_details = [], []
-    for prediction, item in zip(predictions, transitions):
-        event_loss, details = auxiliary_loss(prediction, item.targets, device=device_obj)
-        if item.targets.valid_counts["position"] or item.targets.valid_counts["energy"] or item.targets.valid_counts["task_state"]:
-            event_losses.append(event_loss)
-        event_details.append(details)
-    event_loss = torch.stack(event_losses).mean() if event_losses else ppo_loss * 0.0
-    loss = total_event_aware_loss(ppo_loss, event_loss, coefficient=coefficient)
-    if not torch.isfinite(loss):
-        raise FloatingPointError("non-finite event-aware PPO loss")
-    optimizer.zero_grad(set_to_none=True)
-    loss.backward()
-    grad_norm = float(torch.nn.utils.clip_grad_norm_(policy.parameters(), ppo.grad_clip))
-    if not np.isfinite(grad_norm):
-        raise FloatingPointError("non-finite event-aware gradient")
-    optimizer.step()
-    for value in policy.state_dict().values():
-        if not torch.isfinite(value).all():
-            raise FloatingPointError("non-finite event-aware parameter")
-    return {
-        "loss": float(loss.detach().cpu()),
-        "ppo_loss": float(ppo_loss.detach().cpu()),
-        "event_loss": float(event_loss.detach().cpu()),
-        "policy_loss": float(policy_loss.detach().cpu()),
-        "value_loss": float(value_loss.detach().cpu()),
-        "entropy": float(entropy.detach().cpu()),
-        "optimizer_step": 1,
-        "grad_norm": grad_norm,
-        "valid_event_steps": len(event_losses),
-        "event_details": event_details,
-    }
+    last: dict[str, Any] = {}
+    for epoch in range(ppo.update_epochs):
+        if epoch:
+            new_log_probs, values, entropies, predictions = evaluate_event_aware_sequence(policy, transitions, device_obj)
+            ratio = (new_log_probs - old_log_probs).exp()
+            clipped = torch.clamp(ratio, 1.0 - ppo.clip_epsilon, 1.0 + ppo.clip_epsilon)
+            policy_loss = -torch.min(ratio * advantages, clipped * advantages).mean()
+            value_loss = F.mse_loss(values, returns)
+            entropy = entropies.mean()
+            ppo_loss = policy_loss + ppo.value_weight * value_loss - ppo.entropy_weight * entropy
+        event_losses, event_details = [], []
+        for prediction, item in zip(predictions, transitions):
+            event_loss_item, details = auxiliary_loss(prediction, item.targets, device=device_obj)
+            if any(item.targets.valid_counts.values()):
+                event_losses.append(event_loss_item)
+            event_details.append(details)
+        event_loss = torch.stack(event_losses).mean() if event_losses else ppo_loss * 0.0
+        loss = total_event_aware_loss(ppo_loss, event_loss, coefficient=coefficient)
+        if not torch.isfinite(loss):
+            raise FloatingPointError("non-finite event-aware PPO loss")
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        grad_norm = float(torch.nn.utils.clip_grad_norm_(policy.parameters(), ppo.grad_clip))
+        if not np.isfinite(grad_norm):
+            raise FloatingPointError("non-finite event-aware gradient")
+        optimizer.step()
+        for value in policy.state_dict().values():
+            if not torch.isfinite(value).all():
+                raise FloatingPointError("non-finite event-aware parameter")
+        for optimizer_state in optimizer.state.values():
+            for value in optimizer_state.values():
+                if torch.is_tensor(value) and not torch.isfinite(value).all():
+                    raise FloatingPointError("non-finite event-aware optimizer state")
+        last = {
+            "loss": float(loss.detach().cpu()),
+            "ppo_loss": float(ppo_loss.detach().cpu()),
+            "event_loss": float(event_loss.detach().cpu()),
+            "policy_loss": float(policy_loss.detach().cpu()),
+            "value_loss": float(value_loss.detach().cpu()),
+            "entropy": float(entropy.detach().cpu()),
+            "approx_kl": float((old_log_probs - new_log_probs).mean().detach().cpu()),
+            "clip_fraction": float(((ratio - 1.0).abs() > ppo.clip_epsilon).float().mean().detach().cpu()),
+            "optimizer_step": 1,
+            "grad_norm": grad_norm,
+            "valid_event_steps": len(event_losses),
+            "event_details": event_details,
+            "update_epoch": epoch + 1,
+        }
+    last["optimizer_steps"] = ppo.update_epochs
+    return last
 
 
 def save_event_aware_checkpoint(path, policy: EventAwareHistoryPolicy, metadata: dict[str, Any], *, inference: bool = False, optimizer: torch.optim.Optimizer | None = None) -> None:
