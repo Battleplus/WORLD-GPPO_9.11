@@ -30,5 +30,6 @@
   },
   "model": {"path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-m10-arrival-model-verify-20260913-v1\\training\\best-inference.pt", "sha256": "a5acd173b3c57301fd744cb1e6105789278de8f58438f0e42e7535a23e500b86", "format": "gppo-arrival-consequence-inference-v1", "horizon_steps": 6},
   "checkpoint_load_verification": {"status": "passed", "sha256": "f1a40a9fdcc2baf1150ff52a5a68905e8cce00540475374a67dc904dfe36a70f"},
+  "release": {"url": "https://github.com/Battleplus/WORLD-GPPO_9.11/releases/tag/m10-arrival-gppo-fusion-pilot-20260914-v1", "asset": "m10-arrival-gppo-fusion-pilot-20260914-v1.zip", "size": 3645759, "sha256": "728884d396f88d12168a3a337699be11ab06af54dc33f02065872672c312bd62", "remote_api_digest_verified": true, "independent_download_verified": false, "independent_download_note": "download timed out and returned an error response; no claim of independent download verification"},
   "conclusion": "single-seed exploratory pilot only; no stable strategy gain or weak-communication availability claim"
 }

@@ -75,3 +75,4 @@
 - 实际训练：GPPO、GPPO-History、GPPO-History-CandidateArrival 均 512 environment steps、8 次 optimizer updates；融合训练期间 512 次 world calls；规则组不训练。
 - 结果边界：规则 53/96、GPPO 41/96、History 42/96、融合 44/96 按时物理到达；单 seed/16 validation tape，只是探索性 pilot，不构成稳定增益或弱通信可用性通过。
 - checkpoint 首决策加载复核通过；大型 pilot 输出保留在本地，未在本清单中伪称已上传 Release。
+- Release：`m10-arrival-gppo-fusion-pilot-20260914-v1` 已创建，资产 3,645,759 bytes，SHA-256 `728884d396f88d12168a3a337699be11ab06af54dc33f02065872672c312bd62`；GitHub API 摘要一致。独立下载因超时未通过，未将其记为独立下载校验成功。

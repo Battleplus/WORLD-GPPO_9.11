@@ -4,6 +4,9 @@
 **run-id：** `m10-arrival-gppo-fusion-pilot-20260914-seed1101`  
 **实际 run 输出：** `E:\Z博士\9.2日\WORLD-GPPO_9.11-local-runs\m10-arrival-gppo-fusion-pilot-20260914-v2`
 
+**Release：** [m10-arrival-gppo-fusion-pilot-20260914-v1](https://github.com/Battleplus/WORLD-GPPO_9.11/releases/tag/m10-arrival-gppo-fusion-pilot-20260914-v1)  
+**Release asset：** `m10-arrival-gppo-fusion-pilot-20260914-v1.zip`，3,645,759 bytes，SHA-256 `728884d396f88d12168a3a337699be11ab06af54dc33f02065872672c312bd62`。GitHub API 回读摘要一致；独立下载因传输超时未完成，因此不报告独立下载校验通过。
+
 ## 运行条件
 
 - Git 起点：`bf71abeeb0e8cae703030f4def8ef58e9243722f`；本次训练时使用的 runner/fusion/training/protocol SHA 记录在 `run-identity.json`。
