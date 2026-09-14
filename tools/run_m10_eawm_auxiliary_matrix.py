@@ -587,7 +587,7 @@ def main() -> int:
                 payload = torch.load(run_dir / "last.pt", map_location=device, weights_only=False)
                 policy.load_state_dict(payload["state_dict"])
                 results["final_test"] = results["final_test"] or []
-                results["final_test"].append(evaluate_variant(policy, result["variant"], tapes["final_test"], config, result["run_id"], run_dir))
+                results["final_test"].append(evaluate_variant(policy, result["variant"], tapes["final_test"], config, device, result["run_id"], run_dir))
         else:
             results["final_test"] = {"status": "not_run", "reason": "formal_matrix_incomplete_or_wall_clock_budget"}
     results["elapsed_seconds"] = time.perf_counter() - started
