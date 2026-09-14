@@ -1,0 +1,58 @@
+{
+  "report_id": "m10-joint-consequence-independent-validation-20260914",
+  "run_id": "m10-joint-consequence-independent-validation-20260914-v1",
+  "source_head_before_run": "bacdc0a9b593d36259cee088fc033a842ea9f234",
+  "frozen_model_sha256": "fbf9e5fb09c3395a09f1e1c60f5c5e46ee4ecc07eb30675c333c308063ba1d54",
+  "design": {
+    "parent_tapes": 16,
+    "base_seed": 293001,
+    "tape_seed_range": [2293001, 2293016],
+    "prefix_steps": [1, 2, 3, 4],
+    "paired_repeats": 8,
+    "conditions": ["ideal", "weak"],
+    "methods": ["current_rule", "public_joint", "zero_delta", "joint_model"],
+    "planned_prefix_condition_units": 128,
+    "eligible_prefix_condition_units": 97,
+    "ineligible_prefix_condition_units": 31,
+    "selected_branch_rows": 3104,
+    "complete_prefix_repeat_groups": 776,
+    "training": false,
+    "tuning": false,
+    "gppo_fusion": false,
+    "ood": false
+  },
+  "results": {
+    "ideal": {
+      "current_rule": {"rows": 416, "valid": 392, "censored": 24, "on_time_mean_valid": 1.0204081633, "safety_violations": 0},
+      "public_joint": {"rows": 416, "valid": 392, "censored": 24, "on_time_mean_valid": 1.0204081633, "safety_violations": 0},
+      "zero_delta": {"rows": 416, "valid": 392, "censored": 24, "on_time_mean_valid": 1.0204081633, "safety_violations": 0},
+      "joint_model": {"rows": 416, "valid": 384, "censored": 32, "on_time_mean_valid": 1.0208333333, "safety_violations": 0},
+      "model_minus_public_joint_parent_mean": 0.0,
+      "model_minus_public_joint_parent_bootstrap_95ci": [0.0, 0.0]
+    },
+    "weak": {
+      "current_rule": {"rows": 360, "valid": 205, "censored": 155, "on_time_mean_valid": 1.2682926829, "safety_violations": 0},
+      "public_joint": {"rows": 360, "valid": 168, "censored": 192, "on_time_mean_valid": 1.1071428571, "safety_violations": 0},
+      "zero_delta": {"rows": 360, "valid": 160, "censored": 200, "on_time_mean_valid": 1.1125, "safety_violations": 0},
+      "joint_model": {"rows": 360, "valid": 210, "censored": 150, "on_time_mean_valid": 1.3571428571, "safety_violations": 0},
+      "model_minus_public_joint_pair_valid_rows": 167,
+      "model_minus_public_joint_parent_count": 14,
+      "model_minus_public_joint_pair_mean": 0.1856287425,
+      "model_minus_public_joint_parent_mean": 0.1301020408,
+      "model_minus_public_joint_parent_bootstrap_95ci": [0.0, 0.2831632653],
+      "model_minus_public_joint_wins_ties_losses": [33, 132, 2]
+    }
+  },
+  "decision": {
+    "status": "evidence_insufficient_stop_current_fusion_route",
+    "formal_acceptance": false,
+    "weak_communication_point_estimate_improvement": true,
+    "independent_decision_value_supported": false,
+    "reasons": ["ideal condition has zero paired gain", "weak condition has method-dependent censoring", "parent-level uncertainty includes no-effect boundary", "no business cost threshold was registered"]
+  },
+  "artifacts": {
+    "run_dir": "runs/m10-joint-consequence-independent-validation-20260914-v1",
+    "integrity_audit": "runs/m10-joint-consequence-independent-validation-20260914-v1/integrity-audit.json",
+    "artifact_manifest": "runs/m10-joint-consequence-independent-validation-20260914-v1/artifact-manifest.json"
+  }
+}
