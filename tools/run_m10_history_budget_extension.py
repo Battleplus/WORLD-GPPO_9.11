@@ -213,7 +213,7 @@ def main() -> int:
     evaluations = []
     for seed in SEEDS:
         old_dir = source_root / "runs" / f"m10-eawm-aux-h-{seed}-formal"
-        new_dir = root / "runs" / f"m10-history-budget-h-{seed}"
+        new_dir = root / "runs" / f"m10-eawm-aux-h-{seed}-budget-extension"
         for label, checkpoint in (("8192", old_dir / "last.pt"), ("32768", new_dir / "checkpoint-32768.pt")):
             policy = make_policy(config, "H", seed, device)
             payload = torch.load(checkpoint, map_location=device, weights_only=False)
