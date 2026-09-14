@@ -166,6 +166,7 @@ def build_joint_target_record(
         "parent_episode_id": target["parent_episode_id"],
         "prefix_id": target["prefix_id"],
         "repeat_id": candidate_repeat,
+        "exogenous_key": str(candidate.get("exogenous_key", "")),
         "graph5_t": candidate["graph5_t"],
         "joint_task_set": list(task_set),
         "joint_task_outcomes": [dict(candidate_outcomes[task_id]) for task_id in task_set],
@@ -187,8 +188,10 @@ def build_joint_target_record(
             "hidden_state_online": False,
             "shared_exogenous_randomness": candidate.get("exogenous_key") == reference.get("exogenous_key"),
             "candidate_branch_digest": candidate.get("label_provenance", {}).get("branch_trace_sha256"),
+            "prefix_trace_digest": candidate.get("label_provenance", {}).get("prefix_trace_sha256"),
             "reference_branch_digest": reference.get("label_provenance", {}).get("branch_trace_sha256"),
         },
+        "branch_ledger": candidate.get("branch_ledger", {}),
     }
 
 

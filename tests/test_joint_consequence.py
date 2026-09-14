@@ -42,6 +42,7 @@ def test_joint_target_preserves_action_opportunity_cost_delta():
     assert result["target"]["label_source"] == "simulator-counterfactual"
     assert result["joint_task_set"] == ["task-0", "task-1"]
     assert [item["task_id"] for item in result["joint_task_outcomes"]] == ["task-0", "task-1"]
+    assert result["exogenous_key"] == "shared-key"
 
 
 def test_censoring_masks_aggregate_and_delta_instead_of_defaulting_to_failure():
