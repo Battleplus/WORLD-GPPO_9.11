@@ -58,6 +58,9 @@
     "bytes": 1777797,
     "sha256": "c6a5bbdf2f90e21a6e80ff16a0a82167828d11659a9b75f0a5048459d3888bf7",
     "local_archive_manifest_entries_verified": 29,
-    "independent_download_verification": "pending"
+    "release_asset_bytes": 1777797,
+    "release_api_digest": "sha256:c6a5bbdf2f90e21a6e80ff16a0a82167828d11659a9b75f0a5048459d3888bf7",
+    "independent_download_sha256": "c6a5bbdf2f90e21a6e80ff16a0a82167828d11659a9b75f0a5048459d3888bf7",
+    "independent_download_verification": "passed; downloaded size and SHA-256 match local archive and GitHub API"
   }
 }

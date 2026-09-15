@@ -17,7 +17,7 @@
 
 原始单位为仿真时间。按实例先平均三个冻结模型的 `G-regret minus model-regret`，再对同构/异构各 64 个实例分层重采样 10,000 次，原始减少量 95% CI 为 **[0.210938, 0.997396]** 仿真时间单位。区间不覆盖训练 seed 总体不确定性。
 
-上一轮所报 **57.44%** 和 95% CI **[0.0080218, 0.0393435]** 用的是归一化 regret；每实例 regret 除以该实例公开 scale 后，按同一实例平均 seed 差异并分层 bootstrap。它们不是原始仿真时间单位结果。按本轮预登记原始主指标，减少超过 10%、3/3 seed 均值改善、配对区间下界大于 0，故静态门槛通过，允许本轮唯一评估继续。
+上一轮所报 **57.44%** 是归一化 regret 的相对减少；其95% CI **[0.0080218, 0.0393435]** 表示归一化 regret 差值（无量纲归一化单位），不是百分比区间。每实例 regret 除以该实例公开 scale 后，按同一实例平均 seed 差异并分层 bootstrap。它们不是原始仿真时间单位结果。按本轮预登记原始主指标，减少超过 10%、3/3 seed 均值改善、配对区间下界大于 0，故静态门槛通过，允许本轮唯一评估继续。
 
 以下命中率允许精确标签中的并列最优；排序准确率只在真实 regret 不等的候选对上计算。模型/贪心的首步命中率分母均为全部128实例；归一化 regret 是实例级 `regret / S(s)` 后的平均。它们是静态旧test复算指标，不是本轮新实例的结果。
 
@@ -142,3 +142,7 @@ $py = 'E:\Z博士\9.2日\world-gppo-911-local-pilot-venv\Scripts\python.exe'
 第一次生成在写完确定性 `instances.json` 后，审计摘要字段读取错误而未写完 run identity；字段修复后按相同 seed 重放，实例 JSON SHA 完全一致。首次 runner 预检又因从嵌套场景读取组别字段的 schema 假设错误而在生成输出目录/模型前向前退出；修复为读取既定嵌套 schema 后再执行。没有查看任何模型决策或结果来决定修复；正式执行使用源代码提交 `194ff21e72f0bc4e3bf4ce234cf166d1cc3c183b`，已冻结实例内容未改变。这是范围内的准备期接口修正，记录为偏差，不把首次命令失败计作一次评估。
 
 生成数据 identity 记录生成器代码提交 `bba91444e23d2dc485f4b31bdb8d8ec371078bee`；正式执行 identity 记录 runner 提交 `194ff21e72f0bc4e3bf4ce234cf166d1cc3c183b`。评估配置 SHA-256 为 `ce154c7b7088b0b3b1a3392f055e798b733a4e20a40b9e686e3139d0af7c3f67`。逐实例 ledger、实例、汇总、独立审计和 manifest 均保存在 `runs/m10-minimal-scheduling-continuation-20260915-v2/`。
+
+## 归档
+
+源码、协议、复算数据和报告已推送至独立分支 `minimal-scheduling-continuation-20260915`；独立 Release 已创建：[m10-minimal-scheduling-continuation-20260915-v1](https://github.com/Battleplus/WORLD-GPPO_9.11/releases/tag/m10-minimal-scheduling-continuation-20260915-v1)。ZIP大小 1,777,797 bytes，SHA-256 `c6a5bbdf2f90e21a6e80ff16a0a82167828d11659a9b75f0a5048459d3888bf7`。归档内29项文件均完成哈希核对；从 Release 独立下载后，文件大小、SHA-256及GitHub API摘要与本地一致。逐资产记录见 `artifacts/m10-minimal-scheduling-continuation-20260915/release-verification.json`。
