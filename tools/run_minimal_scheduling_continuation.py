@@ -434,7 +434,7 @@ def main() -> int:
     state_hashes_before = {seed: state_dict_sha256(model) for seed, model in models.items()}
     inputs = json.loads(args.instances.read_text(encoding="utf-8"))
     instance_rows = inputs["records"]
-    if len(instance_rows) != 128 or sum(row["group"] == "homogeneous" for row in instance_rows) != 64 or sum(row["group"] == "heterogeneous" for row in instance_rows) != 64:
+    if len(instance_rows) != 128 or sum(row["instance"]["group"] == "homogeneous" for row in instance_rows) != 64 or sum(row["instance"]["group"] == "heterogeneous" for row in instance_rows) != 64:
         raise SystemExit("continuation validation set does not match frozen 64/64 contract")
     started = time.monotonic()
     wall_deadline = started + args.wall_seconds
@@ -455,13 +455,13 @@ def main() -> int:
     dump(args.out / "ledger.json", {"schema": "m10-minimal-scheduling-continuation-ledger-v1", "records": results})
     for index, row in enumerate(instance_rows):
         if time.monotonic() >= wall_deadline:
-            results.extend({"index": j, "instance_id": r["instance"]["instance_id"], "group": r["group"], "status": "not_started_wall_budget"} for j, r in enumerate(instance_rows[index:], start=index))
+            results.extend({"index": j, "instance_id": r["instance"]["instance_id"], "group": r["instance"]["group"], "status": "not_started_wall_budget"} for j, r in enumerate(instance_rows[index:], start=index))
             dump(args.out / "ledger.json", {"schema": "m10-minimal-scheduling-continuation-ledger-v1", "records": results})
             break
         try:
             result_row = evaluate_instance(index, row, models, device, args.per_instance_seconds, wall_deadline)
         except Exception as exc:
-            results.append({"index": index, "instance_id": row["instance"]["instance_id"], "group": row["group"], "status": "failed", "failure": f"{type(exc).__name__}: {exc}"})
+            results.append({"index": index, "instance_id": row["instance"]["instance_id"], "group": row["instance"]["group"], "status": "failed", "failure": f"{type(exc).__name__}: {exc}"})
             dump(args.out / "ledger.json", {"schema": "m10-minimal-scheduling-continuation-ledger-v1", "records": results})
             break
         results.append(result_row)
