@@ -100,3 +100,5 @@
 | best seed3307 | `7fbe399ed480c8192a7ccac844c34d0de2ec27de0e136bce62f74602b4c0562a` |
 
 完整训练目录（含 last recovery、updates 和 validation 日志）、数据、逐实例 test 结果及本报告由独立 Release ZIP 统一封存；上传/独立下载核验状态以 `artifact-index.json` 为准。旧到达协议、旧 checkpoint、旧 Release 和历史负结果未覆盖。
+
+本轮 Release 已建立：[m10-minimal-consequence-learning-20260915-v1](https://github.com/Battleplus/WORLD-GPPO_9.11/releases/tag/m10-minimal-consequence-learning-20260915-v1)。资产 `m10-minimal-consequence-learning-20260915-v3.zip` 大小 4,449,333 bytes，GitHub API digest、本地 ZIP 和独立下载 SHA-256 均为 `b7cb0022de8949880ce7b7a76aa4ec15ba3355d6e262b8e09ab1fd24bc5d1bb6`；解压后的 114 个文件已按 archive manifest 复核。详细记录见 `artifacts/m10-minimal-consequence-dataset-20260915/release-verification.json`。

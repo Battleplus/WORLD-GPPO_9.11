@@ -1,0 +1,14 @@
+{
+  "schema": "m10-minimal-consequence-release-verification-v1",
+  "release": "https://github.com/Battleplus/WORLD-GPPO_9.11/releases/tag/m10-minimal-consequence-learning-20260915-v1",
+  "tag": "m10-minimal-consequence-learning-20260915-v1",
+  "asset": "m10-minimal-consequence-learning-20260915-v3.zip",
+  "asset_bytes": 4449333,
+  "github_api_digest": "sha256:b7cb0022de8949880ce7b7a76aa4ec15ba3355d6e262b8e09ab1fd24bc5d1bb6",
+  "local_zip_sha256": "b7cb0022de8949880ce7b7a76aa4ec15ba3355d6e262b8e09ab1fd24bc5d1bb6",
+  "independent_download_sha256": "b7cb0022de8949880ce7b7a76aa4ec15ba3355d6e262b8e09ab1fd24bc5d1bb6",
+  "independent_download_bytes": 4449333,
+  "independent_download_verification": "passed",
+  "local_extraction_manifest_verification": "passed",
+  "notes": "The ZIP omits its own ZIP digest to avoid a self-referential manifest; the digest is recorded here and in the final report."
+}
