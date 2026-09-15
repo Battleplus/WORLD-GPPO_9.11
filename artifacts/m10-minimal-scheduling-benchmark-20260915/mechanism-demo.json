@@ -1,0 +1,20 @@
+{
+  "schema": "m10-minimal-scheduling-mechanism-demo-v1",
+  "label": "mechanism_demo_only_not_algorithm_result",
+  "uavs": [
+    {"uav_id": 0, "position": [3, 0]},
+    {"uav_id": 1, "position": [0, 0]}
+  ],
+  "subtasks": [
+    {"task_id": "a0", "chain_id": "a", "index": 0, "position": [0, 0], "process_time": 4, "eligible_uavs": [1], "predecessors": []},
+    {"task_id": "a1", "chain_id": "a", "index": 1, "position": [0, 0], "process_time": 1, "eligible_uavs": [1], "predecessors": ["a0"]},
+    {"task_id": "b0", "chain_id": "b", "index": 0, "position": [0, 0], "process_time": 1, "eligible_uavs": [0, 1], "predecessors": []},
+    {"task_id": "b1", "chain_id": "b", "index": 1, "position": [0, 0], "process_time": 1, "eligible_uavs": [0], "predecessors": ["b0"]}
+  ],
+  "hand_check": {
+    "greedy_first_action": ["b0", 1],
+    "greedy_makespan": 6,
+    "exact_makespan": 5,
+    "interpretation": "greedy consumes the near/limited UAV for b0; a0 and its dependent a1 start later"
+  }
+}

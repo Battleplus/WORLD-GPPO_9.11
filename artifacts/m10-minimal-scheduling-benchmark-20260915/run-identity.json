@@ -1,0 +1,46 @@
+{
+  "elapsed_seconds": 0.3440000000045984,
+  "generator": {
+    "choice_probability": "uniform for heterogeneous",
+    "count": 32,
+    "eligibility_choices": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "flight": "Manhattan",
+    "grid": [
+      0,
+      10
+    ],
+    "heterogeneous": 16,
+    "homogeneous": 16,
+    "process_time": [
+      1,
+      5
+    ]
+  },
+  "runtime": {
+    "platform": "Windows-10-10.0.26100-SP0",
+    "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]"
+  },
+  "schema": "m10-minimal-scheduling-run-identity-v1",
+  "seed": 615001,
+  "solver": {
+    "per_instance_seconds": 30.0,
+    "task_bound": 4,
+    "training": false,
+    "uav_bound": 2,
+    "wait": "advance to next completion event",
+    "wall_seconds": 1800.0
+  },
+  "source_branch": "minimal-scheduling-benchmark-20260915",
+  "source_commit": "c8c428fd7f70660f1c7bbebda089bba591fe379e"
+}

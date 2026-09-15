@@ -1,0 +1,27 @@
+{
+  "by_group": {
+    "heterogeneous": {
+      "different": 5,
+      "greedy_optimal": 11,
+      "instances": 16
+    },
+    "homogeneous": {
+      "different": 9,
+      "greedy_optimal": 7,
+      "instances": 16
+    }
+  },
+  "completed_instances": 32,
+  "different_greedy_vs_optimal": 14,
+  "elapsed_seconds": 0.17199999999866122,
+  "greedy_optimal": 18,
+  "greedy_suboptimal": 14,
+  "mean_absolute_gap": 1.96875,
+  "optimal_proven": 32,
+  "scheduled_instances": 32,
+  "schema": "m10-minimal-scheduling-summary-v1",
+  "seed": 615001,
+  "test_failures": 0,
+  "timeout_or_unproven": 0,
+  "wall_budget_seconds": 1800.0
+}

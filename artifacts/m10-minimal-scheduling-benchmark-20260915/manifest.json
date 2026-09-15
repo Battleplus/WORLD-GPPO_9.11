@@ -1,0 +1,30 @@
+{
+  "files": [
+    {
+      "bytes": 56686,
+      "path": "instances.json",
+      "sha256": "56a978aa63f4a7f99672a7597be55c224c07da68fcd7550c1cdb10139636876f"
+    },
+    {
+      "bytes": 293023,
+      "path": "results.json",
+      "sha256": "9cc8acbf76619eb0efaf6599f41edb3a57f2d739582ce48bafccdf5bac8a31a1"
+    },
+    {
+      "bytes": 1035,
+      "path": "run-identity.json",
+      "sha256": "c6e12376d701737bffc0a1b923d17bbdac7dfa30fcfd0885fa6108e9feef7abf"
+    },
+    {
+      "bytes": 645,
+      "path": "summary.json",
+      "sha256": "03cf0988ccfcc89e2ecebb6b658afdb3ce2ed47b9d6af2a449cdcd6d9ff4550a"
+    },
+    {
+      "bytes": 988,
+      "path": "mechanism-demo.json",
+      "sha256": "b5f539b27d875ff7eca9fca10b90630df21dcf6762fd73db8d63a5961d741af6"
+    }
+  ],
+  "schema": "m10-minimal-scheduling-manifest-v1"
+}
