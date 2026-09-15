@@ -1,0 +1,22 @@
+{
+  "schema": "m10-minimal-scheduling-protocol-v1",
+  "uav_count": 2,
+  "chain_count": 2,
+  "subtasks_per_chain": 2,
+  "task_count": 4,
+  "precedence": "strict within each chain",
+  "preemption": false,
+  "uav_capacity": 1,
+  "communication": "ideal",
+  "damage": false,
+  "energy_constraint": false,
+  "task_release": "all tasks known at t=0",
+  "flight_time": "Manhattan distance on integer grid [0,10]^2",
+  "process_time": "positive integer in [1,5]",
+  "heterogeneous_eligibility": "independently uniform among UAV-0 only, UAV-1 only, both",
+  "objective": "minimize makespan of all four subtasks",
+  "wait_action": "advance to next completion event; zero-time waiting is disallowed",
+  "generator_seed": 615001,
+  "development_instances": 32,
+  "solver_bound": {"max_subtasks": 4, "max_uavs": 2, "per_instance_seconds": 30, "wall_seconds": 1800}
+}
