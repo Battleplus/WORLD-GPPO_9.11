@@ -133,7 +133,7 @@ def main() -> int:
         ],
         "duplicate_replacements": duplicate_attempts,
         "duplicate_replacement_count": len(duplicate_attempts),
-        "accepted_count_by_group": {g: sum(row["group"] == g for row in accepted) for g in ("homogeneous", "heterogeneous")},
+        "accepted_count_by_group": {g: sum(row["instance"]["group"] == g for row in accepted) for g in ("homogeneous", "heterogeneous")},
         "accepted_content_sha256": {row["instance"]["instance_id"]: row["content_sha256"] for row in accepted},
         "elapsed_seconds": time.monotonic() - start,
         "test_outcomes_unseen": True,
