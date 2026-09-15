@@ -1,0 +1,35 @@
+{
+  "schema": "m10-minimal-scheduling-continuation-protocol-v1",
+  "protocol": "minimal-scheduling-benchmark-v1",
+  "question": "Does a learned initial action followed by the frozen greedy continuation improve complete makespan over greedy throughout?",
+  "instance_generation": {
+    "seed": 731001,
+    "count": 128,
+    "homogeneous": 64,
+    "heterogeneous": 64,
+    "generation_order": ["homogeneous", "heterogeneous"],
+    "distribution": "same as minimal-scheduling-benchmark-v1: UAV/task integer coordinates uniform [0,10], Manhattan flight, processing uniform integer [1,5], heterogeneous eligibility uniform over UAV0-only/UAV1-only/both",
+    "deduplicate_against": "all available previous minimal scheduling development/train/validation/test instances by canonical full scene content; fixed generation order replaces duplicates",
+    "task_structure": "2 UAV, two strict chains of length 2; all tasks released at time zero"
+  },
+  "methods": {
+    "G": "frozen earliest-finish greedy for every decision",
+    "M1101": "checkpoint 1101 chooses first legal action once, then frozen earliest-finish greedy",
+    "M2203": "checkpoint 2203 chooses first legal action once, then frozen earliest-finish greedy",
+    "M3307": "checkpoint 3307 chooses first legal action once, then frozen earliest-finish greedy",
+    "model_tie": "numeric minimum-score ties within 1e-12 use frozen greedy choice; otherwise earliest-finish/task-ID/UAV-ID order",
+    "solver": "offline reference only, called after all executable controllers for an instance; never supplies controller actions"
+  },
+  "frozen_checkpoints": [
+    {"seed": 1101, "sha256": "a3306884f989d7307a25e2007c7fa2c46113ca3d9f08f2d34e61bc15234e664b"},
+    {"seed": 2203, "sha256": "c572e2e907ccc2a84f343877ee4c4e0200e9972a344e8eb3e52ca89bbc71f903"},
+    {"seed": 3307, "sha256": "7fbe399ed480c8192a7ccac844c34d0de2ec27de0e136bce62f74602b4c0562a"}
+  ],
+  "budgets": {"per_instance_exact_solver_seconds": 30, "total_wall_seconds": 1800, "model_parameter_updates": 0},
+  "metrics": {
+    "primary": "complete makespan in simulation time units, lower is better",
+    "bootstrap": {"replicates": 10000, "seed": 20260916, "strata": ["homogeneous", "heterogeneous"], "unit": "per-instance mean across three model seed differences G minus M; resample instances within strata"},
+    "continue_gate": {"mean_makespan_reduction_percent": 3.0, "minimum_seed_count_improving": 2, "paired_ci_lower_bound_above_zero": true, "all_instances_complete": true, "execution_violations": 0}
+  },
+  "not_in_scope": ["training", "hyperparameter changes", "GPPO", "weak communication", "repeated model decisions", "new model variants"]
+}

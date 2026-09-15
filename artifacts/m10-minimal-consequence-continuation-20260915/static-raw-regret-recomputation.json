@@ -1,0 +1,97 @@
+{
+  "bootstrap": {
+    "does_not_cover_training_seed_population_uncertainty": true,
+    "groups": {
+      "heterogeneous": 64,
+      "homogeneous": 64
+    },
+    "normalized_regret_reduction_ci95": [
+      0.008021811159172406,
+      0.0393435378112675
+    ],
+    "raw_regret_reduction_ci95_time_units": [
+      0.2109375,
+      0.9973958333333334
+    ],
+    "replicates": 10000,
+    "seed": 20260915,
+    "unit": "instance; average three seed paired differences within instance, then stratified resample instances"
+  },
+  "checkpoint_sha256": [
+    "a3306884f989d7307a25e2007c7fa2c46113ca3d9f08f2d34e61bc15234e664b",
+    "c572e2e907ccc2a84f343877ee4c4e0200e9972a344e8eb3e52ca89bbc71f903",
+    "7fbe399ed480c8192a7ccac844c34d0de2ec27de0e136bce62f74602b4c0562a"
+  ],
+  "interpretation": "Normalized regret is secondary. The primary outcome is unnormalized simulation-time regret.",
+  "paired_instances": 128,
+  "per_seed": [
+    {
+      "checkpoint_sha256": "a3306884f989d7307a25e2007c7fa2c46113ca3d9f08f2d34e61bc15234e664b",
+      "instances": 128,
+      "instances_better_equal_worse": [
+        23,
+        98,
+        7
+      ],
+      "mean_model_raw_regret": 0.2890625,
+      "mean_normalized_regret_reduction": 0.027463692909805104,
+      "mean_raw_regret_reduction": 0.6875,
+      "mean_shared_greedy_raw_regret": 0.9765625,
+      "model_mean_normalized_regret": 0.012162549392087385,
+      "relative_raw_regret_reduction": 0.704,
+      "seed": 1101,
+      "shared_greedy_mean_normalized_regret": 0.03962624230189249
+    },
+    {
+      "checkpoint_sha256": "c572e2e907ccc2a84f343877ee4c4e0200e9972a344e8eb3e52ca89bbc71f903",
+      "instances": 128,
+      "instances_better_equal_worse": [
+        19,
+        97,
+        12
+      ],
+      "mean_model_raw_regret": 0.5078125,
+      "mean_normalized_regret_reduction": 0.018534878792706877,
+      "mean_raw_regret_reduction": 0.46875,
+      "mean_shared_greedy_raw_regret": 0.9765625,
+      "model_mean_normalized_regret": 0.021091363509185612,
+      "relative_raw_regret_reduction": 0.48,
+      "seed": 2203,
+      "shared_greedy_mean_normalized_regret": 0.03962624230189249
+    },
+    {
+      "checkpoint_sha256": "7fbe399ed480c8192a7ccac844c34d0de2ec27de0e136bce62f74602b4c0562a",
+      "instances": 128,
+      "instances_better_equal_worse": [
+        20,
+        100,
+        8
+      ],
+      "mean_model_raw_regret": 0.4140625,
+      "mean_normalized_regret_reduction": 0.02228725142776966,
+      "mean_raw_regret_reduction": 0.5625,
+      "mean_shared_greedy_raw_regret": 0.9765625,
+      "model_mean_normalized_regret": 0.017338990874122828,
+      "relative_raw_regret_reduction": 0.576,
+      "seed": 3307,
+      "shared_greedy_mean_normalized_regret": 0.03962624230189249
+    }
+  ],
+  "preregistered_raw_gate": {
+    "at_least_two_of_three_seed_better": true,
+    "paired_ci_lower_bound_above_zero": true,
+    "pass": true,
+    "relative_reduction_at_least_10_percent": true
+  },
+  "prior_normalized_relative_reduction_claim_percent": 57.44,
+  "prior_reported_normalized_ci95": [
+    0.008021811159172406,
+    0.039343537811267495
+  ],
+  "schema": "m10-minimal-consequence-raw-regret-recomputation-v1",
+  "shared_greedy_mean_raw_regret": 0.9765625,
+  "source_results": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-min-scheduling-continuation-wt\\artifacts\\m10-minimal-consequence-continuation-20260915\\prior-results-per-instance.json",
+  "source_results_sha256": "1aa5290e63cca25db5d2b3cc000dbfec4934fb3c2cfacf3adbbb16cb77c54579",
+  "three_seed_mean_model_raw_regret": 0.4036458333333333,
+  "three_seed_relative_raw_regret_reduction": 0.5866666666666668
+}
