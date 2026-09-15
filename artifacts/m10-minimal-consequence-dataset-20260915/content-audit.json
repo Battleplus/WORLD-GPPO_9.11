@@ -1,0 +1,19 @@
+{
+  "dataset": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-min-scheduling-benchmark-wt\\artifacts\\m10-minimal-consequence-dataset-20260915\\dataset.json",
+  "dataset_content_hashes": {
+    "test": "52fb9900168ba03751956672daaec01c7318b98c982cdd46a7cde97c58b48b22",
+    "train": "3b2ec2a78fc31d7ede562d4b0ed5ea07ed4874282c2720fbc1c3e9995fa99250",
+    "validation": "3770a0dd7759e91f801eb3064f0d5eed4ff63a2be5521ffeaebc5b6c75d46b65"
+  },
+  "historical_32_content_overlap_count": 0,
+  "method": "canonical full scene content including UAV positions and all subtask fields; labels/candidates excluded from scene identity",
+  "old_instances": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-min-scheduling-benchmark-wt\\artifacts\\m10-minimal-scheduling-benchmark-20260915\\instances.json",
+  "schema": "m10-minimal-consequence-content-audit-v1",
+  "split_counts": {
+    "test": 128,
+    "train": 256,
+    "validation": 64
+  },
+  "status": "passed",
+  "within_and_cross_split_duplicate_count": 0
+}

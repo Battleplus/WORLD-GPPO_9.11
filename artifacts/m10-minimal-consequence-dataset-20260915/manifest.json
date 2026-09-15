@@ -1,0 +1,20 @@
+{
+  "files": [
+    {
+      "bytes": 997,
+      "path": "content-audit.json",
+      "sha256": "efc0023ef76a728ea4a01900d96906380a161abd23dc187b598d38d75e3f2f4e"
+    },
+    {
+      "bytes": 1600752,
+      "path": "dataset.json",
+      "sha256": "4c188caffffaeeeb4fcff0c3c91ccf15efb9350ce8517b6755653282a1d90475"
+    },
+    {
+      "bytes": 748,
+      "path": "run-identity.json",
+      "sha256": "4b93a461cda01ffeb578f38152914173421c0e97218ea77b1589ff48e14d6343"
+    }
+  ],
+  "schema": "m10-minimal-consequence-dataset-manifest-v1"
+}

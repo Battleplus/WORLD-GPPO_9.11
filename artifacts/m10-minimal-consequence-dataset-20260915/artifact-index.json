@@ -1,0 +1,24 @@
+{
+  "schema": "m10-minimal-consequence-learning-artifact-index-v1",
+  "scope": "first-action regret prediction with exact optimal continuation; not end-to-end scheduling",
+  "source_commit_at_generation": "86a7d1036f23f414261ba52d9054cb2c3b8f7736",
+  "source_branch": "minimal-scheduling-benchmark-20260915",
+  "dataset": {
+    "path": "artifacts/m10-minimal-consequence-dataset-20260915/dataset.json",
+    "sha256": "4c188caffffaeeeb4fcff0c3c91ccf15efb9350ce8517b6755653282a1d90475",
+    "splits": {"train": {"instances": 256, "seed": 721001}, "validation": {"instances": 64, "seed": 721002}, "test": {"instances": 128, "seed": 721003}},
+    "candidate_counts": {"train": 851, "validation": 210, "test": 438},
+    "content_audit": {"status": "passed", "cross_split_duplicates": 0, "historical_overlap": 0, "sha256": "efc0023ef76a728ea4a01900d96906380a161abd23dc187b598d38d75e3f2f4e"}
+  },
+  "environment": {
+    "path": "artifacts/m10-minimal-consequence-dataset-20260915/environment.json",
+    "sha256": "28e0af58f9cf6b77398da1c3833935a58ac0de57ecbb4959ef240f4500c701e4"
+  },
+  "training": [
+    {"seed": 1101, "path": "E:/Z博士/9.2日/m10-minimal-consequence-training-20260915-seed1101", "best_sha256": "a3306884f989d7307a25e2007c7fa2c46113ca3d9f08f2d34e61bc15234e664b", "last_sha256": "9f0e8e6084fd906abd626f22d220647e44687dc833ab1fb3a1b3d537b712b5a1", "epochs": 15, "updates": 240, "stop": "validation_patience"},
+    {"seed": 2203, "path": "E:/Z博士/9.2日/m10-minimal-consequence-training-20260915-seed2203", "best_sha256": "c572e2e907ccc2a84f343877ee4c4e0200e9972a344e8eb3e52ca89bbc71f903", "last_sha256": "d7e9c7bf7ae8575683603b98dfe2d3126eed735aad394bf4c7d0ab10a16f66c9", "epochs": 22, "updates": 352, "stop": "validation_patience"},
+    {"seed": 3307, "path": "E:/Z博士/9.2日/m10-minimal-consequence-training-20260915-seed3307", "best_sha256": "7fbe399ed480c8192a7ccac844c34d0de2ec27de0e136bce62f74602b4c0562a", "last_sha256": "9e4c1a7aa9dd310396225f1dab8437fb11555c945413749b30e99711180342eb", "epochs": 29, "updates": 464, "stop": "validation_patience"}
+  ],
+  "test": {"path": "E:/Z博士/9.2日/m10-minimal-consequence-test-results-20260915/results.json", "sha256": "4d07d1deae61395f6c2a391f2e2aecf1a0d27847515b19fab60508c763650e1b", "per_instance_sha256": "1aa5290e63cca25db5d2b3cc000dbfec4934fb3c2cfacf3adbbb16cb77c54579", "bootstrap_replicates": 10000, "bootstrap_seed": 20260915},
+  "archive": {"local_zip": "m10-minimal-consequence-learning-20260915-v3.zip", "local_zip_sha256": null, "hash_note": "ZIP hash is recorded outside the ZIP to avoid a self-referential manifest", "local_extraction_verification": "verified-local-extraction", "github_release": "not_created", "independent_download_verification": "not_performed"}
+}

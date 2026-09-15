@@ -1,0 +1,13 @@
+{
+  "schema": "m10-minimal-consequence-environment-v1",
+  "platform": "Windows-10-10.0.26100-SP0",
+  "python": "3.11.15",
+  "torch": "2.7.0+cu128",
+  "cuda_runtime": "12.8",
+  "numpy": "1.26.0",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "driver": "571.96",
+  "device": "cuda",
+  "threads": "default process setting; supervised training uses one process",
+  "scope": "data generation, supervised candidate-regret training, and test forward timing only"
+}

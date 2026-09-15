@@ -1,0 +1,25 @@
+{
+  "generator": {
+    "homogeneous_fraction": 0.5,
+    "per_instance_seconds": 30.0,
+    "test": {
+      "count": 128,
+      "seed": 721003
+    },
+    "train": {
+      "count": 256,
+      "seed": 721001
+    },
+    "validation": {
+      "count": 64,
+      "seed": 721002
+    },
+    "wall_seconds": 3600.0
+  },
+  "labels": "C* and Q* exact offline only; input contains no solver fields consumed by model",
+  "old_regression_instances_excluded": true,
+  "platform": "Windows-10-10.0.26100-SP0",
+  "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+  "schema": "m10-minimal-consequence-dataset-run-v1",
+  "source_commit": "86a7d1036f23f414261ba52d9054cb2c3b8f7736"
+}
