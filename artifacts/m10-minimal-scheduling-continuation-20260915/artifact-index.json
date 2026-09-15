@@ -55,7 +55,9 @@
   "archive": {
     "release": "https://github.com/Battleplus/WORLD-GPPO_9.11/releases/tag/m10-minimal-scheduling-continuation-20260915-v1",
     "zip": "m10-minimal-scheduling-continuation-20260915-v1.zip",
-    "sha256": "pending",
+    "bytes": 1777797,
+    "sha256": "c6a5bbdf2f90e21a6e80ff16a0a82167828d11659a9b75f0a5048459d3888bf7",
+    "local_archive_manifest_entries_verified": 29,
     "independent_download_verification": "pending"
   }
 }
