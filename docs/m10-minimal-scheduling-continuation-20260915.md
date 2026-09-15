@@ -19,6 +19,18 @@
 
 上一轮所报 **57.44%** 和 95% CI **[0.0080218, 0.0393435]** 用的是归一化 regret；每实例 regret 除以该实例公开 scale 后，按同一实例平均 seed 差异并分层 bootstrap。它们不是原始仿真时间单位结果。按本轮预登记原始主指标，减少超过 10%、3/3 seed 均值改善、配对区间下界大于 0，故静态门槛通过，允许本轮唯一评估继续。
 
+以下命中率允许精确标签中的并列最优；排序准确率只在真实 regret 不等的候选对上计算。模型/贪心的首步命中率分母均为全部128实例；归一化 regret 是实例级 `regret / S(s)` 后的平均。它们是静态旧test复算指标，不是本轮新实例的结果。
+
+| 方法 | 原始平均 regret（仿真时间） | 平均归一化 regret | 首步最优命中 | 非平局候选对排序准确率 | 候选对分母 | 候选 regret MAE |
+|---|---:|---:|---:|---:|---:|---:|
+| 共享贪心 | 0.976563 | 0.039626 | 95/128 (74.22%) | — | — | — |
+| 模型1101 | 0.289063 | 0.012163 | 111/128 (86.72%) | 293/364 (80.49%) | 364 | 0.084372 |
+| 模型2203 | 0.507813 | 0.021091 | 102/128 (79.69%) | 284/364 (78.02%) | 364 | 0.090095 |
+| 模型3307 | 0.414063 | 0.017339 | 107/128 (83.59%) | 300/364 (82.42%) | 364 | 0.082360 |
+| 三seed等权均值 | 0.403646 | 0.016864 | 320/384 (83.33%) | 877/1092 (80.31%) | 1092 | 0.085609 |
+
+此前的 **57.44%** 是归一化差值的相对减少比例，不是原始 regret 的相对减少。按原始预登记指标复算，三seed平均原始 regret 从0.976563降至0.403646，减少0.572917，即 **58.67%**。原始及归一化区间分别使用各自尺度；二者不可互换。
+
 静态复算文件为 `artifacts/m10-minimal-consequence-continuation-20260915/static-raw-regret-recomputation.json`；其输入逐实例文件 SHA-256 为 `1aa5290e63cca25db5d2b3cc000dbfec4934fb3c2cfacf3adbbb16cb77c54579`。三份 checkpoint 完整 SHA-256 见下方制品索引。
 
 ## 冻结的新验证集与方法
@@ -47,7 +59,7 @@
 ```powershell
 $py = 'E:\Z博士\9.2日\world-gppo-911-local-pilot-venv\Scripts\python.exe'
 & $py tools\generate_minimal_scheduling_continuation_instances.py `
-  --out runs\m10-minimal-scheduling-continuation-20260915-v1\instances `
+  --out runs\m10-minimal-scheduling-continuation-20260915-v2\instances `
   --known-data E:\Z博士\9.2日\WORLD-GPPO_9.11-min-scheduling-benchmark-wt\artifacts\m10-minimal-consequence-dataset-20260915\dataset.json `
   --known-instances E:\Z博士\9.2日\WORLD-GPPO_9.11-min-scheduling-benchmark-wt\artifacts\m10-minimal-scheduling-benchmark-20260915\instances.json `
   --seed 731001
@@ -57,16 +69,76 @@ $py = 'E:\Z博士\9.2日\world-gppo-911-local-pilot-venv\Scripts\python.exe'
 
 ```powershell
 & $py tools\run_minimal_scheduling_continuation.py `
-  --instances runs\m10-minimal-scheduling-continuation-20260915-v1\instances\instances.json `
+  --instances runs\m10-minimal-scheduling-continuation-20260915-v2\instances\instances.json `
   --protocol configs\minimal-scheduling-continuation-v1.json `
   --models E:\Z博士\9.2日\m10-minimal-consequence-training-20260915-seed1101\best-inference.pt E:\Z博士\9.2日\m10-minimal-consequence-training-20260915-seed2203\best-inference.pt E:\Z博士\9.2日\m10-minimal-consequence-training-20260915-seed3307\best-inference.pt `
-  --out runs\m10-minimal-scheduling-continuation-20260915-v1\evaluation `
+  --out runs\m10-minimal-scheduling-continuation-20260915-v2\evaluation `
   --device cuda --per-instance-seconds 30 --wall-seconds 1800
 ```
 
 运行设备无 CUDA 时显式失败，不切换设备。结果写入唯一目录，逐实例 ledger 在每完成一个实例后持久化。
 
-## 结果（待独立新集完成后填写）
+## 新实例续行结果
 
-此处只填新实例执行与配对结果，不用旧 test 代替。若实验未完整完成，必须保持“未完成/证据不足”，不得追加实例或预算。
+冻结集包含 128/128 个新实例（同构64、异构64）；内容重复0，历史重叠0，替换抽样0。实例集 SHA-256：`0f45ca3903a9065263b707fc22c839d40b5e601e19b7b105b84e3f97461e4d19`。全部 G/M 调度完成；精确求解器 128/128 均证明最优。实际评估墙钟 12.859 秒（上限 1800 秒）；单实例精确求解上限30秒，实测没有超时。模型参数更新数为0。
 
+### 完整 makespan 与相对最优差距
+
+以下 makespan 和 regret 都是基准仿真时间单位，不是计算墙钟。G 是唯一共享规则结果；M 只在首步使用对应模型，其余决策由同一贪心规则执行。
+
+| 条件 | 方法 | 平均完整 makespan | 相对 G 减少 | 相对精确最优平均 regret |
+|---|---|---:|---:|---:|
+| 全部128 | G | 25.289063 | — | 2.531250 |
+| 全部128 | M1101 | 24.882813 | 1.61% | 2.125000 |
+| 全部128 | M2203 | 24.585938 | 2.78% | 1.828125 |
+| 全部128 | M3307 | 24.859375 | 1.70% | 2.101563 |
+| 全部128 | 三个M等权平均 | 24.776042 | **2.03%** | — |
+
+| 条件 | G | M1101 | M2203 | M3307 |
+|---|---:|---:|---:|---:|
+| 同构64平均 makespan | 22.531250 | 22.125000 | 21.859375 | 21.890625 |
+| 同构64相对 G 减少 | — | 1.80% | 2.98% | 2.84% |
+| 异构64平均 makespan | 28.046875 | 27.640625 | 27.312500 | 27.828125 |
+| 异构64相对 G 减少 | — | 1.45% | 2.62% | 0.78% |
+
+三 seed 在同构与异构组的平均差均为正，但每组只有64个实例，且训练模型 seed 数为3；不据此宣称泛化稳定性。
+
+### 每 seed 配对结果与区间
+
+胜/平/负按每个实例比较 `G makespan` 与 `M makespan`；胜代表 M 完整 makespan 更低。
+
+| Seed | G−M平均时间减少 | 相对G减少 | 胜/平/负 | 完整调度 regret |
+|---:|---:|---:|---:|---:|
+| 1101 | 0.406250 | 1.61% | 16/104/8 | 2.125000 |
+| 2203 | 0.703125 | 2.78% | 21/101/6 | 1.828125 |
+| 3307 | 0.429688 | 1.70% | 16/105/7 | 2.101563 |
+
+先在每个实例内平均三个 seed 的 `G−M` 时间差，再按同构/异构分层对实例 bootstrap 10,000 次：平均减少 `0.513021` 时间单位，95% CI **[0.085938, 1.010417]**。该区间描述这批实例的不确定性，不覆盖训练 seed 总体不确定性。
+
+### 计算开销与执行完整性
+
+本机为 Windows 10 build 26100、Python 3.11.15、PyTorch 2.7.0+cu128、CUDA 12.8、RTX 3060 Laptop GPU、驱动571.96。无 warm-up，模型前向计时前后同步 CUDA；前向时间不含图构造，完整方法墙钟含图构造、一次模型前向和贪心续行，不含精确求解与文件写入。首次调用包含在样本内，因此存在启动长尾。
+
+| Seed/方法 | 首步模型前向 mean/P95/P99 ms | 完整方法 compute wall mean/P95/P99 ms |
+|---|---|---|
+| G（无模型） | — | 0.116 / 0.188 / 0.245 |
+| M1101 | 6.517 / 6.082 / 15.163 | 8.283 / 8.755 / 18.327 |
+| M2203 | 3.222 / 5.550 / 7.004 | 4.505 / 7.496 / 11.938 |
+| M3307 | 3.411 / 6.036 / 8.472 | 4.297 / 7.204 / 9.872 |
+
+时间是本机计算墙钟，不是仿真 makespan；无控制周期门槛，不据此宣称实时达标。全 ledger 独立回放检查通过：模型每实例恰调用一次、M 的第一步与评分记录一致、其余每步严格为贪心、G 全程贪心；执行器/资格/前序/无人机占用/等待事件及 makespan 均可复算。精确求解器在执行器结束后调用，控制器路径调用数为0。三份 checkpoint 文件 SHA 与模型参数状态 SHA 前后不变；非法/未完成/死锁/精确求解未证明数均为0。
+
+### 预登记判断
+
+- 三 seed 平均完整 makespan 相对 G 减少 **2.03%**，未达到3%门槛；
+- 3/3 seed 均值降低；
+- 配对95%区间下界大于0；
+- 128个实例全部完成，未观察到执行违规。
+
+由于第一项未满足，预登记完整续行信号 **未通过**。模型首步在本次固定贪心续行和小基准上呈正点估计，但收益幅度不足门槛；到此停止，不扩样、不训练、不更换续行控制器。不得外推为 GPPO、弱通信或完整世界模型收益。
+
+### 执行前准备失败记录
+
+第一次生成在写完确定性 `instances.json` 后，审计摘要字段读取错误而未写完 run identity；字段修复后按相同 seed 重放，实例 JSON SHA 完全一致。首次 runner 预检又因从嵌套场景读取组别字段的 schema 假设错误而在生成输出目录/模型前向前退出；修复为读取既定嵌套 schema 后再执行。没有查看任何模型决策或结果来决定修复；正式执行使用源代码提交 `194ff21e72f0bc4e3bf4ce234cf166d1cc3c183b`，已冻结实例内容未改变。这是范围内的准备期接口修正，记录为偏差，不把首次命令失败计作一次评估。
+
+生成数据 identity 记录生成器代码提交 `bba91444e23d2dc485f4b31bdb8d8ec371078bee`；正式执行 identity 记录 runner 提交 `194ff21e72f0bc4e3bf4ce234cf166d1cc3c183b`。评估配置 SHA-256 为 `ce154c7b7088b0b3b1a3392f055e798b733a4e20a40b9e686e3139d0af7c3f67`。逐实例 ledger、实例、汇总、独立审计和 manifest 均保存在 `runs/m10-minimal-scheduling-continuation-20260915-v2/`。

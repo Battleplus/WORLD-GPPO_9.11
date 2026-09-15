@@ -1,0 +1,61 @@
+{
+  "schema": "m10-minimal-scheduling-continuation-artifact-index-v1",
+  "scope": "frozen candidate model selects only the first action, then one shared greedy controller completes the schedule",
+  "branch": "minimal-scheduling-continuation-20260915",
+  "protocol": {
+    "path": "configs/minimal-scheduling-continuation-v1.json",
+    "sha256": "ce154c7b7088b0b3b1a3392f055e798b733a4e20a40b9e686e3139d0af7c3f67",
+    "generation_seed": 731001,
+    "instances": 128,
+    "homogeneous": 64,
+    "heterogeneous": 64
+  },
+  "execution": {
+    "generation_source_commit": "bba91444e23d2dc485f4b31bdb8d8ec371078bee",
+    "runner_source_commit": "194ff21e72f0bc4e3bf4ce234cf166d1cc3c183b",
+    "evaluation_instance_sha256": "0f45ca3903a9065263b707fc22c839d40b5e601e19b7b105b84e3f97461e4d19",
+    "ledger_sha256": "8cdd8792e4d5d74e0ba8e36ad605579f471c1c08704fe75050a300ba408ce161",
+    "results_sha256": "d2a148a91534f902b0d1937fef6ff382ebee9133876b73c2f57f2019d35513c5",
+    "independent_audit_sha256": "857c93a22575809df90079451202f68ecbd99f9aba968e5b50857663438ebef2",
+    "run_manifest_sha256": "85957a7dcbee01c11a8abd05fb1a4f9808badc88eb353c14314a620760cccb5a",
+    "exact_status": {"optimal": 128},
+    "integrity_errors": 0,
+    "model_updates": 0,
+    "wall_seconds": 12.859
+  },
+  "tests": {"targeted_regression": "18 passed", "includes_old_arrival_protocol": true, "old_arrival_environment_modified": false, "independent_ledger_replay": "passed; zero errors"},
+  "frozen_checkpoints": [
+    {"seed": 1101, "sha256": "a3306884f989d7307a25e2007c7fa2c46113ca3d9f08f2d34e61bc15234e664b"},
+    {"seed": 2203, "sha256": "c572e2e907ccc2a84f343877ee4c4e0200e9972a344e8eb3e52ca89bbc71f903"},
+    {"seed": 3307, "sha256": "7fbe399ed480c8192a7ccac844c34d0de2ec27de0e136bce62f74602b4c0562a"}
+  ],
+  "static_previous_test_recomputation": {
+    "source_rows_sha256": "1aa5290e63cca25db5d2b3cc000dbfec4934fb3c2cfacf3adbbb16cb77c54579",
+    "raw_regret_reduction": 0.5866666666666668,
+    "raw_regret_reduction_ci95_time_units": [0.2109375, 0.9973958333333334],
+    "normalized_relative_reduction_percent": 57.44,
+    "normalized_ci95": [0.008021811159172406, 0.0393435378112675],
+    "per_method": [
+      {"method": "shared_greedy", "raw_regret_mean": 0.9765625, "normalized_regret_mean": 0.03962624230189249, "first_action_optimal": 95, "instances": 128},
+      {"method": "model_1101", "raw_regret_mean": 0.2890625, "normalized_regret_mean": 0.012162549392087385, "first_action_optimal": 111, "instances": 128, "non_tie_pair_correct": 293, "non_tie_pairs": 364, "candidate_regret_mae": 0.08437191808479838},
+      {"method": "model_2203", "raw_regret_mean": 0.5078125, "normalized_regret_mean": 0.021091363509185612, "first_action_optimal": 102, "instances": 128, "non_tie_pair_correct": 284, "non_tie_pairs": 364, "candidate_regret_mae": 0.09009549210168188},
+      {"method": "model_3307", "raw_regret_mean": 0.4140625, "normalized_regret_mean": 0.017338990874122828, "first_action_optimal": 107, "instances": 128, "non_tie_pair_correct": 300, "non_tie_pairs": 364, "candidate_regret_mae": 0.08236044095247053},
+      {"method": "models_equal_seed_mean", "raw_regret_mean": 0.4036458333333333, "normalized_regret_mean": 0.016864301741367593, "first_action_optimal": 320, "instances": 384, "non_tie_pair_correct": 877, "non_tie_pairs": 1092, "candidate_regret_mae": 0.085609283162325}
+    ],
+    "raw_gate_pass": true
+  },
+  "continuation_result": {
+    "mean_G_makespan": 25.2890625,
+    "mean_M_makespan_across_three_seeds": 24.776041666666668,
+    "relative_reduction_percent": 2.0285714285714285,
+    "paired_delta_ci95_time_units": [0.0859375, 1.0104166666666667],
+    "preregistered_gate_pass": false,
+    "reason": "mean full-makespan reduction is below the registered 3 percent threshold"
+  },
+  "archive": {
+    "release": "https://github.com/Battleplus/WORLD-GPPO_9.11/releases/tag/m10-minimal-scheduling-continuation-20260915-v1",
+    "zip": "m10-minimal-scheduling-continuation-20260915-v1.zip",
+    "sha256": "pending",
+    "independent_download_verification": "pending"
+  }
+}
