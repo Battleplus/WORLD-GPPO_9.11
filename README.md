@@ -1,5 +1,9 @@
 # WORLD-GPPO_9.11
 
+> **最新进度（2026-09-19）**：已完成事件触发 P/T 矩阵的恢复账本核对，并在冻结 validation 上完成 432/432 个 episode（6080 环境步）；本轮没有训练、参数更新、补步或生成新数据。主比较 T_train＋T_dispatch 对 P_train＋T_dispatch，在 W1/W2 等权按时物理完成率上为 **+2.08 个百分点**，父 tape bootstrap 95% CI **[+0.17,+3.99] 个百分点**；逐 seed 差值为 **+1.56、−0.52、+5.21 个百分点**。由于六个 checkpoint 的逻辑训练量不完全相等，这只能作为开发信号，不是严格因果收益结论。安全违规记录为 0（仅限本次日志覆盖范围）。详见[本阶段报告](docs/experiments/pt-frozen-validation-20260919.md)。checkpoint、逐 episode ledger 和完整审计制品保存在本地独立归档；本次新增文档仅记录进度，不包含大制品。
+
+README 下方较早章节是历史阶段记录；如与上述日期更新冲突，以有日期的最新报告及对应协议/账本为准。
+
 本仓库是后续研究的唯一归档入口（目标远端：`Battleplus/WORLD-GPPO_9.11`）。内容从旧项目 `GPPO-WORLD-9.2` 的提交 `05702ae861e460e667acf8f0184e9a3709ef6fd4` 迁移而来；旧仓库、旧 Release、失败记录和负结果不被覆盖，且不跨协议混合统计。
 
 当前阶段主题是“无人机弱通信任务调度中的世界模型优化”：首轮保持周期决策，已落地候选 UAV–Task 后果预测、Graph-5 公共观测适配器、反事实标签生成器和有界服务器训练入口；正式训练仍需服务器 pilot。请先阅读 [迁移来源](docs/transition/legacy-provenance.md)、[任务合同](docs/contracts/world-gppo-9.11-task-contract.md)、[后果模型设计](docs/world-model/action-consequence-design.md) 和 [实验计划](docs/plans/EXPERIMENT_PLAN.md)。
